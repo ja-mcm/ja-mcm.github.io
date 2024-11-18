@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4321&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.125.4">
+
+
+<title>Omitted Variable Bias - Summer of Stats</title>
+<meta property="og:title" content="Omitted Variable Bias - Summer of Stats">
+
+
+  <link href='//localhost:4321/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/Rplot.png"
+         width="60"
+         height="60"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/ja-mcm/OCRfixR">GitHub</a></li>
+    
+    <li><a href="/2025/01/01/visual-gallery/">Visual Gallery</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">3 min read</span>
+    
+
+    <h1 class="article-title">Omitted Variable Bias</h1>
+
+    
+    <span class="article-date">2024-07-24</span>
+    
+
+    <div class="article-content">
+      
+      <h2 id="or-why-knowing-the-business-beats-knowing-regression">(or &ldquo;Why Knowing the Business Beats Knowing Regression&rdquo;)</h2>
+<p>Regression can be a beautiful thing. You feed a bunch of factors that you think explain a phenomenon, and the computer spits out a quantifiable answer of how much each of these matter to the final answer. It can feel a bit like magic!</p>
+<p>But, just like magic, there&rsquo;s always something lurking in the background, unseen. In regression, the magic relies on us supplying relevant factors.</p>
+<p>If we miss a critical variable, our results can get a bit wonky. We call this <strong>omitted variable bias</strong>.</p>
+<h4 id="what-is-a-omitted-variable-bias">What is a Omitted Variable Bias?</h4>
+<p>Consider a regression where we</p>
+<p>Regression (________ omitted):</p>
+<pre><code class="language-r">fit &lt;- lm(dist ~ speed, data = cars)
+fit
+## 
+## Call:
+## lm(formula = dist ~ speed, data = cars)
+## 
+## Coefficients:
+## (Intercept)        speed  
+##     -17.579        3.932
+</code></pre>
+<p>Regression (________ included):</p>
+<pre><code class="language-r">summary(Orange)
+##  Tree       age         circumference  
+##  3:7   Min.   : 118.0   Min.   : 30.0  
+##  1:7   1st Qu.: 484.0   1st Qu.: 65.5  
+##  5:7   Median :1004.0   Median :115.0  
+##  2:7   Mean   : 922.1   Mean   :115.9  
+##  4:7   3rd Qu.:1372.0   3rd Qu.:161.5  
+##        Max.   :1582.0   Max.   :214.0
+</code></pre>
+<p>As you can see, when we omit a critical variable from our regression, the results we yield can range from &ldquo;somewhat misleading&rdquo; to &ldquo;totally wrong&rdquo;.</p>
+<hr>
+<h2 id="omitted-variable-bias-in-daily-life">Omitted Variable Bias in Daily Life</h2>
+<p>One practical lesson of omitted variable bias that you can take away is:</p>
+<blockquote>
+<p><strong>Know the factors that drive your business.</strong></p>
+</blockquote>
+<p>If you are lucky enough to have a dataset available that you can do regression on, <strong>it doesn&rsquo;t mean you should.</strong> Or, at least, you should consider what is MISSING from that data before plowing ahead.</p>
+<p>Case-in point:
+Early in my career, I was part of a project to determine why a major retailer was experiencing a noticeable surge in <a href="https://www.investopedia.com/terms/c/chargeback.asp">credit card chargebacks</a>.</p>
+<p>We had plenty of data on these transactions, so we sliced and diced (and even pulverized) the data for weeks, but nothing popped out.</p>
+<p>The answer finally came once we visited stores.</p>
+<p>While observing an associate ringing someone up, we witnessed the application get &ldquo;stuck&rdquo; after the card was swiped. The associate then <strong>re-swiped the card</strong>, believing the transaction hadn&rsquo;t gone through. Aha!</p>
+<p>We now had our explanation as to why customers were disputing charges - they were inadvertently being double-charged.</p>
+<h3 id="the-omitted-variable-wi-fi">The omitted variable: Wi-Fi</h3>
+<p>The ultimate culprit in this story was bad Wi-Fi connectivity within certain stores. If the Wi-Fi cut out during a transaction, it was likely the transaction would be retried, and both transactions would post once the Wi-Fi connection was re-established.</p>
+<p>We then would end up with someone buying a $2000 appliance TWICE. No wonder they charged it back!</p>
+<p>&laquo;&laquo; PICTURE &raquo;&raquo;</p>
+<p>If our initial dataset had the data element &ldquo;WIFI_STRENGTH&rdquo;, it would&rsquo;ve been very easy to identify the source of our troubles. But, <strong>recognizing</strong> that this variable was necessary was actually the biggest hurdle in the analysis.</p>
+<h2 id="summing-up">Summing Up</h2>
+<p>It is very easy to botch an analysis by omitting a critical variable. By its very nature, the problem of omitted factors is not very visible.</p>
+<p>The answer to omitted variables is ironically NOT adding more variables (which can lead to spurious correlations), but <strong>adding the right variables, based on knowledge of the business</strong>.</p>
+<p>There are no statistical shortcuts that will tell you what your omitted variables are. This is an iterative process, and requires knowledge and imagination.</p>
+<p>Beware of recommendations from analysts that are completely walled off from the business. They may know regression techniques very well, but they are likely to fall prey to omitted variable bias.</p>
+<p>R code used to generate plots:</p>
+<pre><code class="language-r">##TBD
+</code></pre>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  
+
+
+  </body>
+</html>
+

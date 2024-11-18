@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sampling on Summer of Stats</title>
+    <link>//localhost:4321/tags/sampling/</link>
+    <description>Recent content in Sampling on Summer of Stats</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <lastBuildDate>Wed, 26 Jun 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:4321/tags/sampling/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Confidence Intervals</title>
+      <link>//localhost:4321/2024/06/26/confidence-intervals/</link>
+      <pubDate>Wed, 26 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/2024/06/26/confidence-intervals/</guid>
+      <description>(or &amp;ldquo;Why You Should Always Prepare Extra Food&amp;rdquo;) After seeing last week how quickly a small sample of data can arrive at the &amp;ldquo;correct&amp;rdquo; answer, we&amp;rsquo;re probably feeling pretty good!&#xA;But, our sample estimate is just that, an estimate. And, it&amp;rsquo;s not perfect.&#xA;In many cases, it&amp;rsquo;s important to know HOW certain we are of that estimate. To do this, we use a confidence interval.&#xA;What is a Confidence Interval? A confidence interval is the range of estimates that could be plausible, given your sample.</description>
+    </item>
+    <item>
+      <title>Sampling</title>
+      <link>//localhost:4321/2024/06/19/sampling/</link>
+      <pubDate>Wed, 19 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/2024/06/19/sampling/</guid>
+      <description>(or &amp;ldquo;Why It Pays to Have a Clipboard&amp;rdquo;) Oftentimes, we want to know something about a very large group.&#xA;For example, someone might want to know how tall the average male is in the United States. How would we answer a question like this?&#xA;&amp;ldquo;We&amp;rsquo;re gonna need some more measuring tape&amp;hellip;&amp;rdquo;&#xA;Fortunately for us, there is an approach that will allow us to answer this seemingly impossible question: sampling.&#xA;What is Sampling?</description>
+    </item>
+  </channel>
+</rss>

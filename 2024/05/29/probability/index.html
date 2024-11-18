@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4321&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.125.4">
+
+
+<title>Probability - Summer of Stats</title>
+<meta property="og:title" content="Probability - Summer of Stats">
+
+
+  <link href='//localhost:4321/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/Rplot.png"
+         width="60"
+         height="60"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/">Summer of Stats</a></li>
+    
+    <li><a href="/2124/01/01/visual-gallery/">Visual Gallery</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">6 min read</span>
+    
+
+    <h1 class="article-title">Probability</h1>
+
+    
+    <span class="article-date">2024-05-29</span>
+    
+
+    <div class="article-content">
+      
+      <h2 id="or-will-it-rain-on-my-parade">(or &ldquo;Will It Rain on My Parade?&rdquo;)</h2>
+<p>It is very exciting to break open a textbook on statistics again.</p>
+<p>I doubt many people have <strong>ever</strong> said that, but in my case, it rings true!</p>
+<p>To prepare for Master&rsquo;s-level coursework this Fall, I am revisiting statistical concepts and coursework. I will be writing a small entry about something I learned each week.</p>
+<p>This will not be a math-heavy, rigorous write-up, but will instead focus on finding an idea that ANYONE can walk away with and make use of.</p>
+<p>My first entry will answer a very basic question:</p>
+<h4 id="what-is-probability">What is Probability?</h4>
+<p>In short, <strong>probability</strong> is all about <strong>expectations</strong>. We can never KNOW what is going to happen in the future, but we can use data to make an informed guess.</p>
+<p><img src="images/Rainout.png" alt="Flood">
+<em>&ldquo;Do we need to make a rain-out plan for our party?&rdquo;</em></p>
+<p>This ability to quantify your expectations accurately can be incredibly useful. (Note: it can also be <a href="https://xkcd.com/2379/">not terribly useful, but still entertaining&hellip;</a>)</p>
+<h4 id="how-do-we-generate-probabilities">How Do We Generate Probabilities?</h4>
+<p>You might be surprised to learn that there are multiple ways to arrive at a probability. Luckily, you should already be familiar with most of these, as the examples below will make clear.</p>
+<h2 id="theoretical">THEORETICAL</h2>
+<p><strong>Theoretical probability</strong> is pretty simple (in theory). It is defined by <strong>assessing all possible states</strong> of your system, and determining how many of them fit your criteria.</p>
+<p>Example: You have a fair die, with 6 sides. You can then calculate that the odds of rolling a 3 as being 1/6.</p>
+<img src="images/dice_copy2.png" width="50%" style="display: block; margin: auto;" />
+<blockquote>
+<p><strong>Probability of rolling a 3 = 16.67%</strong></p>
+</blockquote>
+<p><strong>Whe you&rsquo;d use this:</strong> Theoretical probability is aptly named, as it generally not applicable for real-world problems. When your system is more complex than a coin flip, it quickly gets cumbersome. Even using a coin is perilous, as <a href="https://www.scientificamerican.com/article/scientists-destroy-illusion-that-coin-toss-flips-are-50-50/">individual coins are never perfectly fair.</a></p>
+<hr>
+<h2 id="frequentist">FREQUENTIST</h2>
+<p><strong>Frequentist probability</strong> is the method most of us are familiar with. You <strong>directly observe the phenomenon play out, over and over</strong>. As you see more examples, your probablility estimate generally becomes more accurate.</p>
+<p>Example: You roll your fair die 1,000 times*. You find that over these 1,000 rolls, you got 158 rolls where 3 appeared.</p>
+<blockquote>
+<p><em>*to save you a few hours of rolling dice, I am using R to simulate these rolls. The code is at the end of this post.</em></p>
+</blockquote>
+<img src="/2024/05/29/probability/index_files/figure-html/unnamed-chunk-2-1.png" width="50%" style="display: block; margin: auto;" />
+<blockquote>
+<p><strong>Probability of rolling a 3 = 15.8%</strong></p>
+</blockquote>
+<p>This result is reasonably close to our &ldquo;theoretical&rdquo; probability of 1/6 (16.67%)! Let&rsquo;s see if we can do better&hellip;</p>
+<p>Now, you roll that same die 10,000 times:
+<img src="/2024/05/29/probability/index_files/figure-html/unnamed-chunk-3-1.png" width="100%" style="display: block; margin: auto;" />
+The number 3 turned up 1,704 times over your 10,000 trials.</p>
+<blockquote>
+<p><strong>Probability of rolling a 3 = 17.04%</strong></p>
+</blockquote>
+<p>As you can see, as we gather more observations, our estimated probability trends closer to the theoretically &ldquo;correct&rdquo; value of 1/6 (16.67%).</p>
+<p><strong>When you&rsquo;d use this</strong>: When we have repeated observations to work with. Probabilities based on direct observation can be very easy to understand, collect, and interpret.</p>
+<hr>
+<h2 id="subjective">SUBJECTIVE</h2>
+<p><strong>Subjective probability</strong> is a bit more complex. Instead of using past observations to calculate our probability, we use the <strong>strength of our beliefs to assign a probability</strong>.</p>
+<p>This approach is perhaps a bit less intuitive, so I plan to cover Bayesian statistics in more depth in later posts.</p>
+<p><strong>When you&rsquo;d use this</strong>: When we don&rsquo;t have many past observations OR we don&rsquo;t want to generate &ldquo;events&rdquo; (for ethical or cost reasons).</p>
+<p>For example, if we wanted assess how likely it is for a new rocket prototype to fail, it wouldn&rsquo;t be practical to shoot 100 rockets up and count how many blow up (ie. a Frequentist approach).</p>
+<hr>
+<h2 id="probability-in-daily-life">Probability in Daily Life</h2>
+<p>One practical lesson about probability that you can take away is:</p>
+<blockquote>
+<p>Even if we don&rsquo;t <strong>know</strong> everything, we can still <strong>plan effectively using what we do know</strong>.</p>
+</blockquote>
+<p>Case-in point:
+Let&rsquo;s say I wanted to organize a parade. Obviously, nobody wants to have a parade on a rainy day, so I want my parade to happen at a time it is least likely to have rainfall.</p>
+<p>There is actually historical data on rainy days we can access from <a href="https://www.weather.gov/wrh/Climate?wfo=iln">Weather.gov</a> back through 1900. This should prove helpful for making our decision!</p>
+<img src="images/NOAA_data.png" width="60%" style="display: block; margin: auto;" />
+<p>Using this data, we can calculate the long-run average number of rainy days for each month over the last ~120 years.</p>
+<p>Plotting the result gives us a clear picture of what to expect for each month:</p>
+<img src="/2024/05/29/probability/index_files/figure-html/unnamed-chunk-5-1.png" width="100%" style="display: block; margin: auto;" />
+So, our best bet for planning a rain-free parade in Cincinnati would be in September, or possibly October. These months provide a noticeable improvement in our odds:
+<ul>
+<li><strong>September/October:</strong> 1/6 chance of rain</li>
+<li><strong>March/April/May:</strong> 1/4 chance of rain</li>
+</ul>
+<p>While we haven&rsquo;t <strong>eliminated</strong> the possiblity of a rainy parade, we can use historical data to find best odds for getting our desired outcome.</p>
+<h2 id="summing-up">Summing Up</h2>
+<p>Uncertainty is a given in life, and probability is key for making informed decisions when you don&rsquo;t know exactly what will happen.</p>
+<p>As we&rsquo;ve seen in our example, even with just some rudimentary data, we can significantly reduce the risk of having a bad day.</p>
+<p>As we&rsquo;ll see next week, when we feed in more detailed information, we actually can refine these probabilities even further. Stay tuned!</p>
+<p>===========================</p>
+<p>R code used to generate plots:</p>
+<blockquote>
+<ol>
+<li>Dice Roll Simulation:</li>
+</ol>
+</blockquote>
+<pre><code class="language-r">library(data.table)
+library(ggplot2)
+library(waffle)
+set.seed(060124)
+
+### Generate 1000 dice rolls
+dice_rolls &lt;- sample(1:6, 1000, replace = TRUE) |&gt; as.data.table()
+dice_rolls[,is_3:=ifelse(V1 == 3, &quot;1&quot;, &quot;0&quot;)]
+
+results &lt;- dice_rolls[,.N, by = .(is_3)]
+
+### Plot in a waffle chart
+ggplot(results, aes(fill = is_3, values = N)) +
+    geom_waffle(n_rows = 20, size = 0.33, colour = &quot;white&quot;) +
+    theme_void() + 
+    scale_fill_manual(
+        name = NULL,
+        values = c(&quot;#e6e8e8&quot;, &quot;#97b5cf&quot;),
+        labels = c(&quot;Not 3&quot;, &quot;3&quot;) 
+    ) + 
+    theme(legend.position=&quot;none&quot;) +
+    annotate(&quot;text&quot;, x=46, y=10, label= &quot;bolditalic(158)&quot;,
+           col=&quot;white&quot;, size=12, parse=TRUE)
+
+
+
+### Generate 10000 dice rolls
+dice_rolls &lt;- sample(1:6, 10000, replace = TRUE) |&gt; as.data.table()
+dice_rolls[,is_3:=ifelse(V1 == 3, &quot;1&quot;, &quot;0&quot;)]
+
+results &lt;- dice_rolls[,.N, by = .(is_3)]
+
+### Plot in a waffle chart
+ggplot(results, aes(fill = is_3, values = N)) +
+    geom_waffle(n_rows = 100) +
+    theme_void() + 
+    scale_fill_manual(
+        name = NULL,
+        values = c(&quot;#e6e8e8&quot;, &quot;#97b5cf&quot;),
+        labels = c(&quot;Not 3&quot;, &quot;3&quot;) 
+    ) + 
+      theme(legend.position=&quot;none&quot;) +
+      annotate(&quot;text&quot;, x=92, y=50, label= &quot;bolditalic(1704)&quot;,
+           col=&quot;white&quot;, size=11, parse=TRUE)
+</code></pre>
+<blockquote>
+<ol start="2">
+<li>Rainy Days in Cincinnati</li>
+</ol>
+</blockquote>
+<pre><code class="language-r">library(data.table)
+library(ggplot2)
+library(scales)
+
+### Import NOAA data, 1900 - 2023
+rain &lt;- fread(&quot;Rain_Data.csv&quot;)
+
+### Get averages by month
+monthly &lt;- rain[, lapply(.SD, mean)] |&gt; melt()
+monthly[,month_abbr:=substr(variable, 0,3)]
+monthly[,month_days:=c(0,31,28,31,30,31,30,31,31,30,31,30,31)]
+monthly[,daily_prob:=value/month_days]
+
+ggplot(monthly[variable!=&quot;Year&quot;], aes(x=variable, y = daily_prob, label=percent(daily_prob))) + 
+  geom_col() +
+  geom_col(monthly[variable==&quot;September&quot;], mapping = aes(x=variable, y = daily_prob), fill = &quot;red&quot;) +
+  geom_text(size = 2.5, col = &quot;white&quot;, vjust = 2) +
+  ggtitle(&quot;Probability of a Rainy Day (Cincinnati, 1900 - present)&quot;) + 
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+        axis.title.x=element_blank(),
+        axis.title.y=element_blank()) +
+  scale_y_continuous(labels = scales::percent)
+
+</code></pre>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  
+
+
+  </body>
+</html>
+

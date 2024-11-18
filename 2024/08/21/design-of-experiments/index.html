@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4321&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.125.4">
+
+
+<title>Design of Experiments - Summer of Stats</title>
+<meta property="og:title" content="Design of Experiments - Summer of Stats">
+
+
+  <link href='//localhost:4321/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/Rplot.png"
+         width="60"
+         height="60"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/">Summer of Stats</a></li>
+    
+    <li><a href="/2124/01/01/visual-gallery/">Visual Gallery</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">8 min read</span>
+    
+
+    <h1 class="article-title">Design of Experiments</h1>
+
+    
+    <span class="article-date">2024-08-21</span>
+    
+
+    <div class="article-content">
+      
+      <h2 id="or-how-to-bake-the-perfect-cake">(or &ldquo;How to Bake the Perfect Cake&rdquo;)</h2>
+<h4 id="programming-note">Programming Note&hellip;</h4>
+<p><em>School starts next week, so this will be my final post planned for Summer of Stats.</em></p>
+<p><em>I&rsquo;ve been looking forward to covering this topic (Design of Experiments) ever since I started this project, and it is one of the things I most look forward to studying. I hope you enjoy.</em></p>
+<h4 id="and-now-back-to-our-topic">And Now Back to Our Topic!</h4>
+<p>Actions lead to consequences - most people appreciate this fact.</p>
+<img src="images/Precarious_Rock.png" width="80%" style="display: block; margin: auto;" />
+<blockquote>
+<p><em>&ldquo;I wonder what will happen if I push this rock&hellip;&rdquo;</em></p>
+</blockquote>
+<p>However, many things in life aren&rsquo;t as straightforward as a falling rock.</p>
+<p>For example, if we open up a new assembly line and we see product defects increase, was it changes to process, the new machines, or something else that caused these issues?</p>
+<p>Our normal first instinct would be to collect some data and analyze it&hellip; <strong>but exactly what data SHOULD we collect to answer a question like this?</strong></p>
+<p>That is the topic of today&rsquo;s post: design of experiments.</p>
+<h4 id="what-is-design-of-experiments">What is Design of Experiments?</h4>
+<p>Design of experiments is an approach that helps <strong>ensure we collect the right data to answer our questions</strong>. We do this by thoughtfully constructing a set of conditions to probe the impact of each variable (an <em>experimental design</em>).</p>
+<p>To see how we would do this, let&rsquo;s go through an example&hellip;</p>
+<h4 id="developing-a-product">Developing a Product</h4>
+<p>Let&rsquo;s say we&rsquo;re trying to maximize the strength of a new epoxy our company is developing. We can control the following 2 conditions:</p>
+<ul>
+<li>The <strong>temperature</strong> we run the process at</li>
+<li>The <strong>intensity of light</strong> we expose the epoxy to</li>
+</ul>
+<p>By hitting right combination of these two variables, we&rsquo;ll end up with the strongest possible product.</p>
+<p>In many ways, this search process looks a bit like playing Battleship - we know that there is an ideal target that we want to hit, <strong>we just don&rsquo;t know exactly where it is.</strong></p>
+<img src="/2024/08/21/design-of-experiments/index_files/figure-html/unnamed-chunk-2-1.png" width="60%" style="display: block; margin: auto;" />
+<p>However, there&rsquo;s a critical difference with our experiment - our results can give us &ldquo;hints&rdquo; about where the best spot likely is.</p>
+<h4 id="hitting-the-target-using-experimental-design">Hitting the Target (Using Experimental Design)</h4>
+<p>In essence, our game of <a href="https://www.youtube.com/watch?v=8FctDuTfcO8&amp;t=146s">Battleship</a> turns into a game of <a href="https://kid-games.wonderhowto.com/how-to/play-hot-and-cold-285831/">Hot or Cold</a>:</p>
+<img src="/2024/08/21/design-of-experiments/index_files/figure-html/unnamed-chunk-3-1.gif" width="60%" style="display: block; margin: auto;" />
+<p>And since we have these hints, it no longer makes sense to just blast away randomly, hoping our product improves. <strong>We can use experimental design to methodically hone in on our target.</strong></p>
+<h4 id="a-simple-2x2-design">A Simple 2x2 Design</h4>
+<p>Given 2 variables (Temperature, Light), the simplest way to design our experiment is in the shape of a &ldquo;box&rdquo; (ie. a 2x2 matrix).</p>
+<p>We set up conditions so that we have both HIGH and LOW levels of both Temperature and Light and run 4 tests, collecting results for each:</p>
+<h3 id="experiment-1">Experiment #1</h3>
+<img src="/2024/08/21/design-of-experiments/index_files/figure-html/unnamed-chunk-4-1.gif" width="60%" style="display: block; margin: auto;" />
+<p>Since our best result (1.5) came after increasing both Temperature and Light Intensity, <strong>we can now do a second set of experiments at an even higher setting</strong>, to see if results continue to improve.</p>
+<h3 id="experiment-2">Experiment #2</h3>
+<p>We now increase the temperature and light settings, and conduct our 2nd round of experiments:</p>
+<img src="/2024/08/21/design-of-experiments/index_files/figure-html/unnamed-chunk-5-1.gif" width="60%" style="display: block; margin: auto;" />
+<p>This time, once we raised temperature &amp; light intensity past a certain point, we saw the epoxy strength start to decline. Most likely, we don&rsquo;t need to keep increasing our settings any more.</p>
+<p>As a result, we decide to wrap up this round of experiments.</p>
+<h3 id="final-results">Final Results</h3>
+<p>Using just 2 sets of well-designed experiments, we&rsquo;ve successfully improved our epoxy strength. And, since we were methodical, we&rsquo;re reasonably confident that <strong>our result is close to the optimal setting.</strong></p>
+<img src="/2024/08/21/design-of-experiments/index_files/figure-html/unnamed-chunk-6-1.png" width="60%" style="display: block; margin: auto;" />
+<p>If we decide later to refine our settings to further improve our product, our data tells us precisely where to look next.</p>
+<hr>
+<h2 id="design-of-experiments-in-daily-life">Design of Experiments in Daily Life</h2>
+<p>One practical lesson of design of experiments that you can take away is:</p>
+<blockquote>
+<p><strong>Do smaller experiments, and do more of them.</strong></p>
+</blockquote>
+<p>As we&rsquo;ll see below, by taking small steps, we can quickly make improvements.</p>
+<h4 id="its-6pm-on-a-thursday">It&rsquo;s 6pm, on a Thursday&hellip;.</h4>
+<p>You&rsquo;re in a tizzy. Your child&rsquo;s birthday is this weekend, <strong>and there&rsquo;s no cake</strong>. Out of the blue, the bakery cancelled your order. It&rsquo;s now up to you to bake the cake.</p>
+<p>And your first attempt was a disaster.</p>
+<img src="images/Cake_Fail.png" width="50%" style="display: block; margin: auto;" />
+<blockquote>
+<p><em>&ldquo;Let&rsquo;s agree to never talk about this to anyone&rdquo;</em></p>
+</blockquote>
+<p>Because you only have 2 days, we want to figure things out with as few trials as possible. This is a great candidate for a designed experiment!</p>
+<h4 id="lets-experiment">Let&rsquo;s Experiment!</h4>
+<p>Baking has TONS of variables - we can vary the temperature, cooking time, relative amount of each ingredient, how much we stir it, the pan we bake in, and on &amp; on&hellip;.that&rsquo;s a lot of tests to run!</p>
+<p>So that we don&rsquo;t run out of flour, we first decide to make our tests smaller - cupcake sized to be exact:</p>
+<img src="images/Cupcake_Tin.png" width="50%" style="display: block; margin: auto;" />
+<p>Now, instead of getting 1 result for each bake, we can conceivably <strong>test up to 12 different formulations in a single run</strong>.</p>
+<p>This approach allows us to much more quickly hone in on the correct ratio of sugar, egg, flour, milk, vanilla, etc necessary to get a good bake.</p>
+<h4 id="optimizing-our-experiments">Optimizing our Experiments</h4>
+<p>Design of experiments can help us improve our testing efficiency even further.</p>
+<p>Let&rsquo;s assume we want to test the effect of 8 different factors at 2 levels (higher, lower). <strong>Normally, that would require <code>\(2^8\)</code>, or 256 different tests.</strong> Luckily, we can make use of a <a href="https://en.wikipedia.org/wiki/Fractional_factorial_design">fractional factorial design</a> to test each combination more efficiently.</p>
+<p>The most aggressive approach is known as a <a href="https://www.statisticshowto.com/plackett-burman-design/">screening design</a> which, as its name implies, is a quick &amp; dirty method to find the few significant factors from a list of many potential ones. <strong>This design allows us assess all 8 factors using only 12 tests!</strong></p>
+<p>Our initial &ldquo;screening&rdquo; bake tells us that adding more butter and more sugar to our recipe will improve the quality of our cake, while quantities for the other ingredients should remain as-is.</p>
+<h4 id="the-results">The Results</h4>
+<p>By using an efficient design, paired with smaller (cupcake-sized) tests, <strong>you are able to do the equivalent of roughly 256 cake bakes in a single round of baking.</strong></p>
+<p>And now your cake rocks!</p>
+<img src="images/Sponge_Cake.png" width="50%" style="display: block; margin: auto;" />
+<p>While not every test turned out great, your cleverly-designed experiment ensured that you learn as much as possible with each bake.</p>
+<h2 id="summing-up">Summing Up</h2>
+<p>Successful enterprises are ones that are good at experimenting.</p>
+<p>Good experimental design is a no-brainer: <strong>it simplifies analysis, boosts confidence in the result, and provides guidance on where to look next</strong>. In short, a bit of pre-planning on how we collect our data can go a long way towards improving our analysis.</p>
+<p>Instead of pursuing a large, costly initiative right off the bat, <strong>consider doing a few small experiments to get a general idea of how things work</strong>. This preliminary data may be able to outright answer your question, and AT WORST can help inform further analyses.</p>
+<p>Design of experiments provides an incredibly effective way to learn how things work, and should be in every analyst&rsquo;s toolkit.</p>
+<h4 id="signing-off">Signing Off</h4>
+<p><em>I had a blast writing Summer of Stats, and can&rsquo;t wait to start exploring these topics (and others) in more depth throughout my Masters program.</em></p>
+<p><em>Data and visualization are things I think about every day, and it has been a treat to put these articles together.</em></p>
+<p><em>I hope that you enjoyed it too!</em></p>
+<p>===========================</p>
+<p>R code used to generate plots:</p>
+<ol>
+<li>Epoxy Testing</li>
+</ol>
+<pre><code class="language-r">library(data.table)
+library(ggplot2)
+library(ggforce)
+library(gganimate)
+set.seed(060124)
+
+#### Create random firing dataset
+random_shots &lt;- data.table(&quot;TEMP&quot; = c(80.5, 81.0, 83, 94.3, 96.9),
+                           &quot;LIGHT&quot; = c(301.7, 278.4, 124.8, 211.2, 232.6),
+                           &quot;RESULT&quot; = c(0.6, 0.8, 0.7, 1.6, 1.1),
+                           &quot;ACC&quot; = c(&quot;COLD&quot;, &quot;WARMER&quot;, &quot;COLDER&quot;, &quot;WARMER&quot;, &quot;COLDER&quot;))
+random_shots[,ORDER_BY:=.I]
+
+#### Create designed experiment dataset
+box_design_1 &lt;- data.table(&quot;TEMP&quot; = c(82, 86, 82, 86),
+                           &quot;LIGHT&quot; = c(140, 140, 180, 180),
+                           &quot;RESULT&quot; = c(0.7, 1.1, 0.9, 1.5),
+                           &quot;WINNER&quot; =  c(NA, NA, NA, &quot;← best&quot;),
+                           &quot;ACC&quot; = c(&quot;COLD&quot;, &quot;WARMER&quot;, &quot;COLDER&quot;, &quot;WARMER&quot;))
+
+box_design_2 &lt;- data.table(&quot;TEMP&quot; = c(90, 95, 90, 95),
+                           &quot;LIGHT&quot; = c(200, 200, 240, 240),
+                           &quot;RESULT&quot; = c(1.8, 1.6, 1.2, 0.9),
+                           &quot;WINNER&quot; =  c(NA, NA, NA, &quot;best →&quot;),
+                           &quot;ACC&quot; = c(&quot;WARM&quot;, &quot;COLDER&quot;, &quot;COLDER&quot;, &quot;COLD&quot;))
+
+all_experiments &lt;- rbindlist(list(box_design_1, box_design_2))
+all_experiments[,ORDER_BY:=.I]
+box_design_1[,ORDER_BY:=.I]
+box_design_2[,ORDER_BY:=.I]
+
+
+### Plotting function, to ensure consistent style
+plot_experiment &lt;- function(var_input) {
+  ggplot(var_input, aes(x=TEMP, y=LIGHT, group = ORDER_BY, label = RESULT)) + 
+  theme_bw() +
+  ylab(&quot;LIGNT INTENSITY&quot;) +
+  xlab(&quot;TEMPERATURE (°C)&quot;) +
+  scale_x_continuous(limits = c(80, 101.5)) +
+  scale_y_continuous(limits = c(120,310)) +
+  theme(axis.ticks=element_blank(),
+        axis.title=element_text(size=14,face=&quot;bold&quot;)) +
+  annotate(&quot;text&quot;, x = max(random_shots$TEMP + 1.5), y = 120, label = &quot;Summer of Stats&quot;, col=&quot;grey80&quot;, size = 5) 
+}
+
+### Plot out random shots
+battleship_plot &lt;- plot_experiment(random_shots) +   
+  geom_point(col = &quot;red&quot;, size = 15, shape = 'x') 
+
+battleship_plot
+
+
+### Plot out Hot and Cold
+hot_cold_plot &lt;- plot_experiment(random_shots) +   
+  geom_label(data = random_shots, aes(x = 90, y = 280, label = ACC), size = 15, fill = &quot;lightblue&quot;) +
+  geom_text(colour = 'red', size = 10) +
+   transition_time(ORDER_BY) +  
+ shadow_mark(colour = 'red', size = 10) 
+
+animate(hot_cold_plot, duration = 8 ,end_pause = 30)
+
+
+### Plot out Experiment 1
+box_design_plot &lt;- plot_experiment(box_design_1) +   
+  geom_label(data = box_design_1, aes(x = 90, y = 280, label = ACC), size = 15, fill = &quot;lightblue&quot;) +
+  geom_text(colour = 'red', size = 10) +
+  geom_text(aes(label = WINNER, x=92, y=183, fontface=2), colour = 'red', size = 15) +
+   transition_time(ORDER_BY) +  
+ shadow_mark(colour = 'red', size = 10) 
+
+animate(box_design_plot, duration = 8 ,end_pause = 30)
+
+
+### Plot out Experiment 2
+box_design_plot_2 &lt;- plot_experiment(box_design_2) +   
+  geom_label(data = box_design_2, aes(x = 90, y = 280, label = ACC), size = 15, fill = &quot;lightblue&quot;) +
+  geom_text(colour = 'red', size = 10) +
+  geom_text(aes(label = WINNER, x=84, y=203, fontface=2), colour = 'red', size = 15) +
+   transition_time(ORDER_BY) +  
+ shadow_mark(colour = 'red', size = 10)  
+
+animate(box_design_plot_2, duration = 8 ,end_pause = 30)
+
+
+### Plot out full experiment
+ideal_setting &lt;- ggplot(all_experiments, aes(x=TEMP, y=LIGHT)) + 
+  geom_text(aes(label = RESULT), colour = 'red', size = 10) +
+  theme_bw() +
+  ylab(&quot;LIGNT INTENSITY&quot;) +
+  xlab(&quot;TEMPERATURE (°C)&quot;) +
+  annotate(&quot;text&quot;, x = 91, y = 175, label = &quot;Ideal Setting?&quot;, col=&quot;grey60&quot;, size = 5.5) +   scale_x_continuous(limits = c(80, 101.5)) +
+  scale_y_continuous(limits = c(120,310)) +
+  ### Add density plot to show estimated local maxima
+  geom_bin2d(data = data.table(&quot;V1&quot;= rnorm(100000, 91, 3),
+                               &quot;V2&quot;= rnorm(100000, 175, 30)),
+                    aes(x = V1, y = V2), alpha = 0.4) +   
+  scale_fill_gradient(low = &quot;white&quot;, high = &quot;gold&quot;) +
+  theme(axis.ticks=element_blank(),
+        axis.title=element_text(size=14,face=&quot;bold&quot;),
+        legend.position=&quot;none&quot;) +
+  annotate(&quot;text&quot;, x = max(random_shots$TEMP + 1.5), y = 120, label = &quot;Summer of Stats&quot;, col=&quot;grey80&quot;, size = 5) 
+
+ideal_setting
+</code></pre>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  
+
+
+  </body>
+</html>
+

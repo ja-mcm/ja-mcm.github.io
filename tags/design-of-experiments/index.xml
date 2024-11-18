@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Design of Experiments on Summer of Stats</title>
+    <link>//localhost:4321/tags/design-of-experiments/</link>
+    <description>Recent content in Design of Experiments on Summer of Stats</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <lastBuildDate>Wed, 21 Aug 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:4321/tags/design-of-experiments/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Design of Experiments</title>
+      <link>//localhost:4321/2024/08/21/design-of-experiments/</link>
+      <pubDate>Wed, 21 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/2024/08/21/design-of-experiments/</guid>
+      <description>(or &amp;ldquo;How to Bake the Perfect Cake&amp;rdquo;) Programming Note&amp;hellip; School starts next week, so this will be my final post planned for Summer of Stats.&#xA;I&amp;rsquo;ve been looking forward to covering this topic (Design of Experiments) ever since I started this project, and it is one of the things I most look forward to studying. I hope you enjoy.&#xA;And Now Back to Our Topic! Actions lead to consequences - most people appreciate this fact.</description>
+    </item>
+  </channel>
+</rss>

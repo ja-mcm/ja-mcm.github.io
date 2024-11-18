@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4321&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.125.4">
+
+
+<title>Confidence Intervals - Summer of Stats</title>
+<meta property="og:title" content="Confidence Intervals - Summer of Stats">
+
+
+  <link href='//localhost:4321/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/Rplot.png"
+         width="60"
+         height="60"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/ja-mcm/OCRfixR">GitHub</a></li>
+    
+    <li><a href="/2025/01/01/visual-gallery/">Visual Gallery</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">2 min read</span>
+    
+
+    <h1 class="article-title">Confidence Intervals</h1>
+
+    
+    <span class="article-date">2024-07-03</span>
+    
+
+    <div class="article-content">
+      
+      <h2 id="or-_________">(or &ldquo;_________&rdquo;)</h2>
+<p>After seeing how quickly our sample arrived at the &ldquo;correct&rdquo; answer, we&rsquo;re probably feeling pretty good!</p>
+<p>But that&rsquo;s not the end.</p>
+<h4 id="what-is-a-confidence-interval">What is a Confidence Interval?</h4>
+<p>A confidence interval is the <strong>range of values that is likely to contain a population parameter</strong> with a certain level of confidence.</p>
+<p>Recall how <a href="https://summerofstats.netlify.app/2024/06/19/sampling/">Sampling</a> gradually &ldquo;hones in&rdquo; on our true value as we add observations:</p>
+<img src="/2024/07/03/confidence-intervals/index_files/figure-html/unnamed-chunk-1-1.gif" width="70%" style="display: block; margin: auto;" />
+<p>The line &ldquo;jitters&rdquo; around, showing that <strong>there is some uncertainty in the estimate</strong>, but this uncertainty gets smaller &amp; smaller as our sample gets bigger.</p>
+<p>If we plotted our confidence interval, we&rsquo;d see that, as we add more observations, <strong>our confidence interval becomes tighter.</strong></p>
+<img src="/2024/07/03/confidence-intervals/index_files/figure-html/unnamed-chunk-2-1.gif" width="70%" style="display: block; margin: auto;" />
+However, __this improvement quickly shrinks__ as we add more observations, and eventually each new data point does very little to increase our confidence.
+<h4 id="samples-vs-populations">Samples vs. Populations</h4>
+<p>It&rsquo;s important to note that our sample and population are 2 very different things:</p>
+<ul>
+<li>The <strong>standard deviation of the population does not change</strong>, no matter how big our sample is. This variability is inherent to our data.</li>
+<li>The population mean <strong>has no confidence interval</strong> &mdash; if we were to measure every person&rsquo;s height, then the mean would be a single value.</li>
+<li>The thing we become more sure of as we add data to our sample is <strong>the range within the population value should fall</strong>. (This is our confidence interval!)</li>
+</ul>
+<hr>
+<h2 id="confidence-intervals-in-daily-life">Confidence Intervals in Daily Life</h2>
+<p>One practical lesson of confidence intervals that you can take away is:</p>
+<blockquote>
+<p><strong>Do small tests, and do more of them</strong>.</p>
+</blockquote>
+<p>As we&rsquo;ve discussed, sampling gives us a hugely valuable way to estimate values with only a few data points. We also saw how surprisingly quickly the value of each additional observation drops off.</p>
+<p>For example:
+&laquo; EXAMPLE &raquo;</p>
+<p>TBD</p>
+<p>TBD</p>
+<h4 id="the-simplest-confidence-interval-no-math">The Simplest Confidence Interval (NO MATH)</h4>
+<p>Even if you don&rsquo;t have precise data to inform your ranges, you can make use of a simple tool called a Triangle Distribution. To build this, you only need 3 data points:</p>
+<ul>
+<li>The worst-case scenario</li>
+<li>The best-case scenario</li>
+<li>The most-likely scenario</li>
+</ul>
+<p>Put together,</p>
+<p>&laquo; Triangle distribution ?? &raquo;&gt;</p>
+<h2 id="summing-up">Summing Up</h2>
+<p>When possible, <strong>choose solutions that are robust to the range of outcomes you expect</strong>. Many business</p>
+<p>Next week, we&rsquo;ll explore how to identify and patterns in ______.</p>
+<p>===========================</p>
+<p>R code used to generate plots:</p>
+<pre><code class="language-r">##TBD
+</code></pre>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  
+
+
+  </body>
+</html>
+

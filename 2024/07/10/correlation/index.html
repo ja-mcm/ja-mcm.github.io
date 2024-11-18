@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4321&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.125.4">
+
+
+<title>Correlation - Summer of Stats</title>
+<meta property="og:title" content="Correlation - Summer of Stats">
+
+
+  <link href='//localhost:4321/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/Rplot.png"
+         width="60"
+         height="60"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/">Summer of Stats</a></li>
+    
+    <li><a href="/2124/01/01/visual-gallery/">Visual Gallery</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">5 min read</span>
+    
+
+    <h1 class="article-title">Correlation</h1>
+
+    
+    <span class="article-date">2024-07-10</span>
+    
+
+    <div class="article-content">
+      
+      <h2 id="or-why-margarine-causes-divorce">(or &ldquo;Why Margarine Causes Divorce&rdquo;)</h2>
+<p>Knowing how things are related can be incredibly useful.</p>
+<p>For example: <em>&ldquo;Where there&rsquo;s smoke, there&rsquo;s fire&rdquo;</em>&hellip;.</p>
+<img src="images/smoke.png" width="60%" style="display: block; margin: auto;" />
+<p>It might be difficult to spot a small orange flame (especially on a bright day), <strong>but it is very easy to find the associated smoke.</strong></p>
+<p>Clearly, it would be nice to have a way to identify when things are related. Thankfully, statistics provides us a tool for doing this!</p>
+<p>That tool is called correlation.</p>
+<h4 id="what-is-correlation">What is Correlation?</h4>
+<p>Correlation is a measure of <strong>the DIRECTION and STRENGTH of the relationship between 2 variables</strong>. It summarizes the entire relationship into a single number (called r), which ranges from -1 to 1.</p>
+<p>Because relationships between variables are often easier to understand visually, here are a few examples:</p>
+<img src="images/correlation2.png" width="85%" style="display: block; margin: auto;" />
+<p>In short, <strong>the stronger the correlation is between two variables, the more it looks like a line</strong>. Stronger correlations are noted by values of r closer to 1 or -1. If the trend points upwards, the correlation is positive; if it points downwards (even slightly), then it&rsquo;s negative.</p>
+<h4 id="why-does-correlation-matter">Why Does Correlation Matter?</h4>
+<p>Checking for correlations is often a very good first step towards understanding a new dataset.</p>
+<p>You may or may not know anything about cars. But, by correlating various performance specs across a set of cars in R, <strong>we can quickly explore what appears to make a car more or less fuel efficient</strong> (as measured by <strong>MPG</strong>):</p>
+<img src="/2024/07/10/correlation/index_files/figure-html/unnamed-chunk-3-1.png" width="70%" style="display: block; margin: auto;" />
+<blockquote>
+<p><em>(Statistically insignificant correlations are left blank)</em></p>
+</blockquote>
+<p>In this case, we can quickly see that cars with higher horsepower, larger engine displacement, and higher weight tend to have lower fuel efficiency.</p>
+<p>This information may not be news to most people, but it can help highlight the tradeoffs of each car design.</p>
+<h4 id="when-correlation-goes-wrong">When Correlation Goes Wrong</h4>
+<p>Sadly, not all correlations are meaningful.</p>
+<p>In some cases, <strong>2 variables can APPEAR to be related, despite having nothing to do with each other</strong>. These correlations arise purely by chance, and are known as spurious correlations.</p>
+<p>Here&rsquo;s a great example:</p>
+<img src="images/spurious_correlation.png" width="85%" style="display: block; margin: auto;" />
+<blockquote>
+<p><em>Clearly, if we valued marriage, we should outlaw margarine immediately!</em></p>
+</blockquote>
+<p>This example is courtesy of <a href="https://www.tylervigen.com/spurious-correlations">a very funny website</a> dedicated showing how spurious correlations can pop up between nearly anything.</p>
+<p>I always keep this site in my back pocket as a handy illustration of the First Rule of working with correlations: <strong>&ldquo;CORRELATION DOES NOT EQUAL CAUSATION&rdquo;</strong></p>
+<hr>
+<h2 id="correlation-in-daily-life">Correlation in Daily Life</h2>
+<p>One practical lesson of correlation that you can take away is:</p>
+<blockquote>
+<p><strong>If you can&rsquo;t measure something directly, look for something strongly correlated to it</strong></p>
+</blockquote>
+<p>Much like knowing that smoke follows fire, we can use correlations between variables to &ldquo;measure&rdquo; things that may not be easily observable otherwise.</p>
+<p>Anyone who has used an old-fashioned thermometer has experience working with correlations. Let me explain:</p>
+<h4 id="measuring-temperature">Measuring Temperature</h4>
+<p>Temperature is something we make use of every day. In fact, I&rsquo;ll wager that one of the first things you do each morning is check the temperature outside.</p>
+<p>But, <strong>temperature is also surprisingly tricky to measure (directly)</strong>. Here is how it is defined:</p>
+<blockquote>
+<p><em>&ldquo;Temperature: The average kinetic energy of the vibrating and colliding atoms making up a substance&rdquo;</em>.</p>
+</blockquote>
+<p>So, we have to somehow measure billions of vibrating molecules to know how hot something is? Yikes!</p>
+<h4 id="mercury-correlates-with-">Mercury Correlates with &hellip;</h4>
+<p>At first glance, this problem looks impossible to solve. However, somewhere along the line people noticed that <strong>certain things consistently correlated with temperature.</strong></p>
+<hr>
+<ol>
+<li>An obvious one: it certainly FEELS hotter/colder as temperature changes:
+<img src="/2024/07/10/correlation/index_files/figure-html/unnamed-chunk-5-1.png" width="70%" style="display: block; margin: auto;" /></li>
+</ol>
+<p>Unfortunately, everyone feels the temperature differently, so it&rsquo;s not a particularly <strong>precise</strong> measure&hellip;</p>
+<p>One person might say it feels like 65°F, while another says it feels like 73°F. A good first step, but we can do better.</p>
+<hr>
+<ol start="2">
+<li>People also noticed that ice will melt past a certain temperature:
+<img src="/2024/07/10/correlation/index_files/figure-html/unnamed-chunk-6-1.png" width="70%" style="display: block; margin: auto;" /></li>
+</ol>
+<p>This approach is also pretty limited - it only tells us whether the temperature is above/below 32°F. Otherwise, it doesn&rsquo;t really correlate with the temperature all that well.</p>
+<p>Let&rsquo;s keep looking&hellip;</p>
+<hr>
+<ol start="3">
+<li>Eventually, someone figured out that liquids expand/contract as temperatures change:</li>
+</ol>
+<img src="/2024/07/10/correlation/index_files/figure-html/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;" />
+<p>This measure correlates extremely well to the temperature!</p>
+<p>By putting a liquid in a small tube and watching how much it expands/contracts, it is possible to obtain precise &amp; reliable measurements of temperature.</p>
+<p>And that&rsquo;s <strong>exactly</strong> what a mercury thermometer does.</p>
+<hr>
+<p>Today&rsquo;s digital thermometers are slightly more sophisticated, using changes in electrical resistivity to measure temperature. But the fact remains that <a href="https://en.wikipedia.org/wiki/Temperature_measurement#Technologies">thermometers still use very strongly correlated variables</a> to (precisely) estimate the true temperature, rather than measuring it directly.</p>
+<h2 id="summing-up">Summing Up</h2>
+<p>People are hard-wired to find patterns. In fact, it&rsquo;s arguably <a href="https://www.psychologytoday.com/intl/blog/singular-perspective/202105/why-the-human-brain-is-so-good-detecting-patterns">why we&rsquo;re at the top of the food chain</a>. However, this drive to find patterns can sometimes lead us astray.</p>
+<p>Importantly, if some is attempting to convince you that 2 things are related and <strong>ONLY refers to how strong the correlation is, you should be wary</strong>. As we saw, blindly believing a strong correlation can lead to some seriously weird conclusions.</p>
+<p>Next week, we will apply our knowledge of how we can use relationships between variables <strong>to make predictions</strong>. Next stop: Linear Regression.</p>
+<p>===========================</p>
+<p>R code used to generate plots:</p>
+<ol>
+<li>Correlation Plot - Cars</li>
+</ol>
+<pre><code class="language-r">library(corrplot)
+
+cor_explore &lt;- cor(mtcars)
+cor_sig &lt;- cor.mtest(mtcars, conf.level = 0.95)
+
+corrplot(cor_explore, p.mat = cor_sig$p, method = 'ellipse', order = 'AOE', type = 'upper', insig='blank')
+</code></pre>
+<ol start="2">
+<li>Correlations with Temperature</li>
+</ol>
+<pre><code class="language-r">library(data.table)
+library(ggplot2)
+set.seed(060124)
+
+corr_example &lt;- rnorm(100,50,20) |&gt; as.data.table() 
+colnames(corr_example) &lt;- &quot;TEMPERATURE&quot;
+corr_example[,PERCEPTION := TEMPERATURE + rnorm(100, 0, 10)]
+corr_example[,VOL_ICE := ifelse(TEMPERATURE &lt; 32, 1, 0)]
+corr_example[,VOL_MERCURY := (TEMPERATURE + rnorm(100, 32, .05))*.0335] # thermal expansion = 60.4 µm/(m·K), which converts to 0.0604 m/K ---&gt; each °K = 1.8°F so, 0.0335 m/F
+
+### Plot output
+# Perception
+ggplot(corr_example, aes(x=TEMPERATURE, y=PERCEPTION)) + 
+  geom_point() +
+  ggtitle(&quot;Perception vs. Temperature&quot;) + 
+  theme(plot.title = element_text(size=22)) +
+  geom_text(aes(x = 100, y = -2, label = &quot;Summer of Stats&quot;), col=&quot;grey80&quot;, size = 3)
+
+# Ice
+ggplot(corr_example, aes(x=TEMPERATURE, y=VOL_ICE)) + 
+  geom_point() +
+  ggtitle(&quot;Ice Volume vs. Temperature&quot;) + 
+  theme(plot.title = element_text(size=22)) + 
+  coord_cartesian(ylim = c(-.50,1.5)) +
+  geom_text(aes(x = 100, y = -0.45, label = &quot;Summer of Stats&quot;), col=&quot;grey80&quot;, size = 3)
+
+# Liquid
+ggplot(corr_example, aes(x=TEMPERATURE, y=VOL_MERCURY)) + 
+  geom_point() +
+  ggtitle(&quot;Liquid Volume vs. Temperature&quot;) + 
+  theme(plot.title = element_text(size=22)) +
+  geom_text(aes(x = 100, y = 1.2, label = &quot;Summer of Stats&quot;), col=&quot;grey80&quot;, size = 3)
+</code></pre>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  
+
+
+  </body>
+</html>
+

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4321&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.125.4">
+
+
+<title>Linear Regression - Summer of Stats</title>
+<meta property="og:title" content="Linear Regression - Summer of Stats">
+
+
+  <link href='//localhost:4321/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/Rplot.png"
+         width="60"
+         height="60"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/ja-mcm/OCRfixR">GitHub</a></li>
+    
+    <li><a href="/2025/01/01/visual-gallery/">Visual Gallery</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">4 min read</span>
+    
+
+    <h1 class="article-title">Linear Regression</h1>
+
+    
+    <span class="article-date">2024-07-17</span>
+    
+
+    <div class="article-content">
+      
+      <script src="/2024/07/17/linear-regression/index_files/kePrint/kePrint.js"></script>
+<link href="/2024/07/17/linear-regression/index_files/lightable/lightable.css" rel="stylesheet" />
+<link href="/2024/07/17/linear-regression/index_files/bsTable/bootstrapTable.min.css" rel="stylesheet" />
+<script src="/2024/07/17/linear-regression/index_files/bsTable/bootstrapTable.js"></script>
+<h2 id="or-how-should-i-dress-today">(or &ldquo;How Should I Dress Today?&rdquo;)</h2>
+<p>Last week, we saw how to determine whether variables appear to be related.</p>
+<p>But, just being aware that two things are related isn&rsquo;t always that useful on its own.</p>
+<img src="images/breaking_news.png" width="80%" style="display: block; margin: auto;" />
+<blockquote>
+<p><em>&ldquo;THIS JUST IN - CLOUDS ARE TIED TO RAIN.&rdquo;</em></p>
+</blockquote>
+<p>In many cases, it would be very nice to know HOW MUCH one factor affects the other. Using a technique called regression, we can do just this.</p>
+<h4 id="what-is-regression">What is Regression?</h4>
+<p>&ldquo;Regression&rdquo; is a catch-all term to <strong>describe how one (or more) variables impact something we care about</strong>. By running a regression, we get a clear accounting of how much each factor appears to influence our desired outcome.</p>
+<p>&laquo;&lt; FOR EXAMPLE &raquo;&gt;</p>
+<ul>
+<li>Plotting</li>
+<li>Interpreting</li>
+<li>Use of</li>
+</ul>
+<p>This can be done in many different ways, but we&rsquo;ll start with the simplest form, Linear Regression.</p>
+<h4 id="plotting-a-linear-regression">Plotting a Linear Regression</h4>
+<p>A simple linear regression looks very similar to the scatterplot used to evaluate correlations. In fact, our regression line can be overlaid directly onto the correlation plot from last week:</p>
+<p>&laquo; Animated plot &ndash; scatter, add regression line&raquo;
+<img src="/2024/07/17/linear-regression/index_files/figure-html/unnamed-chunk-2-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Regression can be used to answer many questions. BLAH BLAH BLAH</p>
+<h4 id="interpreting-a-linear-regression">Interpreting a Linear Regression</h4>
+<hr>
+<h2 id="regression-in-daily-life">Regression in Daily Life</h2>
+<p>One practical lesson of regression that you can take away is:</p>
+<blockquote>
+<p><strong>A simple linear trend can provide surprisingly good answers</strong></p>
+</blockquote>
+<p>To illustrate how powerful a &ldquo;simple&rdquo; linear regression can be, let&rsquo;s use it to solve a real-world problem: deciding what clothes to wear.</p>
+<h4 id="wait-whats-that-in-fahrenheit">Wait, What&rsquo;s That in Fahrenheit?</h4>
+<p>Being from the U.S., I am terrible at interpreting temperatures in Celsius. This can be an issue when I venture outside the U.S., and need to choose clothes for the weather:</p>
+<img src="images/swim_trunks.png" width="40%" style="display: block; margin: auto;" />
+<blockquote>
+<p><em>It&rsquo;s 29°C today - should I wear a winter coat&hellip;..or swim trunks?</em></p>
+</blockquote>
+<p>It sure would be nice to be able to convert these temperatures to Fahrenheit, which I am much more familiar with.</p>
+<p>Typing <em>&ldquo;Convert °C to °F&rdquo;</em> into Google would be easy, but what&rsquo;s the fun in that? Instead, <strong>let&rsquo;s use regression to discover the equation for converting temperatures!</strong></p>
+<h4 id="converting-units-using-statistics">Converting Units, Using Statistics</h4>
+<p>To do this, we&rsquo;ll need 2 thermometers (1 reading in Celsius, the other Fahrenheit).</p>
+<p>By placing them in the same spot and comparing their values, we can use a linear regression to get a good estimate of how to convert from °C to °F. Let&rsquo;s take some temperature readings:</p>
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:right;"> # </th>
+   <th style="text-align:right;"> Temp_Fahr </th>
+   <th style="text-align:right;"> Temp_Cels </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 89.8 </td>
+   <td style="text-align:right;"> 32.1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 84.0 </td>
+   <td style="text-align:right;"> 28.9 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 64.6 </td>
+   <td style="text-align:right;"> 18.1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 91.0 </td>
+   <td style="text-align:right;"> 32.8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 90.5 </td>
+   <td style="text-align:right;"> 32.5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 77.9 </td>
+   <td style="text-align:right;"> 25.5 </td>
+  </tr>
+</tbody>
+</table>
+<p>Using just these 6 temperature readings, we can run a linear regression and arrive at the following equation:</p>
+<img src="/2024/07/17/linear-regression/index_files/figure-html/unnamed-chunk-5-1.png" width="70%" style="display: block; margin: auto;" />
+So, the estimate from our regression ends up being:
+$$ 1.798* Celsius + 32.052$$
+<p>Which is pretty darn close to the actual conversion equation:
+$$ 1.8* Celsius + 32$$</p>
+<p>Considering how few data points we had, our linear regression did an amazing job of capturing the true relationship. Take that, Google!</p>
+<h4 id="using-our-result">Using Our Result</h4>
+<p>Now that we have our equation, we can answer the original question - it&rsquo;s going to be 29°C today, what do I wear?</p>
+<p>$$ 1.798* 29°C + 32.052 = 84.14°F$$</p>
+<p>Hang up that winter coat - it looks like we&rsquo;re going to the pool today 🌴</p>
+<h2 id="summing-up">Summing Up</h2>
+<p>In the right situation, a simple regression can provide very useful guidance to real-world problems.</p>
+<p>While there are plenty of sophisticated approaches to ________, nothing beats a linear regression for providing a straightforward, clear answer.</p>
+<p>In the age of LLMs/AI/machine learning,</p>
+<p>However, in the real world, not everything can be explained by just 1 variable. Next week, we&rsquo;ll enhance our regression model by adding additional variables. Check out Multiple regression.</p>
+<p>===========================</p>
+<p>R code used to generate plots:</p>
+<ol>
+<li>
+<p>TBD</p>
+</li>
+<li>
+<p>Linear Regression (Temp. Conversion)</p>
+</li>
+</ol>
+<pre><code class="language-r">library(data.table)
+library(ggplot2)
+set.seed(060124)
+
+### Grab 6 temperature measurements
+temp_readings &lt;- round(rnorm(6, 79, 10), 1) |&gt; as.data.table()
+colnames(temp_readings) &lt;- &quot;Temp_Fahr&quot;
+temp_readings[,Temp_Cels := round(5/9*(Temp_Fahr-32), 1)]
+
+conv_model &lt;- lm(temp_readings$Temp_Fahr ~ temp_readings$Temp_Cels)
+conv_formula &lt;- paste0(paste0(&quot;y =  &quot;, round(conv_model$coefficients[2], 3)), &quot;x + &quot;, round(conv_model$coefficients[1],3))
+
+### Create scatterplot
+ggplot(temp_readings, aes(x=Temp_Cels, y=Temp_Fahr)) + 
+  geom_point() + 
+  stat_summary(fun.data= mean_cl_normal) + 
+  geom_smooth(method='lm', col = &quot;red&quot;) + 
+  annotate(&quot;text&quot;, x = 22, y = 80, label = conv_formula, size = 7)
+## `geom_smooth()` using formula = 'y ~ x'
+</code></pre>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  
+
+
+  </body>
+</html>
+

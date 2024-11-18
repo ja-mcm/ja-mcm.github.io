@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bias on Summer of Stats</title>
+    <link>//localhost:4321/tags/bias/</link>
+    <description>Recent content in Bias on Summer of Stats</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <lastBuildDate>Wed, 24 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:4321/tags/bias/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Multiple Regression</title>
+      <link>//localhost:4321/2024/07/24/multiple-regression/</link>
+      <pubDate>Wed, 24 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/2024/07/24/multiple-regression/</guid>
+      <description>(or &amp;ldquo;Why Knowing the Business Beats Knowing Regression&amp;rdquo;) Last week, we used a linear regression model to accurately convert temperatures from Celsius to Fahrenheit.&#xA;But what happens when you have to estimate something a bit more complex?&#xA;&amp;ldquo;This house is 2338 sq. ft&amp;hellip;so, how much should it cost?&amp;rdquo;&#xA;Obviously, we&amp;rsquo;ll need to account for more than 1 factor to model this. Luckily, we can do just this, using Multiple Regression!</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4321&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.125.4">
+
+
+<title>Sampling - Summer of Stats</title>
+<meta property="og:title" content="Sampling - Summer of Stats">
+
+
+  <link href='//localhost:4321/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/Rplot.png"
+         width="60"
+         height="60"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/">Summer of Stats</a></li>
+    
+    <li><a href="/2124/01/01/visual-gallery/">Visual Gallery</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">7 min read</span>
+    
+
+    <h1 class="article-title">Sampling</h1>
+
+    
+    <span class="article-date">2024-06-19</span>
+    
+
+    <div class="article-content">
+      
+      <h2 id="or-why-it-pays-to-have-a-clipboard">(or &ldquo;Why It Pays to Have a Clipboard&rdquo;)</h2>
+<p>Oftentimes, we want to know something about a very large group.</p>
+<p>For example, someone might want to know how tall the average male is in the United States. How would we answer a question like this?</p>
+<img src="images/Crowd2.png" width="100%" style="display: block; margin: auto;" />
+<p><em>&ldquo;We&rsquo;re gonna need some more measuring tape&hellip;&rdquo;</em></p>
+<p>Fortunately for us, there is an approach that will allow us to answer this seemingly impossible question: sampling.</p>
+<h4 id="what-is-sampling">What is Sampling?</h4>
+<p>Sampling is a technique that allows us estimate a measure of interest <strong>without having to collect data from every single individual</strong>.</p>
+<p>By collecting data from a small group that <strong>represents the population</strong> (this is critical, as we&rsquo;ll see), we can get a reasonably accurate result with only a handful of observations.</p>
+<p>Here, we&rsquo;ll attempt to estimate how tall an average male is by randomly picking and measuring a sample of 100 men. Notice how quickly the sample jumps to the actual population mean:</p>
+<img src="/2024/06/19/sampling/index_files/figure-html/unnamed-chunk-2-1.gif" width="70%" style="display: block; margin: auto;" />
+<blockquote>
+<p>(<em>Note: 178cm is roughly 5&rsquo; 10&quot;</em>)</p>
+</blockquote>
+<h3 id="the-perils-of-a-bad-sample">The Perils of a Bad Sample</h3>
+<p>Recall that our sample must represent the population. What this means is that if we do a poor job of picking our respondents, our results will be biased.</p>
+<p>Let&rsquo;s say that <strong>we decided to collect our sample of heights at a local basketball tournament</strong>. Because basketball players tend to be taller, we see that our sample DOES NOT yield a good height estimate for an average male.</p>
+<img src="/2024/06/19/sampling/index_files/figure-html/unnamed-chunk-3-1.gif" width="70%" style="display: block; margin: auto;" />
+<blockquote>
+<p>(<em>Note: 191cm is roughly 6&rsquo; 3&quot;</em>)</p>
+</blockquote>
+<p>Even worse, no matter how many more basketball players we sample, <strong>our estimate will not get any better</strong>.</p>
+<p>This is because our sample is not representative of all males, a problem called <strong>selection bias</strong>. Ensuring you don&rsquo;t fall into this trap is often the most difficult part of sampling. Just ask the <a href="https://odsc.medium.com/dewey-defeats-truman-how-sampling-bias-can-ruin-your-model-f4f67989709e">Chicago Daily Tribune</a>!</p>
+<hr>
+<h1 id="sampling-in-daily-life">Sampling in Daily Life</h1>
+<p>One practical lesson of sampling that you can take away is:</p>
+<blockquote>
+<p><strong>MORE data</strong> ≠ <strong>BETTER data</strong>.</p>
+</blockquote>
+<p>As we saw with our &ldquo;bad&rdquo; sample, when our data is no good, it doesn&rsquo;t matter how many more rows of data we add into the mix. Our results are going to be biased.</p>
+<h4 id="the-question---is-our-building-big-enough">The Question - &ldquo;Is Our Building Big Enough?&rdquo;</h4>
+<p>Let&rsquo;s consider a practical example: your company is growing, rapidly. Facilities wants to know if more desk spaces are needed at the office.</p>
+<p><strong>This question will require us to estimate how full the office is on any given day</strong>.</p>
+<p>There are actually quite a few ways we could attempt tackle this, using existing data:</p>
+<ol>
+<li>Go to HR to get a count of all employees.</li>
+<li>Grab data from your company&rsquo;s desk reservation system.</li>
+<li>Siphon data from the on-site badge-reader.</li>
+<li>Set up an AI-branded camera system to track your worker&rsquo;s every move*</li>
+</ol>
+<blockquote>
+<p><em>* Just kidding, don&rsquo;t do this</em></p>
+</blockquote>
+<p>Great! Let&rsquo;s get started&hellip;</p>
+<h4 id="the-issue---analyzing-the-data">The Issue - Analyzing the Data</h4>
+<p>No matter how we approach things, getting a reliable estimate from these existing data sources will quickly become complicated:</p>
+<ul>
+<li><strong>Using HR data</strong>: We may have people who are WFH, either full-time or on a hybrid schedule. How we count them?</li>
+<li><strong>Using desk reservations</strong>: Reservations aren&rsquo;t perfect - people may &ldquo;squat&rdquo; at an unoccupied desk, or reserve a desk &ldquo;defensively&rdquo;, even though they aren&rsquo;t using it.</li>
+<li><strong>Using badge-reader</strong>: People arrive throughout the day, and may move around the office (ie. not need a desk space)</li>
+</ul>
+<p>So, how do we use this noisy data to get a good estimate of desk usage at the office?</p>
+<h4 id="the-solution---a-clipboard">The Solution - A Clipboard</h4>
+<p>An easy (and cheap) solution to this problem could be to <strong>collect a sample</strong>.</p>
+<p>Doing so would be easy - have an intern take a 15 minute walk of the floor at various times of the day, and use a clipboard to note how many empty desks there are.</p>
+<p>If done thoughtfully, this sample of data will provide a much more reliable estimate of your current office capacity, with much less analysis headache.</p>
+<img src="images/clipboard.png" width="50%" style="display: block; margin: auto;" />
+<blockquote>
+<p><em>An intern with a clipboard can be a far better data source than a multi-million dollar transactional system&hellip;</em></p>
+</blockquote>
+<p>By collecting a high-quality sample of data, you side-step all of complications and biases that your noisy transactional data brings with it.</p>
+<h4 id="a-common-trap---repurposing-existing-data">A Common Trap - Repurposing Existing Data</h4>
+<p>The MORE = BETTER problem pops up commonly in analytics projects. Often, the data that is already laying around in your database is where people start: It&rsquo;s easy to access. There&rsquo;s lots of it.</p>
+<p>Unfortunately, this data is also <strong>likely to not tailored to the problem being analyzed</strong>. And, much like a bad sample, these poor measures can lead us astray if we rely on them.</p>
+<p>As an analyst, you should always aim to <strong>directly measure what you&rsquo;re interested in</strong>, even if you have to do it manually.</p>
+<h3 id="summing-up">Summing Up</h3>
+<p>Done correctly, sampling is an incredibly useful approach for answering questions. However, <strong>this powerful tool also demands accountability.</strong></p>
+<p>If you are sloppy with what you collect or how you collect it, your analysis will suffer, no matter how many rows of data you have.</p>
+<p>Next week, we&rsquo;ll discuss how confident we can be in the results of our sample, using Confidence Intervals. See you then!</p>
+<p>===========================</p>
+<p>R code used to generate plots:</p>
+<ol>
+<li>Animated Plots</li>
+</ol>
+<pre><code class="language-r">library(data.table)
+library(ggplot2)
+library(gganimate)
+set.seed(060124)
+
+### Generate 10000 sample height records, using mean = 178.4, std = 7.59
+simulated_pop &lt;- cbind(1:10000, rnorm(10000, 178.4, 7.59)) |&gt; as.data.table()
+simulated_mean &lt;- simulated_pop[,mean(V2)] |&gt; as.data.table()
+
+### Pull a random sample
+good_sample &lt;- simulated_pop[sample(.N,100)]
+
+# Add calculations for cumulative mean
+good_sample &lt;- good_sample[,cum_V2 := cumsum(V2)]
+good_sample &lt;- good_sample[,Row_Index := .I]
+good_sample &lt;- good_sample[,cum_avg_V2 := cum_V2/Row_Index]
+
+
+### Pull a non-random sample from a basketball league 
+# (assume these people all are in top 10% for height...)
+bad_sample &lt;- simulated_pop[V2 &gt; quantile(simulated_pop$V2, probs = .90)][sample(.N,100)]
+
+# Add calculations for cumulative mean
+bad_sample &lt;- bad_sample[,cum_V2 := cumsum(V2)]
+bad_sample &lt;- bad_sample[,Row_Index := .I]
+bad_sample &lt;- bad_sample[,cum_avg_V2 := cum_V2/Row_Index]
+
+
+### Plot good sample
+good_sample_convergence &lt;- ggplot(good_sample, aes(x=V2)) + 
+  geom_histogram(data = simulated_pop, aes(x=V2), fill=&quot;grey&quot;, position = &quot;identity&quot;) + 
+    theme_minimal() + 
+      theme(axis.title.y=element_blank(),
+            axis.title.x=element_blank(),
+            axis.ticks.x=element_blank(),
+            plot.title = element_text(size = 20, face = &quot;bold&quot;)) +
+    ggtitle(&quot;Estimate of Average Height (Random Sample)&quot;) +     
+  geom_vline( xintercept = simulated_pop[,mean(V2)], lwd = 1, col = &quot;darkred&quot;)  +
+  geom_label(data = simulated_mean, aes(x = V1, y = 1000, label = paste0(round(V1, digits = 2), &quot; cm&quot;) ), size = 5, fill = &quot;lightyellow&quot;) +
+    geom_point(data = good_sample, mapping = aes(y = 810, x = cum_avg_V2), 
+               size = 20, color = 'red', shape = '|', alpha = .4) +
+  geom_label(data = good_sample, aes(x = cum_avg_V2, y = 800, label = round(cum_avg_V2, digits = 1)), size = 5, fill = &quot;lightyellow&quot;) +
+      geom_label(data = good_sample, aes(x = 160, y = 800, label = paste(&quot;Sample Size: &quot;, Row_Index)), size = 8, fill = &quot;white&quot;) +
+      geom_text(data = simulated_mean, aes(x = 200, y = -25, label = &quot;Summer of Stats&quot;), col=&quot;grey80&quot;, size = 4) +
+ transition_reveal(Row_Index, keep_last = FALSE) 
+
+animate(good_sample_convergence, duration = 8,end_pause = 30)
+
+
+### Plot bad sample
+bad_sample_convergence &lt;- ggplot(bad_sample, aes(x=V2)) + 
+  geom_histogram(data = simulated_pop, aes(x=V2), fill=&quot;grey&quot;, position = &quot;identity&quot;) + 
+    theme_minimal() + 
+      theme(axis.title.y=element_blank(),
+            axis.title.x=element_blank(),
+            axis.ticks.x=element_blank(),
+            plot.title = element_text(size = 20, face = &quot;bold&quot;)) +
+    ggtitle(&quot;Estimate of Average Height (Basketball Sample)&quot;) + 
+    geom_vline( xintercept = simulated_pop[,mean(V2)], lwd = 1, col = &quot;darkred&quot;)  +
+  geom_label(data = simulated_mean, aes(x = V1, y = 1000, label = paste0(round(V1, digits = 2), &quot; cm&quot;) ), size = 5, fill = &quot;lightyellow&quot;) +
+    geom_point(data = bad_sample, mapping = aes(y = 810, x = cum_avg_V2), 
+               size = 20, color = 'red', shape = '|', alpha = .4) +
+  geom_label(data = bad_sample, aes(x = cum_avg_V2, y = 800, label = round(cum_avg_V2, digits = 1)), size = 5, fill = &quot;lightyellow&quot;) +
+      geom_label(data = bad_sample, aes(x = 160, y = 800, label = paste(&quot;Sample Size: &quot;, Row_Index)), size = 8, fill = &quot;white&quot;) +
+      geom_text(data = simulated_mean, aes(x = 200, y = -25, label = &quot;Summer of Stats&quot;), col=&quot;grey80&quot;, size = 4) +
+ transition_reveal(Row_Index, keep_last = FALSE) 
+
+animate(bad_sample_convergence, duration = 8,end_pause = 30)
+</code></pre>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  
+
+
+  </body>
+</html>
+

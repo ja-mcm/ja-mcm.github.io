@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4321&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.125.4">
+
+
+<title>Summary Statistics - Summer of Stats</title>
+<meta property="og:title" content="Summary Statistics - Summer of Stats">
+
+
+  <link href='//localhost:4321/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/Rplot.png"
+         width="60"
+         height="60"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/ja-mcm/OCRfixR">GitHub</a></li>
+    
+    <li><a href="/2025/01/01/visual-gallery/">Visual Gallery</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">2 min read</span>
+    
+
+    <h1 class="article-title">Summary Statistics</h1>
+
+    
+    <span class="article-date">2024-06-26</span>
+    
+
+    <div class="article-content">
+      
+      <h2 id="or-_________">(or &ldquo;_________&rdquo;)</h2>
+<p>Can you identify the make &amp; model of this red car?</p>
+<img src="images/close_up.png" width="50%" style="display: block; margin: auto;" />
+<p>Of course not, <strong>we&rsquo;re zoomed in way too close to tell anything</strong>.</p>
+<p>How about this?</p>
+<img src="images/extreme_overhead.png" width="50%" style="display: block; margin: auto;" />
+<p>Nope. Now there&rsquo;s not enough detail. The car looks like a red blob.</p>
+<p>But, once we get the right level of detail, it becomes possible for us to recognize our red car.</p>
+<img src="images/red_car.png" width="50%" style="display: block; margin: auto;" />
+<blockquote>
+<p><em>(Bonus points if you can actually identify the make &amp; model here!)</em></p>
+</blockquote>
+<p>This same problem occurs with data.</p>
+<ul>
+<li>Provide <strong>too much detail</strong> and the patterns within the data are not clear.</li>
+<li><strong>Zoom out too much</strong> and now things are so general that it&rsquo;s impossible to find anything specific.</li>
+</ul>
+<p>The goal of an analyst is to find the right balance of detail / scope.</p>
+<h4 id="what-is-a-summary-statistic">What is a Summary Statistic?</h4>
+<p>A summary statistic is any quantity that describes a dataset.</p>
+<p>You know many of these: mean (average), median, mode, standard deviation.</p>
+<p>And there are plenty of others too: <a href="https://en.wikipedia.org/wiki/Skewness">skewness</a>, <a href="https://en.wikipedia.org/wiki/Kurtosis">kurtosis</a>, <a href="https://en.wikipedia.org/wiki/Interquartile_mean">interquartile mean</a>&hellip;.</p>
+<p>Most of these generalize down into 2 categories</p>
+<ul>
+<li>Measures of <strong>location</strong></li>
+<li>Measures of <strong>spread</strong></li>
+</ul>
+<p>Let me explain: If you were looking at data on _____ and saw that the average (mean) was ______, that would tell you the <strong>location</strong> of _______. Similarly, the median would be a measure of location. It has a slightly different definition and features (for example, it is more resistant to outliers), but it is also a way for us to describe <strong>where</strong> on the number line this generally takes place.</p>
+<p>On the other hand, we may see that our values vary a ton. This is where <strong>spread</strong> comes into play. For example, we say our standard deviation is _____, which describes how much we expect our value to vary from its location (ie. the mean).</p>
+<p>Put this all together, and you have the makings of a basic probability distribution!</p>
+<img src="/2024/06/26/summary-statistics/index_files/figure-html/unnamed-chunk-4-1.png" width="50%" style="display: block; margin: auto;" />
+<hr>
+<h2 id="summary-statistics-in-daily-life">Summary Statistics in Daily Life</h2>
+<p>One practical lesson of summary statistics that you can take away is:</p>
+<blockquote>
+<p><strong>Outliers matter, even if we choose to omit them.</strong></p>
+</blockquote>
+<p>&laquo;Real-life example of an outlier&raquo;</p>
+<h1 id="summing-up">Summing Up</h1>
+<p>Summary statistics are EVERYWHERE we go.</p>
+<p>Next week, we&rsquo;ll discuss ways of assessing <strong>how reliable we expect our result to be</strong>, using confidence intervals. Stay tuned!</p>
+<p>===========================</p>
+<p>R code used to generate plots:</p>
+<pre><code class="language-r">##TBD
+</code></pre>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  
+
+
+  </body>
+</html>
+

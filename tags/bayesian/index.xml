@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bayesian on Summer of Stats</title>
+    <link>//localhost:4321/tags/bayesian/</link>
+    <description>Recent content in Bayesian on Summer of Stats</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <lastBuildDate>Wed, 14 Aug 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:4321/tags/bayesian/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bayesian Statistics</title>
+      <link>//localhost:4321/2024/08/14/bayesian-statistics/</link>
+      <pubDate>Wed, 14 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/2024/08/14/bayesian-statistics/</guid>
+      <description>(or &amp;ldquo;Why Plaid Will Never Go Out of Style&amp;rdquo;) Knowing when to change your mind about something is one of the toughest things we have to do.&#xA;&amp;ldquo;Maaaaybe it&amp;rsquo;s time to update my wardrobe&amp;hellip;&amp;rdquo;&#xA;Over time, we may see evidence pop up that contradicts our opinion. But, how do we know when there&amp;rsquo;s enough evidence for us to change our minds?&#xA;One way we can approach this problem analytically is with Bayesian statistics.</description>
+    </item>
+  </channel>
+</rss>

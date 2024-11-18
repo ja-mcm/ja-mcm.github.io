@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Regression on Summer of Stats</title>
+    <link>//localhost:4321/tags/regression/</link>
+    <description>Recent content in Regression on Summer of Stats</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <lastBuildDate>Wed, 17 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:4321/tags/regression/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Regression</title>
+      <link>//localhost:4321/2024/07/17/regression/</link>
+      <pubDate>Wed, 17 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/2024/07/17/regression/</guid>
+      <description>(or &amp;ldquo;How Should I Dress Today?&amp;rdquo;) Last week, we saw how to determine whether 2 things appear to be related or not, using correlation.&#xA;But, just being aware that variables are correlated isn&amp;rsquo;t always that useful on its own.&#xA;&amp;ldquo;THIS JUST IN - CLOUDS ARE CORRELATED TO RAIN.&amp;rdquo;&#xA;In many cases, it would be very nice to know HOW MUCH one factor affects the other. Using a technique called regression, we can do just this.</description>
+    </item>
+  </channel>
+</rss>

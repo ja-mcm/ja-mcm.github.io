@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4321&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.125.4">
+
+
+<title>Bayesian Statistics - Summer of Stats</title>
+<meta property="og:title" content="Bayesian Statistics - Summer of Stats">
+
+
+  <link href='//localhost:4321/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/Rplot.png"
+         width="60"
+         height="60"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/">Summer of Stats</a></li>
+    
+    <li><a href="/2124/01/01/visual-gallery/">Visual Gallery</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">8 min read</span>
+    
+
+    <h1 class="article-title">Bayesian Statistics</h1>
+
+    
+    <span class="article-date">2024-08-14</span>
+    
+
+    <div class="article-content">
+      
+      <h2 id="or-why-plaid-will-never-go-out-of-style">(or &ldquo;Why Plaid Will Never Go Out of Style&rdquo;)</h2>
+<p>Knowing when to change your mind about something is one of the toughest things we have to do.</p>
+<img src="images/Ugly_Suit.png" width="60%" style="display: block; margin: auto;" />
+<blockquote>
+<p><em>&ldquo;Maaaaybe it&rsquo;s time to update my wardrobe&hellip;&rdquo;</em></p>
+</blockquote>
+<p>Over time, we may see <strong>evidence pop up that contradicts our opinion</strong>. But, how do we know when there&rsquo;s enough evidence for us to change our minds?</p>
+<p>One way we can approach this problem analytically is with Bayesian statistics.</p>
+<h4 id="what-is-bayesian-statistics">What is Bayesian Statistics?</h4>
+<p>Bayesian statistics is a very different approach to statistics.</p>
+<ul>
+<li>So far, we&rsquo;ve modeled our analysis based on <strong>long-term expectations</strong> and some <strong>simplifying assumptions</strong> (usually based on the normal distribution).</li>
+<li>With Bayesian statistics, <strong>we make an initial statement of how we believe things work, and then update that belief</strong> based on the data we collect.</li>
+</ul>
+<p>Let&rsquo;s show this process in action!</p>
+<h4 id="our-initial-belief-prior-people-like-plaid-right">Our Initial Belief (Prior): &ldquo;People Like Plaid, Right?&rdquo;</h4>
+<p>Let&rsquo;s say that you have an old plaid suit that you love. You are wondering if you should keep it, or buy a newer suit.</p>
+<p>Based on years of experience, you believe that plaid suits are IN.</p>
+<blockquote>
+<p><em>Okay, the reality is, you&rsquo;ve had a few people comment on that suit, and MOST of them seemed complimentary (note: you don&rsquo;t have a good ear for sarcasm&hellip;)</em>.</p>
+</blockquote>
+<p>As a result, you believe that ~70% of people like the suit. To model this, we create our <strong>prior distribution</strong>, and center it at 70%:</p>
+<img src="/2024/08/14/bayesian-statistics/index_files/figure-html/unnamed-chunk-2-1.png" width="70%" style="display: block; margin: auto;" />
+<p>However, <strong>we&rsquo;re not super-sure about our initial evidence, so we make our distribution a bit wider</strong>. We call this a &ldquo;weak&rdquo; prior.</p>
+<p>Translating our prior into plain English, we could say:</p>
+<blockquote>
+<p>&ldquo;We believe that a majority people (~50%-100%) probably like plaid, but we don&rsquo;t know much more than that.&rdquo;</p>
+</blockquote>
+<h4 id="the-data-nope">The Data: &ldquo;Nope&rdquo;</h4>
+<p>To test our theory, we survey 100 different people* about whether plaid is a good look. Only 7 out of 100 people agreed.</p>
+<img src="/2024/08/14/bayesian-statistics/index_files/figure-html/unnamed-chunk-3-1.png" width="70%" style="display: block; margin: auto;" />
+<blockquote>
+<p>*<em>Note: We don&rsquo;t even have to be the ones to collect this data. We could have just as easily read this in a magazine&hellip;what matters is that we believe in the results.</em></p>
+</blockquote>
+<p>This finding is clearly at odds with our initial belief - so how do we reconcile these conflicting findings?</p>
+<p>We can use Bayes&rsquo; theorem to decide what to do next!</p>
+<h4 id="the-result-posterior-maybe-i-should-get-a-new-suit">The Result (Posterior): &ldquo;Maybe I Should Get a New Suit&hellip;&rdquo;</h4>
+<p>Based on the new data, we update our beliefs.</p>
+<p>Mathematically, this is done by combining the <a href="https://www.bayesrulesbook.com/chapter-3.html">beta distributions</a> of our prior + likelihood (aka. our collected data):
+$$ Prior + Likelihood = Posterior $$</p>
+<p>$$ Beta(7,10) + Beta(7,100) =  \bf{Beta(14,110)}$$</p>
+<p>Our new belief is centered around 13% of people liking plaid, rather than our initial belief of 70% :</p>
+<img src="/2024/08/14/bayesian-statistics/index_files/figure-html/unnamed-chunk-4-1.png" width="70%" style="display: block; margin: auto;" />
+<p>In the end, <strong>we still hold out some hope (based on our prior belief) that the survey overestimated people&rsquo;s hatred for plaid</strong>, but have largely accepted the evidence.</p>
+<p>From this analysis, we can clearly see that it&rsquo;s time to invest in a new suit.</p>
+<h4 id="its-all-about-beliefs">It&rsquo;s All About Beliefs</h4>
+<p>But what if we were REALLY sure that we looked good in plaid?</p>
+<p>Bayesian statistics allows for this too. <strong>By choosing a &ldquo;stronger&rdquo; prior, we can express &ldquo;stronger&rdquo; belief in our prior knowledge.</strong> At a certain point, even the strong signal we get from our data may not sway our opinion.</p>
+<img src="/2024/08/14/bayesian-statistics/index_files/figure-html/unnamed-chunk-5-1.png" width="70%" style="display: block; margin: auto;" />
+<p>This example illustrates an important feature of Bayesian inference - <strong>the strength of your prior belief influences your outcome.</strong></p>
+<hr>
+<h2 id="bayesian-statistics-in-daily-life">Bayesian Statistics in Daily Life</h2>
+<p>One practical lesson of Bayesian statistics that you can take away is:</p>
+<blockquote>
+<p><strong>There&rsquo;s no such thing as a truly &ldquo;objective&rdquo; analysis.</strong></p>
+</blockquote>
+<p>Bayesian statistics often gets flak for letting subjective beliefs affect the outcome. However, <strong>traditional statistical analysis can be just as subjective.</strong></p>
+<p>Let&rsquo;s briefly illustrate how easy it is to unintentionally bias an analysis, using an all-too-common scenario&hellip;</p>
+<h4 id="can-you-find-me-some-data">&ldquo;Can You Find Me Some Data?&rdquo;</h4>
+<p>Many analysts have been given an assignment similar to the one below:</p>
+<blockquote>
+<p><em>&ldquo;We are going to propose adding a Repair Center to stores - can you find some data about the effect on profitability?&rdquo;</em></p>
+</blockquote>
+<p>Simple enough. We crunch some numbers, make a basic financial projection, and find that adding this to stores increases profitability. Sounds good, right?</p>
+<p>Wrong.</p>
+<p><strong>What we DIDN&rsquo;T find was also important.</strong> In the end, the program increased workload at the store considerably (repairs are often very time-consuming). This added workload led to <strong>worse customer service, costly mistakes, and increased employee turnover.</strong></p>
+<p>While the initiative successfully generated SOME revenue, it clearly harmed profitability overall.</p>
+<p>Not a good result&hellip;</p>
+<h4 id="what-went-wrong">What Went Wrong?</h4>
+<p>Our analysis was off because the request focused on only one aspect of the proposal (financial). This clear bias made it less likely we&rsquo;d find other reasons to NOT move forward with the initial proposal.</p>
+<img src="images/Burning_Money.png" width="60%" style="display: block; margin: auto;" />
+<blockquote>
+<p><em>&ldquo;I propose we burn all of our money to increase profitability - it&rsquo;ll decrease our cash-handling costs!</em>&rdquo;</p>
+</blockquote>
+<p>In this case, an innocuous-sounding decision early on about what to focus on had a huge effect on our outcome - a Bayesian might say that&rsquo;s not much different than having a strong prior!</p>
+<h2 id="summing-up">Summing Up</h2>
+<p>By using data to update beliefs, <strong>Bayesian statistics provide a flexible approach to tackling difficult problems</strong>.</p>
+<p>This technique pops up in many places: <a href="https://en.wikipedia.org/wiki/Naive_Bayes_spam_filtering">filtering spam emails</a>, <a href="https://en.wikipedia.org/wiki/Sensitivity_and_specificity">diagnosing diseases</a>, and even <a href="https://en.wikipedia.org/wiki/Bayesian_search_theory">locating unexploded nuclear weapons.</a></p>
+<p>With Bayesian statistics, it is critical to have reasonable beliefs. As we saw with our plaid suit fan, <strong>if our prior beliefs are too strong, no amount of evidence will be able to sway our opinion</strong>. And sometimes a change of mind can do us a lot of good&hellip;</p>
+<p>Next week, we&rsquo;ll explore the science of how to collect our data, using Design of Experiments.</p>
+<p>===========================</p>
+<p>R code used to generate plots:</p>
+<pre><code class="language-r">library(data.table)
+library(ggplot2)
+library(scales)
+set.seed(060124)
+
+
+### function to create a beta dist, for plotting in ggplot
+create_beta_dist &lt;- function(var_Successes, var_N) { 
+
+  beta_dist &lt;-cbind(seq(0, 1, length=var_N), 
+          dbeta(seq(0, 1, length=var_N), var_Successes, var_N - var_Successes)) |&gt; as.data.table()
+
+}
+
+### function to create a uniform base plot, to be annotated for each
+plot_beta_dist &lt;- function(beta_dist) {
+  
+  ggplot(beta_dist, aes(x=V1, y=V2)) + 
+  geom_area(position = &quot;identity&quot;, fill=&quot;blue&quot;, alpha = 0.3) +
+  geom_line() + 
+  theme_bw() +
+  xlab(&quot;Popularity of Plaid&quot;) +
+  theme(axis.text.y=element_blank(), 
+        axis.ticks.y=element_blank(),
+        axis.title.y=element_blank()) +
+  scale_x_continuous(label=label_percent()) +
+    geom_text(data = beta_dist, aes(x = .88, y = (-.5)* beta_dist[,.N]/100, label = &quot;Summer of Stats&quot;), col=&quot;grey80&quot;, size = 4) 
+  
+}
+
+### Plot beta dist for prior
+create_beta_dist(7, 10) |&gt;
+  plot_beta_dist() +
+  annotate(&quot;text&quot;, x = .3, y = 2, label = &quot;Our initial belief is that 70% \n of people like the suit&quot;, col = &quot;red&quot;, size = 7) +
+  annotate(&quot;text&quot;, x = .70 , y = .71, label = 'atop(bold(&quot;70%&quot;))', col = &quot;red&quot;, size = 7, parse = TRUE) +
+  annotate(&quot;text&quot;, x = .70 , y = 0, label = 'atop(bold(&quot;↓&quot;))', col = &quot;red&quot;, size = 20, parse = TRUE) 
+
+### Plot beta dist for data
+create_beta_dist(7, 100) |&gt; 
+  plot_beta_dist() +
+    annotate(&quot;text&quot;, x = .45, y = 12, label = &quot;Our data tells us that 7% \n of people actually like the suit&quot;, col = &quot;red&quot;, size = 7) +
+  annotate(&quot;text&quot;, x = .07 , y = 3.5, label = 'atop(bold(&quot;7%&quot;))', col = &quot;red&quot;, size = 7, parse = TRUE) +
+  annotate(&quot;text&quot;, x = .07 , y = 0, label = 'atop(bold(&quot;↓&quot;))', col = &quot;red&quot;, size = 20, parse = TRUE) 
+
+### Plot beta dist for posterior
+create_beta_dist(14, 110) |&gt; 
+  plot_beta_dist() +
+    annotate(&quot;text&quot;, x = .55, y = 10, label = &quot;We now think that between 8-18% \n of people will like the suit&quot;, col = &quot;red&quot;, size = 7) +
+    annotate(&quot;text&quot;, x = .13 , y = 3, label = 'atop(bold(&quot;13%&quot;))', col = &quot;red&quot;, size = 7, parse = TRUE) +
+  annotate(&quot;text&quot;, x = .13 , y = 0, label = 'atop(bold(&quot;↓&quot;))', col = &quot;red&quot;, size = 20, parse = TRUE) 
+
+
+### Let's consider alternate priors:
+weak_prior &lt;- create_beta_dist(14,110)  # Prior = beta(7,10)
+equal_prior &lt;- create_beta_dist(77, 200) # Prior = beta(70, 100)
+strong_prior &lt;- create_beta_dist(707, 1100) # Prior = beta(700,)
+
+
+  ggplot(weak_prior, aes(x=V1, y=V2)) + 
+  # Weak Prior
+  geom_line(data=weak_prior, aes(x=V1, y=V2)) + 
+  geom_area(position = &quot;identity&quot;, fill=&quot;blue&quot;, alpha = 0.3) +
+  annotate(&quot;text&quot;, x = .13, y = 15, label = &quot;Weak Prior&quot;, col = &quot;blue&quot;, size = 7) +
+  # Equal Weight
+  geom_line(data=equal_prior, aes(x=V1, y=V2)) + 
+  geom_area(data=equal_prior, aes(x=V1, y=V2), position = &quot;identity&quot;, fill=&quot;purple&quot;, alpha = 0.3) +
+  annotate(&quot;text&quot;, x = .39, y = 13, label = &quot;Equal Prior&quot;, col = &quot;purple&quot;, size = 7) +
+  # Strong Prior
+  geom_line(data=strong_prior, aes(x=V1, y=V2)) + 
+  geom_area(data=strong_prior, aes(x=V1, y=V2), position = &quot;identity&quot;, fill=&quot;red&quot;, alpha = 0.3) +
+  annotate(&quot;text&quot;, x = .65, y = 30, label = &quot;Strong Prior&quot;, col = &quot;red&quot;, size = 7) +
+  theme_bw() +
+  xlab(&quot;Popularity of Plaid&quot;) +
+  theme(axis.text.y=element_blank(), 
+        axis.ticks.y=element_blank(),
+        axis.title.y=element_blank()) +
+  scale_x_continuous(label=scales::label_percent()) +
+  geom_text(data = weak_prior, aes(x = .88, y = -.1*strong_prior[,.N]/100, label = &quot;Summer of Stats&quot;), col=&quot;grey80&quot;, size = 4)  +
+    annotate(&quot;text&quot;, x = .13 , y = 3.3, label = 'atop(bold(&quot;13%&quot;))', col = &quot;red&quot;, size = 5, parse = TRUE) +
+  annotate(&quot;text&quot;, x = .13 , y = 0, label = 'atop(bold(&quot;↓&quot;))', col = &quot;red&quot;, size = 12, parse = TRUE) +
+    annotate(&quot;text&quot;, x = .385 , y = 3.3, label = 'atop(bold(&quot;38%&quot;))', col = &quot;red&quot;, size = 5, parse = TRUE) +
+  annotate(&quot;text&quot;, x = .385 , y = 0, label = 'atop(bold(&quot;↓&quot;))', col = &quot;red&quot;, size = 12, parse = TRUE) +
+    annotate(&quot;text&quot;, x = .645 , y = 3.3, label = 'atop(bold(&quot;64%&quot;))', col = &quot;red&quot;, size = 4, parse = TRUE) +
+  annotate(&quot;text&quot;, x = .64 , y = 0, label = 'atop(bold(&quot;↓&quot;))', col = &quot;red&quot;, size = 12, parse = TRUE)  
+</code></pre>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  
+
+
+  </body>
+</html>
+

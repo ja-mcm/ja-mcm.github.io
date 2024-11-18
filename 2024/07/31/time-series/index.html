@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4321&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.125.4">
+
+
+<title>Time Series - Summer of Stats</title>
+<meta property="og:title" content="Time Series - Summer of Stats">
+
+
+  <link href='//localhost:4321/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/Rplot.png"
+         width="60"
+         height="60"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/">Summer of Stats</a></li>
+    
+    <li><a href="/2124/01/01/visual-gallery/">Visual Gallery</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">6 min read</span>
+    
+
+    <h1 class="article-title">Time Series</h1>
+
+    
+    <span class="article-date">2024-07-31</span>
+    
+
+    <div class="article-content">
+      
+      <h2 id="or-why-90-of-sports-statistics-are-nonsense">(or &ldquo;Why 90% of Sports Statistics are Nonsense&rdquo;)</h2>
+<p>Linear regression is a great tool for teasing out relationships between variables.</p>
+<p>But what about things that change over time?</p>
+<img src="images/parking_spot.png" width="70%" style="display: block; margin: auto;" />
+<blockquote>
+<p><em>&ldquo;Well, my car WAS here just a minute ago&hellip;&rdquo;</em></p>
+</blockquote>
+<p>This is where using a <strong>time series</strong> can help us better understand our data.</p>
+<h4 id="what-is-a-time-series">What is a Time Series?</h4>
+<p>A time series is a dataset that tracks a measure over time. In general, the purpose of analyzing a time series is two-fold:</p>
+<ol>
+<li><strong>Extracting pattern(s)</strong> existing in the data</li>
+<li>Use those pattern(s) to <strong>predict or constrain</strong> future estimates</li>
+</ol>
+<p>Time series pop up everywhere, and as we&rsquo;ll see below, they can give us a surprising amount of insight into our data.</p>
+<h4 id="government-spending">Government Spending</h4>
+<p>Let&rsquo;s use time series to analyze how my hometown (the City of Cincinnati) spends money, using data from their <a href="https://data.cincinnati-oh.gov/">Open Data Portal</a>.</p>
+<p>Plotting expenditures by month, we get the following time series:</p>
+<img src="/2024/07/31/time-series/index_files/figure-html/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" />
+<p>As expected, monthly expenditures jump up &amp; down on a fairly regular basis. <strong>So, what all can we learn from this squiggly line?</strong></p>
+<h4 id="extracting-trends">Extracting Trends</h4>
+<p>The real interesting insights from our data appear <strong>once we decompose the time series trends</strong> (yearly, monthly, etc). Luckily, R makes this easy to do:</p>
+<img src="/2024/07/31/time-series/index_files/figure-html/unnamed-chunk-3-1.png" width="80%" style="display: block; margin: auto;" />
+<p>There&rsquo;s a lot here, so let&rsquo;s discuss each piece individually.</p>
+<h4 id="1-trend">1. Trend</h4>
+<p>The <strong>trend</strong> component of our time series answers the question: &ldquo;what is the general direction this measure moves over time?&rdquo;</p>
+<p>In this case (as in all budgets), the trend is upward.</p>
+<img src="/2024/07/31/time-series/index_files/figure-html/unnamed-chunk-4-1.png" width="576" style="display: block; margin: auto;" />
+<p>More interestingly, this trend allows us to see the general ramp-up/draw-downs in city spending over time.</p>
+<p>Clearly on display here is the jump in city expenditures as a result of COVID in 2020. What&rsquo;s also clear is that COVID-level spending habits have no sign of stopping!</p>
+<h4 id="2-seasonal">2. Seasonal</h4>
+<p>The <strong>seasonal</strong> component reflects the recurring patterns that pop up at a specific time each year.</p>
+<p>For example, we see spikes at the end of the year for spending. This may correspond to a mandate to have all budgeted $ be spent.</p>
+<img src="/2024/07/31/time-series/index_files/figure-html/unnamed-chunk-5-1.png" width="576" style="display: block; margin: auto;" />
+<p>It may be odd to see NEGATIVE dollars associated with some months - the way to read this is that these months have <strong>lower expenditures than average</strong> (and, months with positive dollars run higher than average).</p>
+<h4 id="3-random">3. Random</h4>
+<p>The <strong>random</strong> component consists of the &ldquo;rest&rdquo; of the variation in our time series. By their nature, they are not patterned. <strong>But that does not mean they are not useful.</strong></p>
+<img src="/2024/07/31/time-series/index_files/figure-html/unnamed-chunk-6-1.png" width="576" style="display: block; margin: auto;" />
+<p>Things that might pop up here would be one-off expenditures (such as a big event). When reviewing a budget, these one-off items can actually provide great discussion points.</p>
+<h4 id="predicting-the-next-2-years">Predicting The Next 2 Years</h4>
+<p>All of these trends can be combined to make a compelling projection of where we expect the City of Cincinnati budget to go in the future.</p>
+<p>Here&rsquo;s our projected monthly trend for the next 2 years:</p>
+<img src="/2024/07/31/time-series/index_files/figure-html/unnamed-chunk-7-1.png" width="80%" style="display: block; margin: auto;" />
+<p>Our time series analysis allows us to not only better understand the general patterns in city spending, but also craft a solid estimate of future monthly expenditures.</p>
+<p>Not bad!</p>
+<hr>
+<h2 id="time-series-in-daily-life">Time Series in Daily Life</h2>
+<p>One practical lesson of time series that you can take away is:</p>
+<blockquote>
+<p><strong>Choose your start/end points wisely.</strong></p>
+</blockquote>
+<p>As we&rsquo;ll see below, depending on WHERE we decide to start our analysis, we can end up with completely different conclusions.</p>
+<h4 id="global-warming-or-is-it">Global Warming (Or Is It?)</h4>
+<p>Over the past 2 centuries, scientists have been keeping meticulous temperature records. Over this time, they noticed a persistent, upward trend in temperature, which they named &ldquo;Global Warming&rdquo;.</p>
+<p>Grabbing <a href="https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/global/time-series/globe/land_ocean/12/6/1850-2024">climate data from the NOAA website</a>, we can plot this trend:</p>
+<img src="/2024/07/31/time-series/index_files/figure-html/unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;" />
+<p>However, with careful planning &amp; thought, we can actually cherry-pick a time range that <strong>completely contradicts the trend we see in the full dataset</strong>.</p>
+<img src="images/Global_warming_hiatus.gif" width="70%" style="display: block; margin: auto;" />
+<blockquote>
+<p><em>Courtesy of: <a href="https://en.wikipedia.org/wiki/Global_warming_hiatus#/media/File:Global_warming_hiatus.gif">Wikipedia</a></em></p>
+</blockquote>
+<p>Within this time range, the upward trend appears to be leveling off. This is the exact same data - we just altered our start/end points, and it totally changed the story.</p>
+<p><a href="https://www.telegraph.co.uk/comment/personal-view/3624242/There-IS-a-problem-with-global-warming...-it-stopped-in-1998.html">One concerned author</a> was even more aggressive, picking an 8 year window which showed:</p>
+<blockquote>
+<p><em>&ldquo;that for the years 1998-2005 global average temperature did not increase (there was actually a slight decrease, though not at a rate that differs significantly from zero).&rdquo;</em></p>
+</blockquote>
+<p>Just by moving the start &amp; end points, this author was able to transform an exponentially increasing trend into a downward trend. Impressive!</p>
+<h4 id="moving-the-goal-posts">Moving the Goal Posts</h4>
+<p><strong>The tendency to manipulate time ranges to create a narrative is surprisingly common</strong>, and nowhere is it more prevalent than in sports broadcasts.</p>
+<p>Invariably, the presenter will discuss how some player/team is in a &ldquo;slump&rdquo;, and an infographic will pop up like this:</p>
+<img src="images/ESPN.png" width="70%" style="display: block; margin: auto;" />
+<blockquote>
+<p><em>Source: <a href="https://x.com/ESPNStatsInfo/status/856583527415947265">ESPN</a></em></p>
+</blockquote>
+<p>If you watch carefully, there&rsquo;s rarely consistency within the comparisons. Why are we contrasting results from a set of 7 games against the remaining 15 other games?</p>
+<p>In reality, many statistics presented in sports broadcasts are set up <strong>to maximize the story</strong>, rather than being driven by some meaningful time range.</p>
+<h2 id="summing-up">Summing Up</h2>
+<p>In any dataset, there exist patterns hidden in plain sight. By picking apart all the cycles within the data, <strong>time series analysis can provide both insights AND predictive capabilities</strong>.</p>
+<p>However, time series data can also be tricky - things rarely stay the same forever. By simply picking the wrong time range, we may end up coming to a totally different conclusion.</p>
+<p>Whenever a time trend is presented, it pays to be skeptical. <strong>In some cases, people will intentionally choose a time range that tells the story they want</strong>. And that story may not match the reality.</p>
+<p>Next week, we will cover an approach that can help generate more reliable, robust results: nonparametric statistics.</p>
+<p>===========================</p>
+<p>R code used to generate plots:</p>
+<ol>
+<li>Cincinnati Budget</li>
+</ol>
+<pre><code class="language-r">library(data.table)
+library(ggplot2)
+library(scales)
+library(forecast)
+library(lubridate)
+set.seed(060124)
+
+### Grab aggregated city exp data from Open Data Portal
+cincy_exp &lt;- fread(&quot;Cincinnati_Exp_by_Month.csv&quot;)
+cincy_exp[,RECORD_DATE:=mdy_hms(RECORD_DATE)]
+cincy_exp[,RECORD_MONTH:=floor_date(RECORD_DATE, &quot;month&quot;)]
+cincy_exp[,CAL_MONTH:= month(RECORD_DATE)]
+
+### Break down by month
+monthly_exp &lt;- cincy_exp[RECORD_DATE &lt; ymd(&quot;2024-06-01&quot;) &amp; 
+                        RECORD_DATE &gt; ymd(&quot;2014-12-31&quot;),
+                         sum(AMOUNT_EXPENDED),by=.(RECORD_MONTH)]
+setnames(monthly_exp,&quot;V1&quot;, &quot;AMOUNT_EXPENDED&quot;)
+setorder(monthly_exp, RECORD_MONTH)
+
+
+### Convert to time series and decompose
+ts_data &lt;- ts(monthly_exp[,AMOUNT_EXPENDED], start=c(2014, 7), frequency=12)
+ts_trends &lt;- decompose(ts_data)
+plot(ts_trends)
+
+
+### Add trend and random to monthly data, for plotting
+monthly_exp[,trend_overall := ts_trends$trend]
+monthly_exp[,random_exp := ts_trends$random]
+
+### Create function to plot each series
+plot_series &lt;- function(VAR, TITLE, COL){
+    ggplot(monthly_exp, aes(x=RECORD_MONTH, y=VAR)) + 
+        geom_line(col=COL) +
+        theme_light() +
+        theme(axis.title.x=element_blank(),
+              axis.title.y=element_blank(),
+              plot.title = element_text(size=18, face=&quot;bold&quot;, hjust = 0.5)) +
+        labs(title=TITLE) +
+        scale_y_continuous(labels = label_dollar()) +
+        coord_cartesian(ylim=c(monthly_exp[,min(VAR)-10000000],
+                               monthly_exp[,max(VAR)+10000000])) +
+        geom_text(aes(x = monthly_exp[,max(RECORD_MONTH) - 20000000], 
+                      y = monthly_exp[,min(VAR-10000000,  na.rm=TRUE)], 
+                      label = &quot;Summer of Stats&quot;), col=&quot;grey80&quot;, size = 3)
+}
+
+### Plot Cincinnati Expenditures
+plot_series(monthly_exp$AMOUNT_EXPENDED, &quot;City of Cincinnati - Expenditures by Month&quot;, &quot;black&quot;)
+
+### Plot Overall trend
+plot_series(monthly_exp$trend_overall, &quot;Overall Trend&quot;, &quot;darkred&quot;)
+
+### Plot Random trend
+plot_series(monthly_exp$random_exp, &quot;Random Trend&quot;, &quot;darkred&quot;)
+
+
+### Establish seasonal trend
+trend_seas &lt;- ts_trends$seasonal[1:12] |&gt; as.data.table()
+trend_seas[,AMOUNT_EXPENDED:=V1]
+trend_seas[,MONTH_NUM:=.I]
+
+### Plot Seasonal trend
+ggplot(trend_seas, aes(x=MONTH_NUM, y=AMOUNT_EXPENDED)) + 
+  geom_hline(yintercept=0, col=&quot;grey80&quot;) +
+  geom_line(col=&quot;darkred&quot;) +
+  theme_light() +
+  theme(axis.title.x=element_blank(),
+        axis.title.y=element_blank(),
+        plot.title = element_text(size=18, face=&quot;bold&quot;, hjust = 0.5)) +
+  labs(title=&quot;Seasonal Trend&quot;) +
+  scale_y_continuous(labels = label_dollar()) +
+  scale_x_continuous(breaks = seq_along(month.abb), labels = month.abb) +
+  coord_cartesian(ylim=c(trend_seas[,min(AMOUNT_EXPENDED)-10000000],
+                         trend_seas[,max(AMOUNT_EXPENDED)+10000000])) +
+  geom_text(aes(x = trend_seas[,max(MONTH_NUM) - 1], 
+                y = trend_seas[,min(AMOUNT_EXPENDED-10000000)], 
+                label = &quot;Summer of Stats&quot;), col=&quot;grey80&quot;, size = 3)
+
+
+### Create time series prediction and plot
+ts_arima&lt;-auto.arima(ts_data)
+ts_forecast&lt;-forecast(ts_arima, level=c(90), h=2*12)
+
+plot(ts_forecast, main = &quot;City of Cincinnati - Forecasted Expenditures&quot;, cex.main=1.5, yaxt=&quot;n&quot;)
+axis(side=2, at=seq(100000000, 240000000, by=50000000), labels=paste0(dollar(seq(100, 240, by=50)),&quot;M&quot;), las=1)
+</code></pre>
+<ol start="2">
+<li>NOAA Climate Data</li>
+</ol>
+<pre><code class="language-r">library(data.table)
+library(ggplot2)
+
+NOAA_data &lt;- fread(&quot;NOAA_data.csv&quot;)
+ggplot(NOAA_data, aes(x=Year, y=Anomaly)) + 
+  geom_line(col=&quot;cornflowerblue&quot;) +
+  theme_light() +
+  theme(axis.title.x=element_blank(),
+        axis.title.y=element_blank(),
+        plot.title = element_text(size=18, face=&quot;bold&quot;, hjust = 0.5)) +
+  labs(title=&quot;Global Temperature Anomaly&quot;) +
+  geom_text(aes(x = NOAA_data[,max(Year) - 8], 
+                y = NOAA_data[,min(Anomaly,  na.rm=TRUE)], 
+                label = &quot;Summer of Stats&quot;), col=&quot;grey80&quot;, size = 3)
+</code></pre>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  
+
+
+  </body>
+</html>
+

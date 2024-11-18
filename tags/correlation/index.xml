@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Correlation on Summer of Stats</title>
+    <link>//localhost:4321/tags/correlation/</link>
+    <description>Recent content in Correlation on Summer of Stats</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <lastBuildDate>Wed, 10 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:4321/tags/correlation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Correlation</title>
+      <link>//localhost:4321/2024/07/10/correlation/</link>
+      <pubDate>Wed, 10 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/2024/07/10/correlation/</guid>
+      <description>(or &amp;ldquo;Why Margarine Causes Divorce&amp;rdquo;) Knowing how things are related can be incredibly useful.&#xA;For example: &amp;ldquo;Where there&amp;rsquo;s smoke, there&amp;rsquo;s fire&amp;rdquo;&amp;hellip;.&#xA;It might be difficult to spot a small orange flame (especially on a bright day), but it is very easy to find the associated smoke.&#xA;Clearly, it would be nice to have a way to identify when things are related. Thankfully, statistics provides us a tool for doing this!</description>
+    </item>
+  </channel>
+</rss>

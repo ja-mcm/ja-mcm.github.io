@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4321&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.125.4">
+
+
+<title>Multiple Regression - Summer of Stats</title>
+<meta property="og:title" content="Multiple Regression - Summer of Stats">
+
+
+  <link href='//localhost:4321/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/Rplot.png"
+         width="60"
+         height="60"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/">Summer of Stats</a></li>
+    
+    <li><a href="/2124/01/01/visual-gallery/">Visual Gallery</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">5 min read</span>
+    
+
+    <h1 class="article-title">Multiple Regression</h1>
+
+    
+    <span class="article-date">2024-07-24</span>
+    
+
+    <div class="article-content">
+      
+      <h2 id="or-why-knowing-the-business-beats-knowing-regression">(or &ldquo;Why Knowing the Business Beats Knowing Regression&rdquo;)</h2>
+<p>Last week, we used a linear regression model to accurately convert temperatures from Celsius to Fahrenheit.</p>
+<p>But what happens when you have to estimate something a bit more complex?</p>
+<img src="images/house.png" width="70%" style="display: block; margin: auto;" />
+<blockquote>
+<p><em>&ldquo;This house is 2338 sq. ft&hellip;so, how much should it cost?&rdquo;</em></p>
+</blockquote>
+<p>Obviously, we&rsquo;ll need to account for more than 1 factor to model this. Luckily, we can do just this, using Multiple Regression!</p>
+<h4 id="what-is-multiple-regression">What is Multiple Regression?</h4>
+<p>Multiple linear regression is similar to simple linear regression. The main difference is that multiple regression <strong>takes more than 1 variable into account in order to make predictions.</strong></p>
+<p>By adding more factors into the regression model, we likely can improve its ability to explain our variable of interest.</p>
+<h4 id="what-causes-accidents-revisited">What Causes Accidents? (Revisited)</h4>
+<p>Last week, we modeled how the quantity of streetlights on a road reduced car accidents. But our model only explained SOME of what we observed (R² = 0.27). Clearly, other factors affect the number of accidents on our roads.</p>
+<p>Probably,</p>
+<ul>
+<li>It probably makes a big difference <strong>how many cars are travelling that stretch of road</strong>, so we should probably add that to our model</li>
+<li>Accidents are also more likely to occur on windy roads. That may help explain our totals</li>
+<li>and so on, until we have our full model.</li>
+</ul>
+<h4 id="which-variables-matter">Which Variables Matter?</h4>
+<p>Multiple regression is so powerful because it provides a full accounting of how much each variable affects our outcome.</p>
+<p>When we call:</p>
+<pre><code class="language-r">summary(
+  lm(data = Auto_Accidents,formula = Accidents ~ Streetlights_per_Mile + Traffic + Bends_per_Mile + Shoulder_Width)
+)
+</code></pre>
+<p>we are given the coefficient value for each variable and whether there&rsquo;s strong evidence that the variable is statistically significant.</p>
+<pre><code>## 
+## Call:
+## lm(formula = Accidents ~ Streetlights_per_Mile + Traffic + Bends_per_Mile + 
+##     Shoulder_Width, data = Auto_Accidents)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -5.9543 -1.4113 -0.0527  1.3809  7.7558 
+## 
+## Coefficients:
+##                         Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)            1.652e+01  2.722e-01  60.694   &lt;2e-16 ***
+## Streetlights_per_Mile -1.819e-01  1.277e-02 -14.242   &lt;2e-16 ***
+## Traffic               -4.185e-04  1.679e-05 -24.923   &lt;2e-16 ***
+## Bends_per_Mile        -2.278e-02  3.822e-02  -0.596   0.5512    
+## Shoulder_Width        -1.175e-01  5.332e-02  -2.204   0.0277 *  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 2.077 on 995 degrees of freedom
+## Multiple R-squared:  0.5661,	Adjusted R-squared:  0.5644 
+## F-statistic: 324.6 on 4 and 995 DF,  p-value: &lt; 2.2e-16
+</code></pre>
+<p>Each variable is assigned a p-value, which assesses the likelihood that it a given variable&rsquo;s coefficient is actually zero (ie. it has no effect on the outcome).</p>
+<p>In the case of our data, we find that the number of streetlights, the overall traffic level, and should width all serve as potentially valid predictors of how dangerous a stretch of road will be.</p>
+<h4 id="wait-what-about-the-streetlights">Wait, What About the Streetlights?</h4>
+<p>If you&rsquo;re paying close attention, you&rsquo;ve noticed that the coefficient for <strong>Streetlights_per_Mile</strong> shrank from 0.302 to 0.167 when we moved from a simple regression to multiple regression. Why is that?</p>
+<p>Essentially, our newly added variables explained some of the variation in crash rates better than streetlight density alone. Once these new factors are accounted for, we end up with a better estimator. We see our R² jumped from 0.27 (simple linear regression) to 0.56 (multiple regression).</p>
+<hr>
+<h2 id="multiple-regression-in-daily-life">Multiple Regression in Daily Life</h2>
+<p>One practical lesson of multiple regression that you can take away is:</p>
+<blockquote>
+<p><strong>Know the factors that drive your business.</strong></p>
+</blockquote>
+<p>If you are lucky enough to have a dataset available that you can do regression on, <strong>it doesn&rsquo;t mean you should.</strong> Or, at least, you should consider what is MISSING from that data before plowing ahead.</p>
+<h4 id="the-case-of-the-missing-variable">The Case of the Missing Variable</h4>
+<p>Early in my career, I was part of a project to determine why a major retailer was experiencing a surge in <a href="https://www.investopedia.com/terms/c/chargeback.asp">credit card chargebacks</a>.</p>
+<p>We had plenty of data on these transactions, so we sliced and diced (and even pulverized) the data for weeks, but nothing popped out.</p>
+<p>The answer finally came once we visited stores.</p>
+<p>While observing an associate ringing someone up, we witnessed the application get &ldquo;stuck&rdquo; after the card was swiped. The associate then <strong>re-swiped the card</strong>, believing the transaction hadn&rsquo;t gone through. Aha!</p>
+<p>We now had our explanation as to why customers were disputing charges - they were inadvertently being double-charged.</p>
+<h3 id="the-omitted-variable-wi-fi">The omitted variable: Wi-Fi</h3>
+<p>The ultimate culprit in this story was bad Wi-Fi connectivity within certain stores. If the Wi-Fi cut out during a transaction, the transaction would usually be retried, and both transactions would post once the Wi-Fi connection was re-established.</p>
+<p>We then would end up with someone being charged TWICE. No wonder they charged it back!</p>
+<img src="images/Buy_2.png" width="40%" style="display: block; margin: auto;" />
+<blockquote>
+<p><em>&ldquo;You forgot the &lsquo;free&rsquo; part&hellip;&rdquo;</em></p>
+</blockquote>
+<p>If our initial dataset had the data element &ldquo;WIFI_STRENGTH&rdquo;, it would&rsquo;ve been very easy to identify the source of our troubles. But, <strong>recognizing that this variable was necessary was actually the biggest hurdle in the analysis</strong>.</p>
+<h2 id="summing-up">Summing Up</h2>
+<p>Multiple regression is an incredibly powerful tool for making decisions. Done correctly, it can distill huge volumes of information into a format that can both highlight critical variables AND predict the impact of changes.</p>
+<p>But, this <strong>relies on us selecting the correct variables to model</strong>. Much like correlation, there is no guarantee that our model is correct, even when we get what appear to be highly significant results.</p>
+<p>Beware of recommendations from analysts that are completely walled off from the business. They may know regression techniques very well, but <strong>can remain oblivious to the critical variables that are MISSING from the dataset</strong>. And that mistake can completely invalidate your results.</p>
+<p>Next week, we will discuss another type of regression technique specifically for determining how things change over time, using time series analysis.</p>
+<p>===========================</p>
+<p>R code used to generate plots:</p>
+<ol>
+<li>Multiple Regression Model</li>
+</ol>
+<pre><code class="language-r">library(data.table)
+set.seed(060124)
+
+Auto_Accidents &lt;- rpois(1000,10) |&gt; as.data.table() 
+colnames(Auto_Accidents) &lt;- &quot;Accidents&quot;
+Auto_Accidents[,Streetlights_per_Mile:= abs(20 - Accidents + rnorm(1000, 0, 5))]
+Auto_Accidents[,Traffic:= abs(1000 * (20 - Accidents + rnorm(1000, 0, 3)))]
+Auto_Accidents[,Bends_per_Mile:= rpois(1000,3)]
+Auto_Accidents[,Shoulder_Width:= rpois(1000,5/Accidents) +  rnorm(1000, 3, 1)]
+
+summary(
+  lm(data = Auto_Accidents,formula = Accidents ~ Streetlights_per_Mile + Traffic + Bends_per_Mile + Shoulder_Width)
+)
+</code></pre>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  
+
+
+  </body>
+</html>
+

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4321&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.125.4">
+
+
+<title>Distributions - Summer of Stats</title>
+<meta property="og:title" content="Distributions - Summer of Stats">
+
+
+  <link href='//localhost:4321/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/Rplot.png"
+         width="60"
+         height="60"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/">Summer of Stats</a></li>
+    
+    <li><a href="/2124/01/01/visual-gallery/">Visual Gallery</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">5 min read</span>
+    
+
+    <h1 class="article-title">Distributions</h1>
+
+    
+    <span class="article-date">2024-06-12</span>
+    
+
+    <div class="article-content">
+      
+      <h2 id="or-stop-and-measure-the-flowers">(or &ldquo;Stop and Measure the Flowers&rdquo;)</h2>
+<p>Whenever someone thinks about statistics, the first image that comes to mind probably looks something like this:</p>
+<img src="/2024/06/12/distributions/index_files/figure-html/unnamed-chunk-1-1.png" width="50%" style="display: block; margin: auto;" />
+<p>Ah, the <strong>normal curve</strong>!</p>
+<p>This is the probability distribution we have all seen or at least heard of. But what does it tell us, exactly?</p>
+<h4 id="what-is-a-probability-distribution">What is a Probability Distribution?</h4>
+<p>We have previously discussed what <strong>probability</strong> is (the likelihood of an outcome occurring). A <strong>probability distribution</strong> describes how likely ALL outcomes are.</p>
+<p>For example, in the normal distribution, the shape of the curve shows us that <strong>the most likely outcomes cluster around a single point (the mean)</strong>, and taper off as we go further from this central value:</p>
+<img src="/2024/06/12/distributions/index_files/figure-html/unnamed-chunk-2-1.png" width="50%" style="display: block; margin: auto;" />
+<p>Extreme outcomes have very little probability associated with them, meaning that they are not all that likely to occur:</p>
+<img src="/2024/06/12/distributions/index_files/figure-html/unnamed-chunk-3-1.png" width="50%" style="display: block; margin: auto;" />
+<p>But there are <strong>many</strong> other distributions we could use. For example, the <strong>Uniform distribution</strong>:</p>
+<img src="/2024/06/12/distributions/index_files/figure-html/unnamed-chunk-4-1.png" width="50%" style="display: block; margin: auto;" />
+<p>In a Uniform distribution, there is no central point and every outcome is equally likely, giving it a distinctive &ldquo;blocky&rdquo; shape.</p>
+<p>Or here&rsquo;s the <strong>Poisson distribution</strong>, whose shape morphs based on the parameter (λ) used to generate it.</p>
+<img src="/2024/06/12/distributions/index_files/figure-html/unnamed-chunk-5-1.png" width="50%" style="display: block; margin: auto;" />
+<p><em>(We could keep going, but I&rsquo;ll stop here, as this would be an entire course on its own!)</em></p>
+<hr>
+<h2 id="probability-distributions-in-daily-life">Probability Distributions in Daily Life</h2>
+<p>One practical lesson about probability distributions that you can take away is:</p>
+<blockquote>
+<p><strong>HOW you decide to group things can hugely impact your results.</strong></p>
+</blockquote>
+<p>Most any real-world dataset is likely to include distinct sub-groups. How you handle these groups can have a huge impact on your analysis.</p>
+<h3 id="lets-pick-some-flowers">Let&rsquo;s pick some flowers&hellip;</h3>
+<p>Assume I pick a huge bundle of flowers out of my garden. Being a nerd, I&rsquo;m interested in seeing how BIG my flowers are. Here is the distribution of how long the flower petals are:</p>
+<img src="/2024/06/12/distributions/index_files/figure-html/unnamed-chunk-6-1.png" width="50%" style="display: block; margin: auto;" />
+<p>Our data does not follow the nice &ldquo;bell curve&rdquo; we have seen up to this point. Instead, our distribution is <strong>multi-modal</strong> (having multiple peaks, instead of just 1).</p>
+<p>What this implies is that we might have multiple groups (possibly different flower types) in our data. While this is not inherently wrong, it can wreak havoc in some unexpected ways.</p>
+<h3 id="when-mixing-groups-goes-wrong">When Mixing Groups Goes Wrong</h3>
+<p>Let&rsquo;s find the average flower size:</p>
+<img src="/2024/06/12/distributions/index_files/figure-html/unnamed-chunk-7-1.png" width="50%" style="display: block; margin: auto;" />
+As we can see, this value IS our average, but it doesn't correspond particularly well with any of the flowers we actually saw.
+<p><em>(If we checked our median and standard deviation, they wouldn&rsquo;t make a lot of sense either.)</em></p>
+<p>One way to solve this is to create separate distributions for each segment. Now, each distribution looks &ldquo;normal&rdquo; again. Phew!</p>
+<img src="/2024/06/12/distributions/index_files/figure-html/unnamed-chunk-8-1.png" width="80%" style="display: block; margin: auto;" />
+We also see that our summary statistics now make a lot more sense.
+<h3 id="when-in-doubt-split-it-out">When in Doubt, Split it Out</h3>
+<p>Chances are, your dataset will contain multiple groups that behave differently. As we saw above, without considering our sub-groups, the results we generated did not describe anything particularly useful.</p>
+<p>While you may ultimately elect to combine groups together, it is important that you observe how each looks separately, so that you do not group unlike things together, and end up mis-representing your data.</p>
+<p>For further reading on how sub-groups can impact your results in some very surprising ways, <a href="https://towardsdatascience.com/simpsons-paradox-how-to-prove-two-opposite-arguments-using-one-dataset-1c9c917f5ff9">check out this article</a> on Simpson&rsquo;s paradox.</p>
+<h2 id="summing-up">Summing Up</h2>
+<p>Probability distributions are extremely useful for assessing what outcomes are likely to occur.</p>
+<p>Not only do we end up with a tool for calculating probabilities, <strong>we also see the underlying structure</strong> of what at first glance appears to be a random, chaotic system.</p>
+<p>And it&rsquo;s <strong>beautiful</strong>.</p>
+<img src="images/Galton_box.png" width="40%" style="display: block; margin: auto;" />
+<p>This is what excites me about statistics, and why I can&rsquo;t wait to continue learning more.</p>
+<p>If you feel the same way, join me next week as we cover a very useful technique that lets us &ldquo;do more with less&rdquo; - sampling!</p>
+<p>===========================</p>
+<p>R code used to generate plots:</p>
+<ol>
+<li>Probability Distributions</li>
+</ol>
+<pre><code class="language-r">library(ggplot2)
+
+### Good old normal distribution
+norm_dist_plot &lt;- ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
+    stat_function(fun = dnorm, lwd = 1.2) +
+    theme_light() 
+
+norm_dist_plot
+
+### Shading function, to limit the range of our function for plotting
+funcShaded &lt;- function(x, lower_bound, upper_bound) {
+    y = dnorm(x)
+    y[x &lt; lower_bound] &lt;- NA
+    y[x &gt; upper_bound] &lt;- NA
+    return(y)
+}
+
+### Middle shaded
+shade_middle &lt;- norm_dist_plot +
+    stat_function(fun = funcShaded, args = list(lower_bound = -1, upper_bound = 1), geom = &quot;area&quot;, fill = &quot;blue&quot;, alpha = .3) 
+
+shade_middle
+
+
+### Tail shaded
+shade_tail &lt;- norm_dist_plot +
+    stat_function(fun = funcShaded, args = list(lower_bound = 1.75, upper_bound = 10000), geom = &quot;area&quot;, fill = &quot;blue&quot;, alpha = .3) 
+
+shade_tail
+
+
+### Uniform Distribution
+uniform_dist &lt;- ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
+    stat_function(fun = dunif, lwd = 1.2, args = list(-3, 3),geom = &quot;polygon&quot;, col= &quot;black&quot;, fill = &quot;blue&quot;, alpha = 0.3) +
+    scale_y_continuous(limits = c(0, 0.3)) + 
+    theme_light()
+
+uniform_dist
+
+
+### Poisson Distribution
+poisson_dist &lt;- ggplot() + 
+    geom_line(data = transform(data.frame(x=c(0:10)), y=dpois(x, .1)), aes(x, y), stat=&quot;identity&quot;, col = &quot;red&quot;, lwd = 1.2) +
+    geom_line(data = transform(data.frame(x=c(0:10)), y=dpois(x, 3)), aes(x, y), col = &quot;grey&quot;, lwd = 1.2) + 
+    geom_line(data = transform(data.frame(x=c(0:10)), y=dpois(x, 5)), aes(x, y), lwd = 1.2) + 
+  theme_light() 
+
+poisson_dist
+</code></pre>
+<ol start="2">
+<li>Flower Example</li>
+</ol>
+<pre><code class="language-r">library(data.table)
+library(ggplot2)
+
+### Mixed distribution
+flower_data &lt;- as.data.table(iris)
+mixed_distribution &lt;- ggplot(flower_data, aes(x=Petal.Length)) +
+    geom_histogram(bins = 30) 
+
+mixed_distribution
+
+### Plot average
+avg_length &lt;- flower_data[,mean(Petal.Length)]
+
+mixed_distribution + 
+  geom_vline( xintercept = avg_length, lwd = 2, col = &quot;red&quot;) +   
+  geom_label(aes(x = 4, y = 15, label = &quot;Mean = 3.78&quot;), size = 8, fill = &quot;lightyellow&quot;) 
+
+### Split up Species
+group_means &lt;- flower_data[,mean(Petal.Length), by = &quot;Species&quot;]
+
+split_distributions &lt;- ggplot(flower_data, aes(x=Petal.Length, fill = Species)) + 
+  geom_histogram(bins = 30)  + 
+  facet_grid(Species ~ .) + 
+  guides(fill=&quot;none&quot;) + 
+  scale_fill_manual(values=c(&quot;#c78ae4&quot;, &quot;#E69F00&quot;, &quot;#e48a9b&quot;)) +
+  geom_point(data = group_means, mapping = aes(y = 8, x = V1), 
+               size = 20, color = 'red', shape = '|') +
+  geom_label(data = group_means, aes(x = V1, y = 20, label = round(V1,digits =2)), size = 5, fill = &quot;lightyellow&quot;) 
+</code></pre>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  
+
+
+  </body>
+</html>
+

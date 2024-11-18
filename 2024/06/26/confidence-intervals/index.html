@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4321&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.125.4">
+
+
+<title>Confidence Intervals - Summer of Stats</title>
+<meta property="og:title" content="Confidence Intervals - Summer of Stats">
+
+
+  <link href='//localhost:4321/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/Rplot.png"
+         width="60"
+         height="60"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/">Summer of Stats</a></li>
+    
+    <li><a href="/2124/01/01/visual-gallery/">Visual Gallery</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">6 min read</span>
+    
+
+    <h1 class="article-title">Confidence Intervals</h1>
+
+    
+    <span class="article-date">2024-06-26</span>
+    
+
+    <div class="article-content">
+      
+      <h2 id="or-why-you-should-always-prepare-extra-food">(or &ldquo;Why You Should Always Prepare Extra Food&rdquo;)</h2>
+<p>After seeing <a href="https://summerofstats.netlify.app/2024/06/19/sampling/">last week</a> how quickly a small sample of data can arrive at the &ldquo;correct&rdquo; answer, we&rsquo;re probably feeling pretty good!</p>
+<p>But, our sample estimate is just that, an estimate. <strong>And, it&rsquo;s not perfect</strong>.</p>
+<p>In many cases, it&rsquo;s important to know HOW certain we are of that estimate. To do this, we use a confidence interval.</p>
+<h4 id="what-is-a-confidence-interval">What is a Confidence Interval?</h4>
+<p>A confidence interval is the <strong>range of estimates that could be plausible, given your sample</strong>. After all, it makes sense that we&rsquo;d be more confident after 50 observations than we are after seeing only 5.</p>
+<h4 id="a-visual-explanation">A Visual Explanation</h4>
+<p>Recall how sampling allows us to make estimates about a larger population - as we add observations, our sample estimate gradually &ldquo;hones in&rdquo; on the true value (assuming a good random sample):</p>
+<img src="/2024/06/26/confidence-intervals/index_files/figure-html/unnamed-chunk-1-1.gif" width="70%" style="display: block; margin: auto;" />
+<p>The line &ldquo;jitters&rdquo; around, showing that <strong>there is some uncertainty in the estimate</strong>, but this uncertainty gets smaller &amp; smaller as our sample gets bigger.</p>
+<p>If we explicitly plotted out our confidence interval (at 99% confidence), we&rsquo;d see that <strong>our confidence interval becomes tighter</strong> as we add more observations.</p>
+<img src="/2024/06/26/confidence-intervals/index_files/figure-html/unnamed-chunk-2-1.gif" width="70%" style="display: block; margin: auto;" />
+However, the rate of improvement quickly dies off. Pretty soon, each additional data point does very little to increase our confidence. 
+<h4 id="an-alternate-take">An Alternate Take</h4>
+<p>If we held our animation still, and drew out each confidence interval as our sample size increases, it would look a bit like a tornado. Notice how our interval never really &ldquo;closes&rdquo; - there is always some level of uncertainty as to the exact value:</p>
+<img src="/2024/06/26/confidence-intervals/index_files/figure-html/unnamed-chunk-3-1.png" width="100%" style="display: block; margin: auto;" />
+<p>Clearly, the estimate gets better as the sample size increases, but we will <strong>always end up with a range of values we have to consider</strong>, and throwing in more observations won&rsquo;t really do much to fix that.</p>
+<p>And this is a good thing! Our confidence interval prevents us from being overly confident in our single point estimate. It&rsquo;s entirely possible our particular sample slightly over/underestimated, and our confidence band gently reminds us that our answer isn&rsquo;t perfect.</p>
+<hr>
+<h2 id="confidence-intervals-in-daily-life">Confidence Intervals in Daily Life</h2>
+<p>One practical lesson of confidence intervals that you can take away is:</p>
+<blockquote>
+<p><strong>Always prepare for a RANGE of possibilities.</strong></p>
+</blockquote>
+<p>If you&rsquo;ve ever planned a party, you should already be familiar with this idea.</p>
+<h4 id="planning-a-party">Planning a Party</h4>
+<p>Let&rsquo;s say I want to throw a summer cook-out. To ensure there&rsquo;s enough food for everyone, I need to have a solid count of how many people will attend.</p>
+<p>Very likely, when you review your RSVP list, you mentally categorize everyone into &ldquo;Yes&rdquo;/&ldquo;No&rdquo;/&ldquo;Maybe&rdquo;.</p>
+<p>If we only considered the responses we&rsquo;re certain about (&ldquo;Yes&rdquo;), we&rsquo;re very likely to run out of food. Not a good outcome!</p>
+<img src="images/Empty_Hamburger.png" width="60%" style="display: block; margin: auto;" />
+<blockquote>
+<p><em>&ldquo;Well, the hamburgers WERE right here&hellip;&rdquo;</em></p>
+</blockquote>
+<p>Instead, we should consider <strong>a range of possible attendees</strong>. And because it&rsquo;s better to have too much food than too little, it&rsquo;s probably best to assume ALL of our &ldquo;Maybes&rdquo; will attend too, to get the &ldquo;high&rdquo; end of our estimate:</p>
+<img src="/2024/06/26/confidence-intervals/index_files/figure-html/unnamed-chunk-5-1.png" width="60%" style="display: block; margin: auto;" />
+<p>While it didn&rsquo;t require a ton of complex math to arrive at it, <strong>our range did successfully inform us on how many attendees to expect</strong>. And, ensuring everyone is fed and has a good time is always a good thing!</p>
+<h2 id="summing-up">Summing Up</h2>
+<p>Even when you&rsquo;ve done your homework, you&rsquo;ll still have unknowns you&rsquo;ll need to contend with.</p>
+<p>People tend to forget that <strong>everything has a range of possibilities</strong>. This mindset can easily set you up for failure - especially when you&rsquo;re hosting a party!</p>
+<p>Next week, we&rsquo;ll use the idea of constructing a range of likely values to test our assumptions. To do this, we&rsquo;ll introduce Hypothesis Testing. See you then!</p>
+<p>===========================</p>
+<p>R code used to generate plots:</p>
+<ol>
+<li>Confidence Interval (Animated and non-animated)</li>
+</ol>
+<pre><code class="language-r">library(data.table)
+library(ggplot2)
+library(gganimate)
+set.seed(060124)
+
+### Generate 10000 sample height records, using mean = 178.4, std = 7.59
+simulated_pop &lt;- cbind(1:10000, rnorm(10000, 178.4, 7.59)) |&gt; as.data.table()
+simulated_mean &lt;- simulated_pop[,mean(V2)] |&gt; as.data.table()
+
+### Pull a random sample
+good_sample &lt;- simulated_pop[sample(.N,100)]
+
+# Add calculations for cumulative mean
+good_sample &lt;- good_sample[,cum_V2 := cumsum(V2)]
+good_sample &lt;- good_sample[,Row_Index := .I]
+good_sample &lt;- good_sample[,cum_avg_V2 := cum_V2/Row_Index]
+good_sample &lt;- good_sample[,cum_sd := vapply(seq_along(V2), function(i) sd(V2[1:i]), 1)]
+good_sample &lt;- good_sample[,conf_upper:= cum_avg_V2 + 2.58 * cum_sd/sqrt(Row_Index)]
+good_sample &lt;- good_sample[,conf_lower:= cum_avg_V2 - 2.58 * cum_sd/sqrt(Row_Index)]
+
+
+### Plot confidence interval
+good_sample_convergence &lt;- ggplot(good_sample, aes(x=V2)) + 
+  geom_histogram(data = simulated_pop, aes(x=V2), fill=&quot;grey&quot;, position = &quot;identity&quot;) + 
+    theme_minimal() + 
+      theme(axis.title.y=element_blank(),
+            axis.title.x=element_blank(),
+            axis.ticks.x=element_blank(),
+            plot.title = element_text(size = 20, face = &quot;bold&quot;)) +
+    ggtitle(&quot;Confidence Interval of Estimate&quot;) + 
+    geom_vline( xintercept = simulated_pop[,mean(V2)], lwd = 1, col = &quot;darkred&quot;)  +
+  geom_label(data = simulated_mean, aes(x = V1, y = 1000, label = paste0(round(V1, digits = 2), &quot; cm&quot;) ), size = 5, fill = &quot;lightyellow&quot;) +
+    geom_segment(data = good_sample, aes(x = conf_lower, xend = conf_upper,
+                   y = 810, yend = 810), size = 1.4) +
+  geom_point(data = good_sample, aes(x = conf_lower, y = 810), shape = &quot;|&quot;, size = 7) +
+  geom_point(data = good_sample, aes(x = conf_upper, y = 810), shape = &quot;|&quot;, size = 7) +
+  #geom_point(data = good_sample, mapping = aes(y = 810, x = cum_avg_V2),                size = 20, color = 'red', shape = '|', alpha = .4) +
+      geom_label(data = good_sample, aes(x = 160, y = 800, label = paste(&quot;Sample Size: &quot;, Row_Index)), size = 8, fill = &quot;white&quot;) +
+      geom_text(data = simulated_mean, aes(x = 200, y = -25, label = &quot;Summer of Stats&quot;), col=&quot;grey80&quot;, size = 4) +
+ transition_reveal(Row_Index, keep_last = FALSE) 
+
+animate(good_sample_convergence, duration = 8,end_pause = 30)
+
+### Tornado Plot
+tornado_plot &lt;- ggplot(good_sample, aes(x=V2)) + 
+    ggtitle(&quot;Confidence Interval of Estimate&quot;) + 
+    geom_vline( xintercept = simulated_pop[,mean(V2)], lwd = 1, col = &quot;darkred&quot;)  +
+    geom_segment(data = good_sample, aes(x = conf_lower, xend = conf_upper,
+                   y = Row_Index, yend = Row_Index)) +
+  geom_point(data = good_sample, aes(x = conf_lower, y = Row_Index), shape = &quot;|&quot;, size = 2) +
+  geom_point(data = good_sample, aes(x = conf_upper, y = Row_Index), shape = &quot;|&quot;, size = 2) +
+  #geom_point(data = good_sample, mapping = aes(y = Row_Index, x = cum_avg_V2),                size = 1.5, color = 'red', shape = '|', alpha = .9) +
+      geom_text(data = simulated_mean, aes(x = 200, y = 103, label = &quot;Summer of Stats&quot;), col=&quot;grey80&quot;, size = 3) + 
+  coord_cartesian(xlim = c(155, 205)) + 
+  scale_y_reverse() + 
+  theme_minimal() + 
+  theme(axis.ticks.x=element_blank(),
+            plot.title = element_text(size = 14, face = &quot;bold&quot;)) +
+  ylab(&quot;Sample Size&quot;) +
+  xlab(&quot;Height (cm)&quot;)
+
+tornado_plot
+</code></pre>
+<ol start="2">
+<li>RSVP Range</li>
+</ol>
+<pre><code class="language-r">library(data.table)
+library(ggplot2)
+
+### Count our RSVPs
+rsvp_counts &lt;- cbind(12, 5, 7)  |&gt; as.data.table()
+setnames(rsvp_counts, c(&quot;Yes&quot;, &quot;No&quot;, &quot;Maybe&quot;))
+
+### Plot confidence interval
+rsvp_range &lt;- ggplot(rsvp_counts, aes(x=V2)) + 
+    geom_segment(data = rsvp_counts, aes(x = Yes, xend = Yes + Maybe,
+                   y = 1, yend = 1), lwd = 2) +
+    geom_point(data = rsvp_counts, aes(x = Yes, y = 1), shape = &quot;|&quot;, size = 12) +
+    geom_point(data = rsvp_counts, aes(x = Yes + Maybe, y = 1), shape = &quot;|&quot;, size = 12) +
+    geom_point(data = rsvp_counts, aes(x = 17, y = 1.3), shape = &quot;↓&quot;, size = 25, color = &quot;red&quot;) +
+      geom_text(data = rsvp_counts, aes(x = 12, y = 0.75), label = &quot;12&quot;,size = 8) +
+      geom_text(data = rsvp_counts, aes(x = 19, y = 0.75), label = &quot;19&quot;, size = 8) +
+      geom_text(data = rsvp_counts, aes(x = 12, y = 0.5), label = &quot;Yes Only&quot;, size = 5) +
+      geom_text(data = rsvp_counts, aes(x = 19, y = 0.5), label = &quot;Yes + Maybe&quot;, size = 5) +
+      geom_text(data = rsvp_counts, aes(x = 17, y = 0.8), label = &quot;17&quot;, color = &quot;red&quot;, size = 15) +
+      geom_text(data = rsvp_counts, aes(x = 17, y = 1.6), label = &quot;Actual Guest Count&quot;,size = 6, color = &quot;red&quot;) +
+  coord_cartesian(ylim = c(0,2), xlim = c(11.6, 19.4)) + 
+    theme_void()
+
+rsvp_range
+</code></pre>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  
+
+
+  </body>
+</html>
+

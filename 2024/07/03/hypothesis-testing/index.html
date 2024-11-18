@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4321&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.125.4">
+
+
+<title>Hypothesis Testing - Summer of Stats</title>
+<meta property="og:title" content="Hypothesis Testing - Summer of Stats">
+
+
+  <link href='//localhost:4321/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/Rplot.png"
+         width="60"
+         height="60"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/">Summer of Stats</a></li>
+    
+    <li><a href="/2124/01/01/visual-gallery/">Visual Gallery</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">6 min read</span>
+    
+
+    <h1 class="article-title">Hypothesis Testing</h1>
+
+    
+    <span class="article-date">2024-07-03</span>
+    
+
+    <div class="article-content">
+      
+      <h2 id="or-are-these-eggs-still-good">(or &ldquo;Are These Eggs Still Good?&rdquo;)</h2>
+<p>When we collect data, we are usually doing it to help make a decision.</p>
+<p>For example: <em>Is our machine filling each milk bottle consistently?</em></p>
+<img src="images/bottles.png" width="70%" style="display: block; margin: auto;" />
+<p>As we saw last week, the more data we collect, the more confident we generally feel about what we observe. But, how do we KNOW when we have enough evidence to draw a solid conclusion?</p>
+<p>To tackle this problem, we use a technique called hypothesis testing.</p>
+<h4 id="what-is-a-hypothesis-test">What is A Hypothesis Test?</h4>
+<p>Hypothesis testing is <strong>a process that allows us to test our assumptions about the world</strong>.</p>
+<p>There&rsquo;s some math involved, but the high-level steps are pretty simple:</p>
+<ol>
+<li>We explicity state how we think things work (the null hypothesis)</li>
+<li>We collect some data (our sample)</li>
+<li>We calculate whether our result is different enough to contradict our null hypothesis (the hypothesis test)</li>
+</ol>
+<p>To introduce this idea, let&rsquo;s start with a simple question:</p>
+<h4 id="are-basketball-players-taller">Are Basketball Players Taller?</h4>
+<p>In an earlier post on <a href="https://summerofstats.netlify.app/2024/06/19/sampling/">sampling</a>, we saw that our sample of basketball players tended to be taller than the average male.</p>
+<p>But, is this difference significant enough to <strong>conclude that basketball players (as a group) are shorter/taller than normal</strong>? Let&rsquo;s measure heights from 100 people in each group, and compare the <a href="https://summerofstats.netlify.app/2024/06/26/confidence-intervals/">confidence intervals</a>:</p>
+<img src="/2024/07/03/hypothesis-testing/index_files/figure-html/unnamed-chunk-2-1.png" width="100%" style="display: block; margin: auto;" />
+<p>Initially, the height range of the 2 groups overlap, meaning that there is no strong evidence of a difference. But, as we add more observations we quickly see that the likely ranges for each group split off from each other.</p>
+<p>By the time we&rsquo;ve seen 100 people from each group, <strong>we are pretty sure the average heights of each group ARE different</strong>.</p>
+<h4 id="testing-our-hypothesis">Testing Our Hypothesis</h4>
+<p>Let&rsquo;s test our hypothesis formally, just to be sure. We will be using <a href="https://www.statology.org/welchs-t-test/">Welch&rsquo;s t-test</a>, since we have to <strong>estimate</strong> BOTH groups&rsquo; heights (average male and basketball player) with a sample of data.</p>
+<p>To run the test in R, we just type:</p>
+<pre><code class="language-r">t.test(sample1, sample2)
+</code></pre>
+<h4 id="the-result">The Result</h4>
+<p>Our p-value is &lt; 0.01, so <strong>we have strong evidence that there IS a difference between our groups</strong>.</p>
+<pre><code>## 
+## 	Welch Two Sample t-test
+## 
+## data:  good_sample$V2 and bball_sample$V2
+## t = -14.397, df = 128.59, p-value &lt; 2.2e-16
+## alternative hypothesis: true difference in means is not equal to 0
+## 99 percent confidence interval:
+##  -15.27154 -10.57722
+## sample estimates:
+## mean of x mean of y 
+##  178.5688  191.4932
+</code></pre>
+<p>In fact, the confidence interval provided by the result suggests that the average basketball player could be anywhere from 4-6 inches taller than the average person.</p>
+<hr>
+<h2 id="hypothesis-testing-in-daily-life">Hypothesis Testing in Daily Life</h2>
+<p>One practical lesson of hypothesis testing that you can take away is:</p>
+<blockquote>
+<p><strong>Anyone can test a hypothesis.</strong></p>
+</blockquote>
+<p>Initially, this topic can be intimidating because there are <a href="https://en.wikipedia.org/wiki/List_of_statistical_tests">so many statistical tests</a> available. But, with some practice, you&rsquo;ll start to see hypothesis testing everywhere.</p>
+<h4 id="statistics-at-the-breakfast-table">Statistics At the Breakfast Table</h4>
+<p>We&rsquo;ve all been in this situation: You open the fridge and see that your eggs are 2 days past the expiration date. So, what do you do next?</p>
+<p><strong>You perform a hypothesis test, of course!</strong></p>
+<p>We&rsquo;re hungry and we want to know: have these eggs indeed gone bad?</p>
+<p>To perform our test, <a href="https://www.bhg.com/recipes/how-to/food-storage-safety/how-to-tell-if-eggs-bad/">we&rsquo;ll need a bowl of tap water</a>.</p>
+<ul>
+<li>If our egg sinks, it&rsquo;s still good!</li>
+<li>If our egg floats, it&rsquo;s time to toss it&hellip;</li>
+</ul>
+<img src="images/egg_test.png" width="70%" style="display: block; margin: auto;" />
+<p>Unfortunately, our egg floated, which means that it has gone bad. <strong>But what about the rest in our carton?</strong></p>
+<p>We could test all 12 eggs individually OR we could use hypothesis testing to inform our choice.</p>
+<p>Our null hypothesis is that <strong>none of the eggs are expired</strong> (ie. the proportion of bad eggs = 0%). However, by sampling an egg from the cart, we have evidence there are &ldquo;bad&rdquo; eggs in the bunch.</p>
+<p>To run the hypothesis test in R, we just type:</p>
+<pre><code class="language-r">binom.test(x=1,n=1,p=0)
+</code></pre>
+<p>which confirms our intuition that our null hypothesis is likely untrue:</p>
+<pre><code>## 
+## 	Exact binomial test
+## 
+## data:  1 and 1
+## number of successes = 1, number of trials = 1, p-value &lt; 2.2e-16
+## alternative hypothesis: true probability of success is not equal to 0
+## 95 percent confidence interval:
+##  0.025 1.000
+## sample estimates:
+## probability of success 
+##                      1
+</code></pre>
+<p>Therefore, we can conclude that it is probably best to toss out our carton of eggs.</p>
+<p>Looks like it&rsquo;s bagels for breakfast today!</p>
+<h2 id="summing-up">Summing Up</h2>
+<p>Hypothesis tests provide a great tool for making decisions in the face of uncertainty. <strong>And nearly everything in life has at least some unknowns.</strong></p>
+<p>By explicity modeling out our question and collecting data, a hypothesis test allows us to assess things like whether <a href="https://www.scientificamerican.com/article/fact-or-fiction-the-5-second-rule-for-dropped-food/">the 5-second rule</a> is valid (it&rsquo;s not), if <a href="https://health.clevelandclinic.org/is-cracking-your-knuckles-bad-for-you">cracking your knuckles</a> leads to arthritis (it doesn&rsquo;t) and even <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9332820/">if yawns truly are contagious</a> (they are!).</p>
+<p>Next week, we&rsquo;ll shift to discussing <strong>relationships between variables</strong>, using correlation. Get ready to find some patterns!</p>
+<p>===========================</p>
+<p>R code used to generate plots:</p>
+<ol>
+<li>Confidence Intervals (Avg vs. Bball)</li>
+</ol>
+<pre><code class="language-r">library(data.table)
+library(ggplot2)
+library(ggtext)
+set.seed(060124)
+
+### Generate 10000 sample height records, using mean = 178.4, std = 7.59
+simulated_pop &lt;- cbind(1:10000, rnorm(10000, 178.4, 7.59)) |&gt; as.data.table()
+simulated_mean &lt;- simulated_pop[,mean(V2)] |&gt; as.data.table()
+
+### Pull a random sample
+good_sample &lt;- simulated_pop[sample(.N,100)]
+bball_sample &lt;- simulated_pop[V2 &gt; quantile(simulated_pop$V2, probs = .90)][sample(.N,100)]
+
+
+# Add calculations for cumulative mean
+good_sample &lt;- good_sample[,cum_V2 := cumsum(V2)]
+good_sample &lt;- good_sample[,Row_Index := .I]
+good_sample &lt;- good_sample[,cum_avg_V2 := cum_V2/Row_Index]
+good_sample &lt;- good_sample[,cum_sd := vapply(seq_along(V2), function(i) sd(V2[1:i]), 1)]
+good_sample &lt;- good_sample[,conf_upper:= cum_avg_V2 + 2.58 * cum_sd/sqrt(Row_Index)]
+good_sample &lt;- good_sample[,conf_lower:= cum_avg_V2 - 2.58 * cum_sd/sqrt(Row_Index)]
+
+# Add calculations for cumulative mean
+bball_sample &lt;- bball_sample[,cum_V2 := cumsum(V2)]
+bball_sample &lt;- bball_sample[,Row_Index := .I]
+bball_sample &lt;- bball_sample[,cum_avg_V2 := cum_V2/Row_Index]
+bball_sample &lt;- bball_sample[,cum_sd := vapply(seq_along(V2), function(i) sd(V2[1:i]), 1)]
+bball_sample &lt;- bball_sample[,conf_upper:= cum_avg_V2 + 2.58 * cum_sd/sqrt(Row_Index)]
+bball_sample &lt;- bball_sample[,conf_lower:= cum_avg_V2 - 2.58 * cum_sd/sqrt(Row_Index)]
+
+### Plot confidence intervals
+interval_comparison &lt;- ggplot(good_sample, aes(x=V2)) + 
+    labs(title = &quot;Confidence Interval (Average Male vs. &lt;span style='color: orange;'&gt;Basketball Player&lt;/span&gt;)&quot;) + 
+  # Confidence Interval - Avg
+  geom_segment(data = good_sample, aes(x = conf_lower, xend = conf_upper,
+                   y = Row_Index, yend = Row_Index)) +
+  geom_point(data = good_sample, aes(x = conf_lower, y = Row_Index), shape = &quot;|&quot;, size = 2) +
+  geom_point(data = good_sample, aes(x = conf_upper, y = Row_Index), shape = &quot;|&quot;, size = 2) +
+      geom_text(data = simulated_mean, aes(x = 178, y = 105, label = &quot;Average Male&quot;), col=&quot;black&quot;, size = 4) + 
+  # Confidence Interval - Basketball
+  geom_segment(data = bball_sample, aes(x = conf_lower, xend = conf_upper,
+                   y = Row_Index, yend = Row_Index, col=&quot;orange&quot;)) +
+  geom_point(data = bball_sample, aes(x = conf_lower, y = Row_Index), shape = &quot;|&quot;, size = 2, col=&quot;orange&quot;) +
+  geom_point(data = bball_sample, aes(x = conf_upper, y = Row_Index), shape = &quot;|&quot;, size = 2, col=&quot;orange&quot;) +
+      geom_text(data = simulated_mean, aes(x = 192, y = 105, label = &quot;Bball Player&quot;), col=&quot;darkorange&quot;, size = 4) + 
+  # Annotations &amp; scaling
+  geom_text(data = simulated_mean, aes(x = 197.5, y = 103, label = &quot;Summer of Stats&quot;), col=&quot;grey80&quot;, size = 3) + 
+  coord_cartesian(xlim = c(170, 200)) + 
+  scale_y_reverse() + 
+  theme_minimal() + 
+  theme(axis.ticks.x=element_blank(),
+        plot.title = element_markdown(hjust = 0.5,face=&quot;bold&quot;, size = 14),             legend.position=&quot;none&quot;) +
+  ylab(&quot;Sample Size&quot;) +
+  xlab(&quot;Height (cm)&quot;)
+
+
+interval_comparison
+</code></pre>
+<ol start="2">
+<li>Welch&rsquo;s t-test</li>
+</ol>
+<pre><code class="language-r">library(data.table)
+set.seed(060124)
+
+### Generate 10000 sample height records, using mean = 178.4, std = 7.59
+simulated_pop &lt;- cbind(1:10000, rnorm(10000, 178.4, 7.59)) |&gt; as.data.table()
+simulated_mean &lt;- simulated_pop[,mean(V2)] |&gt; as.data.table()
+
+### Pull a random sample
+good_sample &lt;- simulated_pop[sample(.N,100)]
+bball_sample &lt;- simulated_pop[V2 &gt; quantile(simulated_pop$V2, probs = .90)][sample(.N,100)]
+
+t.test(good_sample$V2, bball_sample$V2, conf.level = .99)
+</code></pre>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  
+
+
+  </body>
+</html>
+

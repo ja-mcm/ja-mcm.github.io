@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4321&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.125.4">
+
+
+<title>Nonparametric Statistics - Summer of Stats</title>
+<meta property="og:title" content="Nonparametric Statistics - Summer of Stats">
+
+
+  <link href='//localhost:4321/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/Rplot.png"
+         width="60"
+         height="60"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/">Summer of Stats</a></li>
+    
+    <li><a href="/2124/01/01/visual-gallery/">Visual Gallery</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">5 min read</span>
+    
+
+    <h1 class="article-title">Nonparametric Statistics</h1>
+
+    
+    <span class="article-date">2024-08-07</span>
+    
+
+    <div class="article-content">
+      
+      <script src="/2024/08/07/nonparametric-statistics/index_files/kePrint/kePrint.js"></script>
+<link href="/2024/08/07/nonparametric-statistics/index_files/lightable/lightable.css" rel="stylesheet" />
+<link href="/2024/08/07/nonparametric-statistics/index_files/bsTable/bootstrapTable.min.css" rel="stylesheet" />
+<script src="/2024/08/07/nonparametric-statistics/index_files/bsTable/bootstrapTable.js"></script>
+<script src="/2024/08/07/nonparametric-statistics/index_files/kePrint/kePrint.js"></script>
+<link href="/2024/08/07/nonparametric-statistics/index_files/lightable/lightable.css" rel="stylesheet" />
+<link href="/2024/08/07/nonparametric-statistics/index_files/bsTable/bootstrapTable.min.css" rel="stylesheet" />
+<script src="/2024/08/07/nonparametric-statistics/index_files/bsTable/bootstrapTable.js"></script>
+<h2 id="or-why-it-pays-to-be-a-communications-major">(or &ldquo;Why It Pays to be a Communications Major&rdquo;)</h2>
+<p>Nearly every topic we&rsquo;ve covered so far has relied on a BIG assumption: that our data looks <strong>somewhat</strong> like this:</p>
+<img src="/2024/08/07/nonparametric-statistics/index_files/figure-html/unnamed-chunk-1-1.png" width="50%" style="display: block; margin: auto;" />
+<p>But what if your data doesn&rsquo;t fit a distribution nicely? What if your data is very skewed, irregular, or has big outliers?</p>
+<p>Time to bring in nonparametric statistics!</p>
+<h4 id="what-is-a-nonparametric-statistic">What is a Nonparametric Statistic?</h4>
+<p>In short, a nonparametric statistic is <strong>a more robust option for analyzing data</strong>. It achieves this by essentially ignoring the actual values in your data, and converting each to a rank.</p>
+<p>This approach <strong>shines when we have highly skewed data and/or outliers</strong>, since it produces results that aren&rsquo;t swayed by extreme or unusual values.</p>
+<p>As we&rsquo;ll see below, this property can be very useful.</p>
+<h4 id="mean-vs-median">Mean vs. Median</h4>
+<p>A nonparametric statistic that <strong>all of us are familiar with is the median</strong>.</p>
+<p>Its parametric cousin (the mean) is more widely used, but the median can provide a more accurate picture when our data is skewed, since is not influenced by extreme outliers.</p>
+<p>Let&rsquo;s see this in action!</p>
+<p>Notice how much the mean &ldquo;jumps&rdquo; in response to an outlier. Meanwhile, the median doesn&rsquo;t even flinch:</p>
+<img src="/2024/08/07/nonparametric-statistics/index_files/figure-html/unnamed-chunk-2-1.gif" width="75%" style="display: block; margin: auto;" />
+<p>In this case, we see how the mean overestimates where the &ldquo;center&rdquo; of our data is.</p>
+<h4 id="statistics-for-larger-sample-sizes">Statistics for Larger Sample Sizes</h4>
+<p>Luckily, when we have more data points, the effects of an extreme outlier can be mitigated <strong>without</strong> having to use a nonparametric approach.</p>
+<p>Here, we see that after just 30 observations, the outlier&rsquo;s effect on the mean is very small:</p>
+<img src="/2024/08/07/nonparametric-statistics/index_files/figure-html/unnamed-chunk-3-1.gif" width="75%" style="display: block; margin: auto;" />
+<p>As a result, nonparametric statistics are <strong>most valuable when dealing with small sample sizes and large outliers.</strong></p>
+<h4 id="other-uses-of-nonparametric-statistics">Other Uses of Nonparametric Statistics</h4>
+<p>There are corresponding nonparametric approaches to nearly everything we&rsquo;ve discussed so far:</p>
+<ul>
+<li>With highly skewed data, traditional <strong>hypothesis tests</strong> can become problematic.</li>
+<li>Outliers are a clear problem for <strong>linear regression</strong>, and can easily ruin your model.</li>
+<li>Calculating <strong>confidence intervals</strong> from irregular data is also sticky.</li>
+</ul>
+<hr>
+<h4 id="further-reading">Further reading</h4>
+<p>Because there is far too much to cover on each of these to fit into a single post, here are some interesting reads on each:</p>
+<blockquote>
+<p><strong>Hypothesis Testing:</strong> <em><a href="https://online.stat.psu.edu/stat500/book/export/html/480">This short lesson</a> has a great example of how using a nonparametric hypothesis test can prevent a biased result.</em></p>
+</blockquote>
+<blockquote>
+<p><strong>Regression:</strong> <em>Robust regression methods exist, such as the ones outlined in <a href="https://developer.nvidia.com/blog/dealing-with-outliers-using-three-robust-linear-regression-models/">this quick guide</a>.</em></p>
+</blockquote>
+<blockquote>
+<p><strong>Confidence Intervals:</strong> <em>Check out this <a href="https://www.r-bloggers.com/2021/11/ditch-p-values-use-bootstrap-confidence-intervals-instead/">eye-opening article</a> on how to use bootstrap resampling to generate reasonable confidence intervals, even with skewed data.</em></p>
+</blockquote>
+<hr>
+<h2 id="nonparametric-statistics-in-daily-life">Nonparametric Statistics in Daily Life</h2>
+<p>One practical lesson of nonparametric statistics that you can take away is:</p>
+<blockquote>
+<p><strong>Be wary of averages.</strong></p>
+</blockquote>
+<p>Everyone knows the old quote about <em>&ldquo;lies, damned lies, and statistics&rdquo;</em>. Well, <strong>99% of those lies are told by averages</strong>.</p>
+<p>Let&rsquo;s pick one of these apart, using nonparametric statistics&hellip;</p>
+<h4 id="when-averages-lie">When Averages Lie</h4>
+<p>Back in undergrad, I learned about lying with statistics from a college proclaiming the &ldquo;high average salary&rdquo; of their communications majors.</p>
+<p>However, inspecting further, there was something a bit fishy about their claims:</p>
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Major </th>
+   <th style="text-align:left;"> Average Starting Salary </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Chemical Engineering </td>
+   <td style="text-align:left;"> $66,000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;font-weight: bold;"> Communications </td>
+   <td style="text-align:left;font-weight: bold;"> $65,000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Computer Science </td>
+   <td style="text-align:left;"> $55,000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Nursing </td>
+   <td style="text-align:left;"> $54,000 </td>
+  </tr>
+</tbody>
+</table>
+<p>Seems a BIT high, doesn&rsquo;t it?</p>
+<p>If the college was being a bit more honest, they would&rsquo;ve provided the MEDIAN salary, which unfortunately (for them) looked much less impressive.</p>
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Major </th>
+   <th style="text-align:left;"> MEDIAN Starting Salary </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Math </td>
+   <td style="text-align:left;"> $45,000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Geology </td>
+   <td style="text-align:left;"> $44,000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;font-weight: bold;"> Communications </td>
+   <td style="text-align:left;font-weight: bold;"> $43,000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Agriculture </td>
+   <td style="text-align:left;"> $42,000 </td>
+  </tr>
+</tbody>
+</table>
+<p>In reality, this specific college had an NBA star as an alumnus. That one person&rsquo;s extreme salary pulled up the entire average for Communications majors, despite <strong>not even being employed within the area covered by his degree</strong>.</p>
+<h4 id="saved-by-the-median">Saved by the Median</h4>
+<p>Using the median of this data set immediately resolves the issue. No matter if our Pro Athlete made $10 million or $10 trillion dollars, the median salary for his college program would remain unchanged.</p>
+<p>With averages, we can easily boost the result by introducing a single outsized value. <strong>The only way to &ldquo;boost&rdquo; the median is by raising the salaries of a large cohort of recent graduates</strong>. And THAT kind of gaming I can live with&hellip;</p>
+<h2 id="summing-up">Summing Up</h2>
+<p>Outliers can pop up in any dataset, and cause real problems for accurately summarizing and analyzing data.</p>
+<p>As a more conservative option, <strong>nonparametric analyses will handle these situations more gracefully.</strong> As we saw with salary statistics, one exceptional data point can completely alter the story when we use traditional statistics.</p>
+<p>However, there is no free lunch - nonparametric approaches also generally have less statistical power than approaches we&rsquo;ve covered to date. So, unless there&rsquo;s a compelling data issue driving you, <strong>you are generally safe to stick with the normal (parametric) approaches we&rsquo;ve covered</strong>.</p>
+<p>Next week, we will be discussing yet another approach to analyzing data: Bayesian statistics.</p>
+<p>Instead of avoiding assumptions (like nonparametric statistics), Bayesian statistics will actually <strong>require</strong> us to make assumptions before we even look at the data. The result is a totally new way to look at problems.</p>
+<p>===========================</p>
+<p>R code used to generate plots:</p>
+<pre><code class="language-r">library(data.table)
+library(ggplot2)
+library(gganimate)
+set.seed(060124)
+
+right_skew &lt;- rnorm(5, 10, 10) |&gt; append(200) |&gt; append(rnorm(4, 10, 10)) |&gt; as.data.table() 
+right_skew[,Indx := .I]
+right_skew[,c_mean:=cumsum(V1)/Indx]
+right_skew[,c_median := vapply(seq_along(V1), function(i) median(V1[1:i]), 1)]
+
+small_n &lt;- ggplot(right_skew, aes(x=Indx, y=V1)) + 
+  geom_line() +
+  geom_point() +
+  geom_text(aes(y=right_skew$c_mean + 4, x = 12, label = &quot;--MEAN--&quot;), col = &quot;red&quot;) +
+  geom_text(aes(y=right_skew$c_median + 4, x = 14, label = &quot;--MEDIAN--&quot;), col = &quot;black&quot;) +
+  xlab(&quot;x&quot;) +
+  ylab(&quot;y&quot;) +
+  geom_text(aes(x = 13,
+                y = -5,
+                label = &quot;Summer of Stats&quot;), col=&quot;grey80&quot;, size = 3) +
+   transition_reveal(Indx, keep_last = TRUE) 
+
+animate(small_n, duration = 6, renderer = gifski_renderer(loop = T))
+
+extra_obs &lt;- rnorm(5, 10, 10) |&gt; append(200) |&gt; append(rnorm(24, 10, 10)) |&gt; as.data.table() 
+extra_obs[,Indx := .I]
+extra_obs[,c_mean:=cumsum(V1)/Indx]
+extra_obs[,c_median := vapply(seq_along(V1), function(i) median(V1[1:i]), 1)]
+
+large_n &lt;- ggplot(extra_obs, aes(x=Indx, y=V1)) + 
+  geom_line() +
+  geom_point() +
+  geom_text(aes(y=extra_obs$c_mean + 4, x = 35, label = &quot;--MEAN--&quot;), col = &quot;red&quot;) +
+  geom_text(aes(y=extra_obs$c_median + 4, x = 41, label = &quot;--MEDIAN--&quot;), col = &quot;black&quot;) +
+  xlab(&quot;x&quot;) +
+  ylab(&quot;y&quot;) +
+  geom_text(aes(x = 38,
+                y = -5,
+                label = &quot;Summer of Stats&quot;), col=&quot;grey80&quot;, size = 3) +
+   transition_reveal(Indx, keep_last = TRUE) 
+
+animate(large_n, duration = 12, renderer = gifski_renderer(loop = T))
+</code></pre>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  
+
+
+  </body>
+</html>
+

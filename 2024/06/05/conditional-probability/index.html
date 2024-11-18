@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4321&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.125.4">
+
+
+<title>Conditional Probability - Summer of Stats</title>
+<meta property="og:title" content="Conditional Probability - Summer of Stats">
+
+
+  <link href='//localhost:4321/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/Rplot.png"
+         width="60"
+         height="60"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/">Summer of Stats</a></li>
+    
+    <li><a href="/2124/01/01/visual-gallery/">Visual Gallery</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">5 min read</span>
+    
+
+    <h1 class="article-title">Conditional Probability</h1>
+
+    
+    <span class="article-date">2024-06-05</span>
+    
+
+    <div class="article-content">
+      
+      <h2 id="or-why-do-my-pipes-keep-bursting">(or &ldquo;Why Do My Pipes Keep Bursting?&rdquo;)</h2>
+<p>Last week, we covered how we can use probability to determine what is likely to happen.</p>
+<p>However, things become much more interesting once you start adding details to help improve your estimate. This is what we are doing when we assess a <strong>conditional probability</strong>.</p>
+<h4 id="what-is-conditional-probability">What is Conditional Probability?</h4>
+<p>The core idea behind conditional probability is that <strong>certain conditions can make an outcome more (or less) probable</strong>.</p>
+<p>For example:</p>
+<ul>
+<li>You are more likely to crash your car (outcome) IF you are using your cell phone (condition).</li>
+<li>You are much less likely to experience a hurricane (outcome) IF you live in the Midwest (condition).</li>
+<li>And so on&hellip;</li>
+</ul>
+<h4 id="specifying-a-conditional-probability">Specifying a Conditional Probability</h4>
+<p>Adding conditions allows us to assess our probability more precisely.</p>
+<blockquote>
+<p>&ldquo;The probability of a crash happening, <strong>given use of a cell phone while driving</strong>, is equal to ______&rdquo;</p>
+</blockquote>
+<p>We represent this idea using the following notation:</p>
+<p>$$
+Pr(Crash | Using Cellphone) = &hellip;.
+$$</p>
+<p>If we know someone likes to check Instagram on their way to work, this conditional probability would give a better estimate of their true risk of a car crash:</p>
+<img src="/2024/06/05/conditional-probability/index_files/figure-html/unnamed-chunk-1-1.png" width="50%" style="display: block; margin: auto;" />
+<p>*<em>(based on data from AAA)</em></p>
+<p>The lesson here? For everyone&rsquo;s sake, please save your Story updates for later!</p>
+<hr>
+<h2 id="conditional-probability-in-daily-life">Conditional Probability in Daily Life</h2>
+<p>One practical lesson of conditional probability that you can take away is:</p>
+<blockquote>
+<p><strong>If something has failed in the past, pay extra attention to it</strong>.</p>
+</blockquote>
+<p>Case-in point:
+Near my house, there is a small (~50 foot) section of road that has been torn up &amp; re-paved a total of FIVE times. The reason is that the water pipes under this road burst <strong>repeatedly</strong>.</p>
+<p><em>(side note: I like to joke that this is the &ldquo;best section of road in Cincinnati&rdquo;, since it&rsquo;s been patched and re-paved so many times)</em></p>
+<p>Normally, we wouldn&rsquo;t expect a single section of pipe would break more than once. Pipe breakages (if they were random) should look like this:</p>
+<img src="/2024/06/05/conditional-probability/index_files/figure-html/unnamed-chunk-2-1.gif" width="50%" style="display: block; margin: auto;" />
+<p>But, our experience looks like this:</p>
+<img src="/2024/06/05/conditional-probability/index_files/figure-html/unnamed-chunk-3-1.gif" width="50%" style="display: block; margin: auto;" />
+<p>What&rsquo;s likely happening here is that this problematic section of pipe has something DIFFERENT about it.</p>
+<h3 id="digging-deeper">Digging deeper&hellip;</h3>
+<p>We might decide to dig up this section of pipe (again), to figure out what&rsquo;s going on. Upon inspection, we find that these pipes are not buried as deeply as they should be, which makes this section of pipe much more likely to burst during a cold snap.</p>
+<p>Considering this as a conditional probability problem:</p>
+<p>$$
+P(burst|normal depth) = 0.0001
+$$</p>
+<p>$$
+P(burst|shallow depth) = 0.1
+$$</p>
+<p>This framing clearly shows us WHY our shallow section of pipe is bursting much more often &mdash; the probability is 1000x higher, given its lack of protection from the elements. We now have our explanation for this odd cluster of failures in 1 spot.</p>
+<p>Better yet, we also now have a simple model for <strong>predicting</strong> future issues - just map out the shallow sections of pipe:</p>
+<img src="/2024/06/05/conditional-probability/index_files/figure-html/unnamed-chunk-4-1.png" width="50%" style="display: block; margin: auto;" />
+<h2 id="summing-up">Summing Up</h2>
+<p>Conditional probability tells us it&rsquo;s probably a good idea to take an extra look when you&rsquo;ve experienced a problem.</p>
+<p>While it&rsquo;s not guaranteed you&rsquo;ll find something odd, there is a chance that SOMETHING could be increasing the likelihood of a failure (such as pipes that aren&rsquo;t buried deep enough).</p>
+<p>If left unaddressed, you may find yourself running into repeated problems, and wondering why you always seem to have such bad luck. In reality, it&rsquo;s not your luck that is to blame, but conditional probability!</p>
+<p>===========================</p>
+<p>R code used to generate plots:</p>
+<ol>
+<li>Conditional Risk (Instagram)</li>
+</ol>
+<pre><code class="language-r">library(data.table)
+library(ggplot2)
+
+### Accident statistics courtesy of AAA
+# A normal driver is expected to have 1 crash every 18 years
+# Cell phone use increases relative risk by 1.83
+crash_odds &lt;- as.data.table(cbind(
+                              c(&quot;Overall&quot;, &quot;Using Cell&quot;),
+                              c(1/18, 1/18 * 1.83)))
+setnames(crash_odds, c(&quot;DRIVER_TYPE&quot;, &quot;P_CRASH&quot;))
+
+### Simple Barplot
+ggplot(crash_odds, aes(x=DRIVER_TYPE, y = P_CRASH)) + 
+  geom_col() + 
+  geom_col(data = crash_odds[DRIVER_TYPE == &quot;Using Cell&quot;],  aes(x=DRIVER_TYPE, y = P_CRASH), fill = &quot;red&quot;) + 
+  geom_text(label = c(&quot;Normal Driver&quot;, &quot;Instagram Driver&quot;), vjust = -1, size = 10) +
+  geom_text(aes(x = 2, y = 1, label = &quot;Cell phone use\nmakes you 1.83x\nMORE LIKELY\nto crash*&quot;), size = 8, col = &quot;white&quot;) +
+  theme_void() 
+
+</code></pre>
+<ol start="2">
+<li>Pipe Bursts</li>
+</ol>
+<pre><code class="language-r">library(data.table)
+library(ggplot2)
+library(gganimate)
+set.seed(060124)
+
+### Create simulated road grid
+road_grid &lt;- as.data.table(cbind(rep(1:6, each=6), ## x direction of grid
+                                 rep(1:6, 6),  ## y direction of grid
+                                 c(rep(0, 20), 1, rep(0,15)), ## shallow depth indicator
+                                 c(rep(.0001, 20), 0.1, rep(0.0001, 15))))  ## conditional probability of pipe burst
+setnames(road_grid, c(&quot;X_DIR&quot;, &quot;Y_DIR&quot;, &quot;SHALLOW_DEPTH&quot;, &quot;COND_PROB&quot;))
+
+
+##### RANDOM
+### Randomly sample 5 observations from our grid
+pipe_bursts_rand &lt;- road_grid[X_DIR&lt;5][sample(.N, 5, replace = TRUE)]
+pipe_bursts_rand[,ORDER_BY:=.I]
+
+### Plot (Random Selection)
+random_plot &lt;- ggplot(road_grid) + 
+  geom_line(aes(x=X_DIR, y=Y_DIR, group = X_DIR), col = &quot;grey&quot;, linewidth = 4) + 
+  geom_line(aes(x=X_DIR, y=Y_DIR, group = Y_DIR), col = &quot;grey&quot;, linewidth = 4) + 
+  geom_jitter(data = pipe_bursts_rand, aes(x=X_DIR + 0.5, y=Y_DIR, group = ORDER_BY), col = &quot;red&quot;, size = 15, width = 0.75, height = 0, shape = 'x') + 
+        annotate(&quot;text&quot;, x = 5.5, y = 0.7, label = &quot;Summer of Stats&quot;, col=&quot;grey80&quot;, size = 5) +
+  theme_void() +   transition_time(ORDER_BY) +  shadow_mark(colour = 'red', size = 10) 
+
+animate(random_plot, duration = 3,end_pause = 50)
+
+
+##### CONDITIONAL PROBABILITY
+### Select 5 observations (conditional probability)
+pipe_bursts_cond &lt;- road_grid[sample(.N, 5, replace=TRUE, prob=COND_PROB)]
+pipe_bursts_cond[,ORDER_BY:=.I]
+
+### Plot (Conditional Probability)
+conditional_plot &lt;- ggplot(road_grid) + 
+  geom_line(aes(x=X_DIR, y=Y_DIR, group = X_DIR), col = &quot;grey&quot;, linewidth = 4) + 
+  geom_line(aes(x=X_DIR, y=Y_DIR, group = Y_DIR), col = &quot;grey&quot;, linewidth = 4) + 
+  geom_jitter(data = pipe_bursts_cond, aes(x=X_DIR + 0.5, y=Y_DIR, group = ORDER_BY), col = &quot;red&quot;, size = 15, width = 0.75, height = 0, shape = 'x') + 
+        annotate(&quot;text&quot;, x = 5.5, y = 0.7, label = &quot;Summer of Stats&quot;, col=&quot;grey80&quot;, size = 5) +
+  theme_void() + transition_time(ORDER_BY) +  shadow_mark(colour = 'red', size = 10) 
+
+
+animate(conditional_plot, duration = 3,end_pause = 50)
+
+### Plot (Predictions)
+prediction_plot &lt;- conditional_plot + 
+  geom_rect(xmin = 3.2, xmax = 5.3,   ymin = 2.5, ymax = 3.5,   fill = &quot;yellow&quot;, alpha = .01) +
+  geom_label(aes(x = 2, y = 5.3, label = &quot;Problem Area!&quot;), size = 8, fill = &quot;lightyellow&quot;) +
+  geom_segment(aes(x = 2, y = 5, xend = 4, yend = 3.2),
+                  arrow = arrow(length = unit(0.5, &quot;cm&quot;)), linewidth = 2) +
+        annotate(&quot;text&quot;, x = 5.5, y = 0.7, label = &quot;Summer of Stats&quot;, col=&quot;grey80&quot;, size = 5) 
+
+prediction_plot
+</code></pre>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  
+
+
+  </body>
+</html>
+

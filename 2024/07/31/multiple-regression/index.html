@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4321&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.125.4">
+
+
+<title>Multiple Regression - Summer of Stats</title>
+<meta property="og:title" content="Multiple Regression - Summer of Stats">
+
+
+  <link href='//localhost:4321/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/Rplot.png"
+         width="60"
+         height="60"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/ja-mcm/OCRfixR">GitHub</a></li>
+    
+    <li><a href="/2025/01/01/visual-gallery/">Visual Gallery</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">3 min read</span>
+    
+
+    <h1 class="article-title">Multiple Regression</h1>
+
+    
+    <span class="article-date">2024-07-31</span>
+    
+
+    <div class="article-content">
+      
+      <h2 id="or-why-knowing-the-business-beats-knowing-regression">(or &ldquo;Why Knowing the Business Beats Knowing Regression&rdquo;)</h2>
+<p>TBD</p>
+<h4 id="what-is-_______">What is _______?</h4>
+<p>TBD</p>
+<hr>
+<h2 id="multiple-regression-in-daily-life">Multiple Regression in Daily Life</h2>
+<p>One practical lesson of multiple regression that you can take away is:</p>
+<blockquote>
+<p><strong>Know the factors that drive your business.</strong></p>
+</blockquote>
+<p>If you are lucky enough to have a dataset available that you can do regression on, <strong>it doesn&rsquo;t mean you should.</strong> Or, at least, you should consider what is MISSING from that data before plowing ahead.</p>
+<h4 id="the-case-of-the-missing-variable">The Case of the Missing Variable</h4>
+<p>Early in my career, I was part of a project to determine why a major retailer was experiencing a noticeable surge in <a href="https://www.investopedia.com/terms/c/chargeback.asp">credit card chargebacks</a>.</p>
+<p>We had plenty of data on these transactions, so we sliced and diced (and even pulverized) the data for weeks, but nothing popped out.</p>
+<p>The answer finally came once we visited stores.</p>
+<p>While observing an associate ringing someone up, we witnessed the application get &ldquo;stuck&rdquo; after the card was swiped. The associate then <strong>re-swiped the card</strong>, believing the transaction hadn&rsquo;t gone through. Aha!</p>
+<p>We now had our explanation as to why customers were disputing charges - they were inadvertently being double-charged.</p>
+<h3 id="the-omitted-variable-wi-fi">The omitted variable: Wi-Fi</h3>
+<p>The ultimate culprit in this story was bad Wi-Fi connectivity within certain stores. If the Wi-Fi cut out during a transaction, it was likely the transaction would be retried, and both transactions would post once the Wi-Fi connection was re-established.</p>
+<p>We then would end up with someone buying a $2000 appliance TWICE. No wonder they charged it back!</p>
+<p>&laquo;&laquo; PICTURE &raquo;&raquo;</p>
+<p>If our initial dataset had the data element &ldquo;WIFI_STRENGTH&rdquo;, it would&rsquo;ve been very easy to identify the source of our troubles. But, <strong>recognizing</strong> that this variable was necessary was actually the biggest hurdle in the analysis.</p>
+<h2 id="summing-up">Summing Up</h2>
+<p>Multiple regression is an incredibly powerful tool for making decisions. Done correctly, it can distill huge volumes of information into a format that can both highlight critical variables AND predict the impact of changes.</p>
+<p>But, this <strong>relies on us selecting the correct variables to model</strong>. Much like correlation, there is no guarantee that our model is correct, even when we get what appear to be highly significant results.</p>
+<p>It is very easy to botch an analysis by omitting a critical variable. By its very nature, the problem of omitted factors is not very visible.</p>
+<p>Beware of recommendations from analysts that are completely walled off from the business. They may know regression techniques very well, but they are likely to fall prey to omitted variable bias.</p>
+<p>Next week, we will cover ____________</p>
+<p>===========================</p>
+<p>R code used to generate plots:</p>
+<pre><code class="language-r">##TBD
+</code></pre>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  
+
+
+  </body>
+</html>
+

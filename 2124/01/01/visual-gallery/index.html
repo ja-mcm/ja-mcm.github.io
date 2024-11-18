@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4321&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.125.4">
+
+
+<title>Visual Gallery - Summer of Stats</title>
+<meta property="og:title" content="Visual Gallery - Summer of Stats">
+
+
+  <link href='//localhost:4321/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/Rplot.png"
+         width="60"
+         height="60"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/">Summer of Stats</a></li>
+    
+    <li><a href="/2124/01/01/visual-gallery/">Visual Gallery</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">2 min read</span>
+    
+
+    <h1 class="article-title">Visual Gallery</h1>
+
+    
+    <span class="article-date">2124-01-01</span>
+    
+
+    <div class="article-content">
+      
+      <p>Telling compelling stories with data is what I love to do.</p>
+<p>Below, I had some fun creating visuals using publicly available data from the City of Cincinnati <a href="https://data.cincinnati-oh.gov/">Open Data Portal</a>. I hope you enjoy!</p>
+<h1 class="tabset tabset-fade" id="city-vehicles">City Vehicles</h1>
+<p>Using <strong>vehicle GPS data</strong> from city-owned vehicles <em>(<a href="https://data.cincinnati-oh.gov/Thriving-Neighborhoods/Historic-Vehicle-GPS-Data-Department-of-Public-Ser/jmaw-gcgj/data_preview">SOURCE DATA</a>)</em>, this map tracks these assets as they move around downtown Cincinnati, using R and gganimate.</p>
+<h3 id="single-vehicle">Single Vehicle</h3>
+<img src="images/Asset_5_Large_Res.gif" width="80%" style="display: block; margin: auto;" />
+<h3 id="multiple-vehicles">Multiple Vehicles</h3>
+<img src="images/Early_Morning_Large_Res.gif" width="80%" style="display: block; margin: auto;" />
+<p>Adding a trace line for each vehicle reveals some really interesting patterns - we can clearly see how police patrols criss-cross different sections of downtown!</p>
+<h1 id="heading"></h1>
+<p>These visuals are rendered as gifs, making them easy to embed into a web page or slide presentation.</p>
+<h1 class="tabset tabset-fade" id="funding-changes-to-non-profits">Funding Changes to Non-Profits</h1>
+<p>By sifting through the city&rsquo;s <strong>database of vendor payments</strong> <em>(<a href="https://data.cincinnati-oh.gov/Growing-Economic-Opportunities/City-of-Cincinnati-Vendor-Payments/qrj9-83t8/data_preview">SOURCE DATA</a>)</em>, we can track the shift in city priorities hidden within the city budget.</p>
+<p>This graphic illustrates which local non-profits experienced the largest swings (up or down) in city funding each year:</p>
+<h3 id="2020">2020</h3>
+<img src="/2124/01/01/visual-gallery/index_files/figure-html/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" />
+<h3 id="2021">2021</h3>
+<img src="/2124/01/01/visual-gallery/index_files/figure-html/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" />
+<h3 id="2022">2022</h3>
+<img src="/2124/01/01/visual-gallery/index_files/figure-html/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" />
+<h1 id="food-safety-scorecard">Food Safety Scorecard</h1>
+<p>The following dashboard makes use of Tableau&rsquo;s geo-spatial capabilities to summarize <strong>Health Dept. food inspection results</strong> <em>(<a href="https://data.cincinnati-oh.gov/Thriving-Neighborhoods/Cincinnati-Food-Safety-Program/rg6p-b3h3/data_preview">SOURCE DATA</a>)</em> on local restaurants.</p>
+<p>Here, you can see past inspection results for any location over the last 3 years, as well as any open violations that restaurant may have.</p>
+  <iframe src="https://public.tableau.com/views/Food_Inspx/Sheet1?:showVizHome=no&:embed=true"
+ width="750" height="500"></iframe>
+<p><em>(Note: I&rsquo;ve referred to this multiple times when deciding whether to check out a new restaurant or not!)</em></p>
+<h1 id="property-tax-abatements">Property Tax Abatements</h1>
+<p>Below is a summary of <strong>Property Tax Abatements</strong> <em>(<a href="https://data.cincinnati-oh.gov/Thriving-Neighborhoods/City-of-Cincinnati-Residential-Tax-Abatements/6ck4-ukva/data_preview">SOURCE DATA</a>)</em> in the Cincinnati area, prior to the program&rsquo;s overhaul in 2023.</p>
+<img src="/2124/01/01/visual-gallery/index_files/figure-html/unnamed-chunk-6-1.gif" width="70%" style="display: block; margin: auto;" />
+<p>East v. West side designations are admittedly open to some debate (I used Vine Street as a rough dividing line). But, what is clear is the stark imbalance in abatement $ awarded to each half of the city.</p>
+<h3 id="see-also">See Also:</h3>
+<p>For more examples, please check out my posts on <a href="https://summerofstats.netlify.app/">Summer of Stats</a>.</p>
+<hr>
+<h1 id="other-projects">Other Projects</h1>
+<p>I am also the author of Python package <strong><a href="https://pypi.org/project/OCRfixr/">OCRfixr</a></strong>, a machine-learning powered spellchecker for OCR text.</p>
+<p>OCRfixr makes use of a BERT language model to double-check spellcheck suggestions. This context-aware approach reduces the number of &ldquo;bad&rdquo; suggestions the user encounters.</p>
+<img src="images/OCRfixr.png" width="80%" style="display: block; margin: auto;" />
+<script src="https://cdn.jsdelivr.net/npm/@xiee/utils/js/tabsets.min.js" defer></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils/css/tabsets.min.css">
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  
+
+
+  </body>
+</html>
+

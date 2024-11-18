@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Time Series on Summer of Stats</title>
+    <link>//localhost:4321/tags/time-series/</link>
+    <description>Recent content in Time Series on Summer of Stats</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <lastBuildDate>Wed, 07 Aug 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:4321/tags/time-series/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nonparametric Statistics</title>
+      <link>//localhost:4321/2024/08/07/nonparametric-statistics/</link>
+      <pubDate>Wed, 07 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/2024/08/07/nonparametric-statistics/</guid>
+      <description>(or &amp;ldquo;Why It Pays to be a Communications Major&amp;rdquo;) Nearly every topic we&amp;rsquo;ve covered so far has relied on a BIG assumption: that our data looks somewhat like this:&#xA;But what if your data doesn&amp;rsquo;t fit a distribution nicely? What if your data is very skewed, irregular, or has big outliers?&#xA;Time to bring in nonparametric statistics!&#xA;What is a Nonparametric Statistic? In short, a nonparametric statistic is a more robust option for analyzing data.</description>
+    </item>
+    <item>
+      <title>Time Series</title>
+      <link>//localhost:4321/2024/07/31/time-series/</link>
+      <pubDate>Wed, 31 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/2024/07/31/time-series/</guid>
+      <description>(or &amp;ldquo;Why 90% of Sports Statistics are Nonsense&amp;rdquo;) Linear regression is a great tool for teasing out relationships between variables.&#xA;But what about things that change over time?&#xA;&amp;ldquo;Well, my car WAS here just a minute ago&amp;hellip;&amp;rdquo;&#xA;This is where using a time series can help us better understand our data.&#xA;What is a Time Series? A time series is a dataset that tracks a measure over time. In general, the purpose of analyzing a time series is two-fold:</description>
+    </item>
+  </channel>
+</rss>

@@ -6,15 +6,8 @@
     <description>Recent content in R on Summer of Stats</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Sat, 01 Jan 2124 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 21 Aug 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="//localhost:4321/categories/r/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Visual Gallery</title>
-      <link>//localhost:4321/2124/01/01/visual-gallery/</link>
-      <pubDate>Sat, 01 Jan 2124 00:00:00 +0000</pubDate>
-      <guid>//localhost:4321/2124/01/01/visual-gallery/</guid>
-      <description>Telling compelling stories with data is what I love to do.&#xA;Below, I had some fun creating visuals using publicly available data from the City of Cincinnati Open Data Portal. I hope you enjoy!&#xA;City Vehicles Using vehicle GPS data from city-owned vehicles (SOURCE DATA), this map tracks these assets as they move around downtown Cincinnati, using R and gganimate.&#xA;Single Vehicle Multiple Vehicles Adding a trace line for each vehicle reveals some really interesting patterns - we can clearly see how police patrols criss-cross different sections of downtown!</description>
-    </item>
     <item>
       <title>Design of Experiments</title>
       <link>//localhost:4321/2024/08/21/design-of-experiments/</link>
@@ -105,6 +98,13 @@
       <pubDate>Wed, 29 May 2024 00:00:00 +0000</pubDate>
       <guid>//localhost:4321/2024/05/29/probability/</guid>
       <description>(or &amp;ldquo;Will It Rain on My Parade?&amp;rdquo;) It is very exciting to break open a textbook on statistics again.&#xA;I doubt many people have ever said that, but in my case, it rings true!&#xA;To prepare for Master&amp;rsquo;s-level coursework this Fall, I am revisiting statistical concepts and coursework. I will be writing a small entry about something I learned each week.&#xA;This will not be a math-heavy, rigorous write-up, but will instead focus on finding an idea that ANYONE can walk away with and make use of.</description>
+    </item>
+    <item>
+      <title>Visual Gallery</title>
+      <link>//localhost:4321/2023/01/01/visual-gallery/</link>
+      <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/2023/01/01/visual-gallery/</guid>
+      <description>Telling compelling stories with data is what I love to do.&#xA;Below, I had some fun creating visuals using publicly available data from the City of Cincinnati Open Data Portal. I hope you enjoy!&#xA;City Vehicles Using vehicle GPS data from city-owned vehicles (SOURCE DATA), this map tracks these assets as they move around downtown Cincinnati, using R and gganimate.&#xA;Single Vehicle Multiple Vehicles Adding a trace line for each vehicle reveals some very interesting patterns - we can clearly see police patrols criss-cross different sections of downtown.</description>
     </item>
   </channel>
 </rss>

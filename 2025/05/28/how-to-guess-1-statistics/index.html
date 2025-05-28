@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.125.4">
+
+
+<title>How to Guess: 1 - Statistics - Summer of Stats</title>
+<meta property="og:title" content="How to Guess: 1 - Statistics - Summer of Stats">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/Rplot.png"
+         width="60"
+         height="60"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/">Summer of Stats</a></li>
+    
+    <li><a href="/2023/01/01/visual-gallery/">Visual Gallery</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">8 min read</span>
+    
+
+    <h1 class="article-title">How to Guess: 1 - Statistics</h1>
+
+    
+    <span class="article-date">2025-05-28</span>
+    
+
+    <div class="article-content">
+      
+      <script src="/2025/05/28/how-to-guess-1-statistics/index_files/kePrint/kePrint.js"></script>
+<link href="/2025/05/28/how-to-guess-1-statistics/index_files/lightable/lightable.css" rel="stylesheet" />
+<link href="/2025/05/28/how-to-guess-1-statistics/index_files/bsTable/bootstrapTable.min.css" rel="stylesheet" />
+<script src="/2025/05/28/how-to-guess-1-statistics/index_files/bsTable/bootstrapTable.js"></script>
+<script src="/2025/05/28/how-to-guess-1-statistics/index_files/kePrint/kePrint.js"></script>
+<link href="/2025/05/28/how-to-guess-1-statistics/index_files/lightable/lightable.css" rel="stylesheet" />
+<link href="/2025/05/28/how-to-guess-1-statistics/index_files/bsTable/bootstrapTable.min.css" rel="stylesheet" />
+<script src="/2025/05/28/how-to-guess-1-statistics/index_files/bsTable/bootstrapTable.js"></script>
+<h2 id="or-why-faster-isnt-always-better">(or &ldquo;Why Faster Isn&rsquo;t Always Better&rdquo;)</h2>
+<h4 id="_programming-note_"><em>Programming Note…</em></h4>
+<p><em>One year in, and I am still going! My Master&rsquo;s program has covered an insane amount of content, and I&rsquo;ve gained an appreciation of how much there is to still learn.</em></p>
+<p><em>With so many new ideas bouncing around in my head from this past year, <strong>I&rsquo;ve decided to resurrect Summer of Stats for another summer!</strong></em></p>
+<p><em>I&rsquo;m mixing up the format - rather than cover a specific topic, these posts will focus on real-life problems and how statistical thinking can help.</em></p>
+<p><em>To start, let&rsquo;s talk about something we do every day: Guessing!</em></p>
+<h3 id="welcome-to-summer-of-stats-20">Welcome to Summer of Stats 2.0!</h3>
+<p>It always feels nice to guess correctly.</p>
+<img src="images/quarter.jpg" width="25%" style="display: block; margin: auto;" />
+<blockquote>
+<p><em>&ldquo;Called it.&rdquo;</em></p>
+</blockquote>
+<p>Maybe that&rsquo;s why I enjoy statistics so much.</p>
+<p>Why? Because <strong>statistics is all about guessing</strong>. With statistics, we real-life observations (also called &ldquo;data&rdquo;) plus some math to make our guesses.</p>
+<p>In essence, <strong>statistics is just (extremely) educated guessing</strong>.</p>
+<p>So, any time you make a guess about something, you are implicitly using a statistical model. And, if you&rsquo;re not, chances are you&rsquo;re making a bad guess.</p>
+<h3 id="how-we-guess">How We Guess</h3>
+<p>Often, we have unwritten rules for how we guess.</p>
+<p><strong>Quick: guess WHERE the next value is most likely to pop up:</strong>
+<img src="/2025/05/28/how-to-guess-1-statistics/index_files/figure-html/unnamed-chunk-2-1.gif" style="display: block; margin: auto;" />
+Intuitively, you probably picked a value that is close to the <strong>average</strong> (or mean) of our data:</p>
+<img src="/2025/05/28/how-to-guess-1-statistics/index_files/figure-html/unnamed-chunk-3-1.png" width="960" style="display: block; margin: auto;" />
+<p>Here, you can see how closely your gut-feeling lines up with with a purely statistical guess.</p>
+<h3 id="how-to-guess-like-a-pro">How to Guess Like a Pro</h3>
+<p>It&rsquo;s worth noting that our statistical guess (the mean) is <strong>superior in many important ways.</strong></p>
+<h4 id="1-our-answer-is-repeatable">1. Our answer is repeatable</h4>
+<p>With statistics, our guess is based on data. So, it does not change depending on:</p>
+<ul>
+<li>how much sleep we got the night before</li>
+<li>how hungry we feel</li>
+<li>how long our current Zoom meeting is running over.</li>
+</ul>
+<p>Two people looking at the same data will end up with the same answer.</p>
+<img src="/2025/05/28/how-to-guess-1-statistics/index_files/figure-html/unnamed-chunk-4-1.png" width="960" style="display: block; margin: auto;" />
+<h4 id="2-our-answer-is-precise">2. Our answer is precise</h4>
+<p>When we guess, we often have a &ldquo;feel&rdquo; for the range of values we expect to see.</p>
+<p>However, statistics can help us define those bounds more precisely. (via <a href="https://www.summerofstats.com/2024/06/26/confidence-intervals/">Confidence Intervals</a>)</p>
+<img src="/2025/05/28/how-to-guess-1-statistics/index_files/figure-html/unnamed-chunk-5-1.png" width="960" style="display: block; margin: auto;" />
+<h4 id="3-our-answer-is-potentially-optimal">3. Our answer is (potentially) optimal</h4>
+<p>Probably one of the coolest aspects of statistics is that, in certain cases, we can actually PROVE that <strong>your guess is the best one possible</strong>.</p>
+<p>We&rsquo;ll <a href="https://en.wikipedia.org/wiki/Minimum-variance_unbiased_estimator">skip the math</a> - but, in essence, we can use statistics to become &ldquo;super-guessers&rdquo;. And who doesn&rsquo;t want that super-power?</p>
+<hr>
+<h2 id="guessing-in-daily-life">Guessing in Daily Life</h2>
+<p>One practical lesson that you can take away is:</p>
+<blockquote>
+<p><strong>Your &ldquo;gut feeling&rdquo; can be very wrong.</strong></p>
+</blockquote>
+<p>Though we often get by using our intuition, it can only get us so far. By using statistics, we can actually make better decisions.</p>
+<p>Let&rsquo;s review a practical example from everyday life: arriving on time.</p>
+<h3 id="will-i-miss-my-flight">Will I Miss My Flight?</h3>
+<p>Nobody likes being at an airport. It&rsquo;s a loud, crowded, and stressful place. People yell at you to take your shoes off.</p>
+<blockquote>
+<p><em>&ldquo;No, wait, DON&rsquo;T take your shoes off. It&rsquo;s Thursday.&rdquo;</em></p>
+</blockquote>
+<p>So, if you&rsquo;re like me, you wait until the absolute last minute to leave for your trip. Because time is tight, you want to find fastest route to drive to the airport.</p>
+<p>Google gives you 2 choices:</p>
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Route </th>
+   <th style="text-align:left;"> Travel Time </th>
+   <th style="text-align:left;"> Variation* </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> I-71 </td>
+   <td style="text-align:left;"> 20 minutes </td>
+   <td style="text-align:left;"> 10 minutes </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> I-471 </td>
+   <td style="text-align:left;"> 30 minutes </td>
+   <td style="text-align:left;"> 5 minutes </td>
+  </tr>
+</tbody>
+</table>
+<ul>
+<li>The first option is <strong>shorter</strong> but has <strong>more unpredictable traffic</strong></li>
+<li>The second option is <strong>longer</strong> but <strong>doesn&rsquo;t get as congested</strong></li>
+</ul>
+<blockquote>
+<p><em>*assume traffic is <a href="https://www.mathsjournal.com/pdf/2024/vol9issue6/PartB/9-6-12-873.pdf">exponentially distributed</a></em></p>
+</blockquote>
+<p>So which route would you pick?</p>
+<h3 id="a-counter-intuitive-guess">A Counter-Intuitive Guess</h3>
+<p>If you picked the &ldquo;shorter&rdquo; route (I-71), <strong>you&rsquo;d be wrong</strong>.</p>
+<p>The issue is VARIATION - road congestion means you never know for certain how long your drive will be. And <strong>this uncertainty ends up having a big impact</strong>.</p>
+<p>If you don&rsquo;t believe me, below are the results from 100 &ldquo;hypothetical&rdquo; trips on each route:</p>
+<img src="/2025/05/28/how-to-guess-1-statistics/index_files/figure-html/unnamed-chunk-7-1.png" width="95%" style="display: block; margin: auto;" />
+<p>So, you might arrive faster on I-71&hellip;but you also might not.</p>
+<p>In order to be 95% confident that you will arrive on time, here&rsquo;s when you&rsquo;d have to leave for each route:</p>
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Route </th>
+   <th style="text-align:left;"> Budgeted Time </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> I-71 </td>
+   <td style="text-align:left;"> 60 minutes </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> I-471 </td>
+   <td style="text-align:left;"> 44 minutes </td>
+  </tr>
+</tbody>
+</table>
+<p>So, our &ldquo;shorter&rdquo; route (on paper) is actually a much worse option.</p>
+<h3 id="what-are-my-odds">What Are My Odds?</h3>
+<p>Thinking about it another way: say we allowed 40 minutes for travel time to the airport.</p>
+<ul>
+<li>If we took I-471, we&rsquo;d arrive on time <strong>91%</strong> of the time</li>
+<li>If we took I-71, we&rsquo;d arrive on time <strong>82%</strong> of the time</li>
+</ul>
+<p>And since that may be the difference between making your flight to Hawaii or being stuck at home, I&rsquo;d definitely opt to take I-471.</p>
+<h2 id="summing-up">Summing Up</h2>
+<p>Statistics pop up everywhere in life because they are so effective at giving real-world answers to many questions.</p>
+<p>While <a href="https://en.wikipedia.org/wiki/Normal_distribution">the math can sometimes look scary</a>, my hope is that I can convince you that <strong>everyone can benefit from statistical thinking.</strong></p>
+<p>After all, we can&rsquo;t KNOW everything. So, it often pays to be good guesser.</p>
+<h4 id="up-next-assumptions">Up Next: Assumptions</h4>
+<p>Next week, we will discuss the importance of making (and keeping track of) assumptions when we make guesses.</p>
+<p>===========================</p>
+<p>R code used to generate plots:</p>
+<ol>
+<li>Some Guessing</li>
+</ol>
+<pre><code class="language-r">library(ggplot2)
+library(gganimate)
+library(ggrepel)
+library(data.table)
+library(gridExtra)
+set.seed(052825)
+
+# Random draws
+rand_draws &lt;- data.table( ID = seq(1:10),
+                          V1 = rnorm(10, 500, 20))
+
+base_plot &lt;- ggplot(rand_draws, aes(x=V1, y=0)) + 
+  coord_cartesian(ylim = c(-5,5), xlim = c(450, 550)) +
+  theme_void() 
+
+### Plot data
+rand_plot &lt;- base_plot +
+  geom_point(shape=&quot;X&quot;, col=&quot;white&quot;, size=.01) +
+  transition_time(ID) +
+  shadow_mark(colour = 'red', size = 10) +
+  annotate(&quot;text&quot;, x = 535, y = -1.7, label = &quot;Summer of Stats&quot;, col=&quot;grey80&quot;, size = 5)
+
+animate(rand_plot, duration = 5,renderer = gifski_renderer(loop = F))
+
+### Plot statistical guess
+mean_x &lt;- rand_draws[,mean(V1)]
+my_guess &lt;- 504
+
+stat_plot &lt;- 
+  base_plot +
+  geom_point(shape=&quot;X&quot;, col=&quot;red&quot;, size=10) +
+  geom_segment(aes(x = my_guess, xend = my_guess, y = -4,  yend = 1),
+                lwd = 1, col = &quot;black&quot;) +
+  geom_segment(aes(x = mean_x, xend = mean_x, y = -2,  yend = 5),
+                lwd = 1, col = &quot;darkred&quot;, linetype='dashed') +
+  #geom_text_repel(aes(label = round(V1,0)), size = 10, nudge_y = 2, direction = &quot;x&quot;, max.overlaps = Inf, segment.color = &quot;grey80&quot;, min.segment.length = 0, box.padding = 0.5) +
+  geom_label(aes(x=mean_x, y=4, label = round(mean_x)), size = 12, fill = &quot;lightyellow&quot;) +
+  geom_label(aes(x=my_guess, y=-4, label = my_guess), size = 12, fill = &quot;lightyellow&quot;) +
+  theme(legend.position=&quot;none&quot;) +
+  annotate(&quot;text&quot;, x = 522, y = 4, label = &quot;(Average)&quot;, col=&quot;black&quot;, size = 8) +
+  annotate(&quot;text&quot;, x = 520, y = -4, label = &quot;(My Guess)&quot;, col=&quot;black&quot;, size = 8) +
+  annotate(&quot;text&quot;, x = 535, y = -1.7, label = &quot;Summer of Stats&quot;, col=&quot;grey80&quot;, size = 5)
+
+stat_plot
+
+### Two guessers
+guess_plot &lt;- 
+  base_plot +
+  geom_point(shape=&quot;X&quot;, col=&quot;red&quot;, size=10) +
+  geom_segment(aes(x = mean_x, xend = mean_x, y = -2,  yend = 5),
+                lwd = 1, col = &quot;darkred&quot;, linetype='dashed') +
+  geom_label(aes(x=mean_x, y=4, label = round(mean_x,0)), size = 12, fill = &quot;lightyellow&quot;) +
+  theme(legend.position=&quot;none&quot;)
+
+person_1 &lt;- guess_plot + 
+  annotate(&quot;text&quot;, x = 500, y = -3, label = &quot;PERSON 1&quot;, size = 15)
+
+person_2 &lt;- guess_plot + 
+  annotate(&quot;text&quot;, x = 500, y = -3, label = &quot;PERSON 2&quot;, size = 15) +
+  annotate(&quot;text&quot;, x = 535, y = -5, label = &quot;Summer of Stats&quot;, col=&quot;grey80&quot;, size = 5)
+
+grid.arrange(person_1, person_2, ncol=2)
+
+### Confidence interval
+mean_x &lt;- rand_draws[,mean(V1)]
+std_dev &lt;- rand_draws[,sd(V1)]/10
+high_x &lt;- mean_x + 1.96*std_dev
+low_x &lt;- mean_x - 1.96*std_dev
+
+  base_plot +
+  geom_point(shape=&quot;X&quot;, col=&quot;red&quot;, size=10) +
+  geom_rect(aes(xmin = low_x, xmax = high_x, 
+                ymin = -.75, ymax = .75), alpha = 0.01) +
+      geom_segment(aes(x = low_x, xend = low_x, y = -1,  yend = 1)) +
+      geom_segment(aes(x = high_x, xend = high_x, y = -1,  yend = 1)) +
+  geom_label(aes(x=low_x+5, y=2, label = round(low_x,0)), size = 12, fill = &quot;lightyellow&quot;) +
+  geom_label(aes(x=high_x-5, y=2, label = round(high_x,0)), size = 12, fill = &quot;lightyellow&quot;) +
+      annotate(&quot;text&quot;, x = 510, y = -1.5, label = &quot;(95% Confidence Interval)&quot;, col=&quot;black&quot;, size = 8) +
+      annotate(&quot;text&quot;, x = 542, y = -2, label = &quot;Summer of Stats&quot;, col=&quot;grey80&quot;, size = 5)
+</code></pre>
+<ol start="2">
+<li>Fighting Traffic</li>
+</ol>
+<pre><code class="language-r">library(knitr)
+library(kableExtra)
+set.seed(060125)
+
+# Outline each route option
+I_71_desc &lt;- c(&quot;20 minutes&quot;, &quot;10 minutes&quot;)
+I_471_desc &lt;-  c(&quot;30 minutes&quot;, &quot;5 minutes&quot;)
+
+route_options &lt;- rbind(I_71_desc, I_471_desc)
+route_options &lt;- cbind(c(&quot;I-71&quot;, &quot;I-471&quot;),
+                      route_options)
+
+rownames(route_options) &lt;- NULL
+colnames(route_options) &lt;- c(&quot;Route&quot;, &quot;Travel Time&quot;, &quot;Variation*&quot;)
+
+### Display data as a table
+options(kableExtra.html.bsTable = TRUE)
+route_options |&gt; knitr::kable() |&gt;  kable_styling(bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;))
+
+
+# Model traffic for each route
+# (Traffic ONLY adds to travel time - sorry guys!)
+I_71_traffic &lt;- rexp(100,1/10)
+I_471_traffic &lt;- rexp(100,1/5)
+
+# Do 100 simulated drives
+I_71 &lt;- 20 + I_71_traffic 
+I_471 &lt;- 30 + I_471_traffic
+
+### Compare trip times
+p1 &lt;- ggplot(as.data.table(I_71), aes(x=I_71)) + 
+    geom_density(fill=&quot;blue&quot;, alpha=.2) + 
+    coord_cartesian(xlim=c(20,70)) + 
+    theme_minimal() + xlab(&quot;&quot;) + ylab(&quot;&quot;) + theme(axis.text.y=element_blank()) +
+    theme(axis.text.x = element_text(face=&quot;bold&quot;, color=&quot;darkred&quot;, size=15)) +
+    annotate(&quot;text&quot;, x = 27, y = .02, label = &quot;Best Case: \n20 mins&quot;, size = 5) +
+    annotate(&quot;text&quot;, x = 65, y = .02, label = &quot;Worst Case: \n70+ mins!&quot;, size = 5) +
+    annotate(&quot;text&quot;, x = 55, y = .04, label = &quot;I-71&quot;, col=&quot;darkred&quot;, size = 15)
+
+
+p2 &lt;- ggplot(as.data.table(I_471), aes(x=I_471)) +
+    geom_density(fill=&quot;blue&quot;, alpha=.2) + 
+    coord_cartesian(xlim=c(20,70)) + 
+    theme_minimal() + xlab(&quot;Travel Time (mins)&quot;) + ylab(&quot;&quot;) + theme(axis.text.y=element_blank()) +
+    theme(axis.text.x = element_text(face=&quot;bold&quot;, color=&quot;darkred&quot;, size=15)) +
+    annotate(&quot;text&quot;, x = 23, y = .035, label = &quot;Best Case: \n30 mins&quot;, size = 5) +
+    annotate(&quot;text&quot;, x = 55, y = .035, label = &quot;Worst Case: \n50 mins&quot;, size = 5) +
+    annotate(&quot;text&quot;, x = 55, y = .12, label = &quot;I-471&quot;, col=&quot;darkred&quot;, size = 15) +
+    annotate(&quot;text&quot;, x = 65, y = .015, label = &quot;Summer of Stats&quot;, col=&quot;grey80&quot;, size = 4)
+
+grid.arrange(p1, p2, ncol=1)
+
+# Find duration of the fastest 95 runs (ie. our 95% confidence interval for arriving on time)
+travel_times &lt;- rbind(sort(I_71)[96] |&gt; round(0) |&gt; paste0(&quot; minutes&quot;),
+                      sort(I_471)[96] |&gt; round(0) |&gt; paste0(&quot; minutes&quot;))
+
+travel_times &lt;- cbind(c(&quot;I-71&quot;, &quot;I-471&quot;),
+                      travel_times)
+
+colnames(travel_times) &lt;- c(&quot;Route&quot;, &quot;Budgeted Time&quot;)
+
+
+### Display data as a table
+options(kableExtra.html.bsTable = TRUE)
+travel_times |&gt; knitr::kable() |&gt;  kable_styling(bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;))
+</code></pre>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  
+
+
+  </body>
+</html>
+

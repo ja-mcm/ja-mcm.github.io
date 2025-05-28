@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4321&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.125.4">
+
+
+<title>How to Guess: 2 - Assumptions - Summer of Stats</title>
+<meta property="og:title" content="How to Guess: 2 - Assumptions - Summer of Stats">
+
+
+  <link href='//localhost:4321/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/Rplot.png"
+         width="60"
+         height="60"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/">Summer of Stats</a></li>
+    
+    <li><a href="/2023/01/01/visual-gallery/">Visual Gallery</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">5 min read</span>
+    
+
+    <h1 class="article-title">How to Guess: 2 - Assumptions</h1>
+
+    
+    <span class="article-date">2025-06-04</span>
+    
+
+    <div class="article-content">
+      
+      <script src="/2025/06/04/how-to-guess-2-assumptions/index_files/kePrint/kePrint.js"></script>
+<link href="/2025/06/04/how-to-guess-2-assumptions/index_files/lightable/lightable.css" rel="stylesheet" />
+<link href="/2025/06/04/how-to-guess-2-assumptions/index_files/bsTable/bootstrapTable.min.css" rel="stylesheet" />
+<script src="/2025/06/04/how-to-guess-2-assumptions/index_files/bsTable/bootstrapTable.js"></script>
+<script src="/2025/06/04/how-to-guess-2-assumptions/index_files/kePrint/kePrint.js"></script>
+<link href="/2025/06/04/how-to-guess-2-assumptions/index_files/lightable/lightable.css" rel="stylesheet" />
+<link href="/2025/06/04/how-to-guess-2-assumptions/index_files/bsTable/bootstrapTable.min.css" rel="stylesheet" />
+<script src="/2025/06/04/how-to-guess-2-assumptions/index_files/bsTable/bootstrapTable.js"></script>
+<h2 id="or-why-being-normal-is-overrated">(or &ldquo;Why Being Normal is Overrated&rdquo;)</h2>
+<p>We all know what happens when you assume.</p>
+<img src="images/jackass.jpg" width="40%" style="display: block; margin: auto;" />
+<p>However, assumptions are not necessarily a bad thing.</p>
+<p>For example: when I see a traffic light that is green, <strong>I assume</strong> that nobody will come barreling through the intersection. This assumption lets me drive predictably and safely.</p>
+<p>The same is true with guessing - <strong>many common questions would simply be impossible to answer</strong> without assumptions.</p>
+<h3 id="an-impossible-problem">An Impossible Problem</h3>
+<p>Concerts season is upon us, which means that tons of exciting shows are coming to town over the coming months.</p>
+<p>However, when you go to a show, there&rsquo;s always a chance your view will look like this:</p>
+<img src="images/too_tall.jpg" width="60%" style="display: block; margin: auto;" />
+<p>So, it might be interesting to estimate - <em>&ldquo;What is the probability that my view will be blocked at a given show?&rdquo;</em></p>
+<p>This is a tricky problem: <strong>you don&rsquo;t know who will be standing in front of you</strong>. So, how would we estimate this?</p>
+<h3 id="a-probablitistic-assumption">A Probablitistic Assumption</h3>
+<p>In short, we can simplify things by making assumptions.</p>
+<p>Here, we simply assume that the person in front of you is chosen at random from within the US population. So, <strong>our probability can come directly from the normal distribution.</strong> That is not so hard to calculate!</p>
+<p>For someone who is 6 feet tall, the odds that the person in front of you is TALLER comes out to roughly 13%:</p>
+<img src="/2025/06/04/how-to-guess-2-assumptions/index_files/figure-html/unnamed-chunk-3-1.png" width="576" style="display: block; margin: auto;" />
+<p>However, if you are shorter (say 5'6&quot;), things don&rsquo;t look quite so great:</p>
+<img src="/2025/06/04/how-to-guess-2-assumptions/index_files/figure-html/unnamed-chunk-4-1.png" width="576" style="display: block; margin: auto;" />
+<p>Obviously, we could make our model much better by refining these assumptions, but this initial assumption has given us the tools <strong>to make a reasonable guess about a hard-to-measure problem</strong>.</p>
+<p>But, not all assumptions are created equal, as we&rsquo;ll see below.</p>
+<hr>
+<h2 id="assumptions-in-daily-life">Assumptions in Daily Life</h2>
+<p>One practical lesson that you can take away is:</p>
+<blockquote>
+<p><strong>Don&rsquo;t just assume your data is Normal</strong></p>
+</blockquote>
+<p>As we discussed, there is nothing inherently wrong with making assumptions. However, the trouble begins when your assumptions don&rsquo;t correspond with reality.</p>
+<p>Most often, people often run into this problem when they blindly assume their data is normally distributed.</p>
+<h3 id="get-me-to-the-airport-part-2">Get Me to the Airport, Part 2</h3>
+<p>Last week, we modeled <a href="https://www.summerofstats.com/2025/05/28/how-to-guess-1-statistics/">travel time to the local airport</a>.</p>
+<p>In our model, we assumed that traffic was <strong><a href="https://en.wikipedia.org/wiki/Exponential_distribution">exponentially distributed</a></strong> (based on prior expert research). Our travel time model looked something like this:</p>
+<img src="/2025/06/04/how-to-guess-2-assumptions/index_files/figure-html/unnamed-chunk-5-1.png" width="576" style="display: block; margin: auto;" />
+<p>But what if we modeled traffic as <strong>normally distributed</strong> instead?</p>
+<p>We&rsquo;d end up with some seriously weird traffic.</p>
+<h3 id="when-normal-isnt-normal">When &ldquo;Normal&rdquo; Isn&rsquo;t Normal</h3>
+<p>The first thing we&rsquo;d notice is the shape of our distribution changes noticeably. All skewness quickly disappears, and we get the familiar bell-shaped curve.</p>
+<p>We also see hints that <strong>there may be a problem</strong> - our model now tells us that some trips are completed in &ldquo;negative&rdquo; time:</p>
+<img src="/2025/06/04/how-to-guess-2-assumptions/index_files/figure-html/unnamed-chunk-6-1.png" width="576" style="display: block; margin: auto;" />
+<p>Ruh-roh! What went wrong here?</p>
+<h3 id="models-vs-reality">Models vs. Reality</h3>
+<p>The issue is that our model assumptions were wrong.</p>
+<table class="table table-striped table-hover" style="color: black; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> NORMAL Model </th>
+   <th style="text-align:left;"> Reality </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;color: red !important;"> Travel times can be positive or negative </td>
+   <td style="text-align:left;"> Travel times can only be positive </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;color: red !important;"> Traffic can slow you down OR speed you up. </td>
+   <td style="text-align:left;"> Traffic can only slow you down </td>
+  </tr>
+</tbody>
+</table>
+<p>In contrast, the assumptions of the exponential distribution are a much closer to how traffic actually behaves:</p>
+<table class="table table-striped table-hover" style="color: black; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> EXPONENTIAL Model </th>
+   <th style="text-align:left;"> Reality </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;color: forestgreen !important;"> Travel times can only be positive </td>
+   <td style="text-align:left;"> Travel times can only be positive </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;color: forestgreen !important;"> Traffic can only slow you down </td>
+   <td style="text-align:left;"> Traffic can only slow you down </td>
+  </tr>
+</tbody>
+</table>
+<p>As a result, the exponential model yields a much more realistic guesses.</p>
+<h2 id="summing-up">Summing Up</h2>
+<p>Assumptions are a useful tool in many situations.</p>
+<p>While assumptions can simplify complex issues and make analytical work more manageable, <strong>they&rsquo;re not a substitute for reality</strong>. If your assumptions are bad, your model is bad. Period.</p>
+<p><strong>Be especially careful when using the normal distribution</strong>. The normal distribution is nice for assuming away many complications, but it will not work everywhere. Use the assumption of normality wisely.</p>
+<p>Remember: assumptions may you help get an answer, but they won’t check that the answer makes sense. That’s your job!</p>
+<h4 id="up-next-approximation">Up Next: Approximation</h4>
+<p>Next week, we make assumptions SO big, they go to infinity. Learn how statistical approximations can save us from the drudgery of difficult math.</p>
+<p>===========================</p>
+<p>R code used to generate plots:</p>
+<ol>
+<li>Going to a Concert</li>
+</ol>
+<pre><code class="language-r">library(ggplot2)
+library(data.table)
+
+set.seed(060425)
+
+### Good old normal distribution
+heights &lt;- rnorm(10000,5.7,.25) |&gt; as.data.table()
+
+base_plot &lt;- ggplot(heights, aes(x=V1)) + 
+    geom_density(fill=&quot;orange&quot;, alpha=0.3) +
+    theme_minimal() + xlab(&quot;Height (Feet)&quot;) + ylab(&quot;&quot;) + theme(axis.text.y=element_blank()) +
+    theme(axis.text.x = element_text(face=&quot;bold&quot;, color=&quot;darkred&quot;, size=15)) +
+    coord_cartesian(xlim=c(4.5,7)) +
+    annotate(&quot;text&quot;, x = 6.75, y = -.15, label = &quot;Summer of Stats&quot;, col=&quot;grey80&quot;, size = 4)
+
+over_6 &lt;- heights[V1&gt;=6]
+base_plot +
+    geom_segment(aes(x=6, y=1.65, xend=6, yend=0), color='darkred', lwd=1.5) +
+    annotate(&quot;text&quot;, x = 6.6, y = .55, label = &quot;About 13.25%\n of population is\n taller than 6ft&quot;, size = 5) 
+
+
+over_5.5 &lt;- heights[V1&gt;=5.5]
+
+base_plot +
+    geom_segment(aes(x=5.5, y=1.65, xend=5.5, yend=0), color='darkred', lwd=1.5) +
+    annotate(&quot;text&quot;, x = 6.6, y = .55, label = &quot;About 79%\n of population is\n taller than 5ft 6in&quot;, size = 5)
+</code></pre>
+<ol start="2">
+<li>Normal Traffic Modeling</li>
+</ol>
+<pre><code class="language-r">library(ggplot2)
+library(data.table)
+
+set.seed(052825)
+
+# Model traffic for each route
+# (Traffic ONLY adds to travel time - sorry guys!)
+I_71_traffic &lt;- rexp(100,1/10)
+
+# Do 100 simulated drives
+I_71 &lt;- 20 + I_71_traffic 
+
+### Compare trip times
+ggplot(as.data.table(I_71), aes(x=I_71)) + 
+    geom_density(fill=&quot;blue&quot;, alpha=.2) + 
+    coord_cartesian(xlim=c(20,70)) + 
+    theme_minimal() + xlab(&quot;&quot;) + ylab(&quot;&quot;) + theme(axis.text.y=element_blank()) +
+    annotate(&quot;text&quot;, x = 27, y = .01, label = &quot;Best Case: \n20 mins&quot;, size = 5) +
+    annotate(&quot;text&quot;, x = 65, y = .02, label = &quot;Worst Case: \n70+ mins!&quot;, size = 5) +
+    annotate(&quot;text&quot;, x = 65, y = .0075, label = &quot;Summer of Stats&quot;, col=&quot;grey80&quot;, size = 4)
+
+# Model traffic for each route using NORMAL distribution
+I_71_traffic &lt;- rnorm(100,mean=20,sd=10)
+
+### Compare trip times
+ggplot(as.data.table(I_71_traffic), aes(x=I_71_traffic)) + 
+    geom_density(fill=&quot;blue&quot;, alpha=.2) + 
+    coord_cartesian(xlim=c(0,70)) + 
+    theme_minimal() + xlab(&quot;&quot;) + ylab(&quot;&quot;) + theme(axis.text.y=element_blank()) +
+    annotate(&quot;text&quot;, x = 10, y = .0075, label = &quot;Best Case: \n-10 mins?&quot;, size = 5) +
+    annotate(&quot;text&quot;, x = 55, y = .01, label = &quot;Worst Case: \n60 mins&quot;, size = 5) +
+    annotate(&quot;text&quot;, x = 65, y = .002, label = &quot;Summer of Stats&quot;, col=&quot;grey80&quot;, size = 4)
+</code></pre>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  
+
+
+  </body>
+</html>
+

@@ -62,7 +62,7 @@
 
   <article class="article">
     
-    <span class="article-duration">6 min read</span>
+    <span class="article-duration">7 min read</span>
     
 
     <h1 class="article-title">How to Guess: 3 - Approximation</h1>
@@ -73,87 +73,32 @@
 
     <div class="article-content">
       
-      <script src="/2025/06/11/how-to-guess-3-approximation/index_files/kePrint/kePrint.js"></script>
-<link href="/2025/06/11/how-to-guess-3-approximation/index_files/lightable/lightable.css" rel="stylesheet" />
-<link href="/2025/06/11/how-to-guess-3-approximation/index_files/bsTable/bootstrapTable.min.css" rel="stylesheet" />
-<script src="/2025/06/11/how-to-guess-3-approximation/index_files/bsTable/bootstrapTable.js"></script>
-<h2 id="or-why-infinity-is-your-friend">(or &ldquo;Why Infinity is Your Friend&rdquo;)</h2>
+      <h2 id="or-why-infinity-is-your-friend">(or &ldquo;Why Infinity is Your Friend&rdquo;)</h2>
 <p>Let&rsquo;s start today&rsquo;s post with a simple question:</p>
 <img src="/2025/06/11/how-to-guess-3-approximation/index_files/figure-html/unnamed-chunk-1-1.png" width="1152" style="display: block; margin: auto;" />
-<p>Surprisingly, depending on who you ask, you may actually get a different &ldquo;correct&rdquo; answer:</p>
+<p>Pretty simple, right?</p>
+<p>However, it really depends on who you ask&hellip;</p>
 <img src="/2025/06/11/how-to-guess-3-approximation/index_files/figure-html/unnamed-chunk-2-1.png" width="960" style="display: block; margin: auto;" />
 <p>One thing I love about statisticians is their willingness to approximate.</p>
 <p>But as with everything else with statistics, statisticians are very careful about doing things properly.</p>
 <p>In statistics, each approximation we use has a mathematical justification, and a set of assumptions. As long as we satisfy the assumptions, <strong>our approximate answer should be very close to the real one</strong>.</p>
 <h3 id="approximate-this">Approximate This!</h3>
-<p>Let&rsquo;s say you want to guess the average length for a set of books on your bookshelf.</p>
+<p>Let&rsquo;s say you want to guess the <strong>average length for a set of books</strong> on your bookshelf.</p>
 <p>You collect data, and assume it is from a normal population. Since you don&rsquo;t know <code>\(\sigma\)</code> (ie. variance), your sample average will follow a t-distribution.</p>
-<p>Unfortunately, the t-distribution can be a <a href="https://en.wikipedia.org/wiki/Student%27s_t-distribution">little tricky to work with</a>. But, luckily for us, the t-distribution <strong>very quickly</strong> tend towards the Normal distribution, which we can calculate more easily:</p>
+<p>Unfortunately, the t-distribution can be a <a href="https://en.wikipedia.org/wiki/Student%27s_t-distribution">little tricky to work with</a>. But, luckily for us, the t-distribution <strong>very quickly</strong> tends towards the Normal distribution, which we can calculate more easily.</p>
+<p>We can actually illustrate this trend graphically:</p>
 <img src="/2025/06/11/how-to-guess-3-approximation/index_files/figure-html/unnamed-chunk-3-1.png" width="70%" style="display: block; margin: auto;" />
 <ul>
 <li>With only 2 observations, the sampling distribution (in <span style="color: red;"><strong>red</strong></span>) is already somewhat &ldquo;Normal&rdquo;-looking.</li>
 <li>At N=3 observations, (in <span style="color: #f3beba;"><strong>light red</strong></span>) it jumps noticeably closer.</li>
-<li>At N=4 through 15 are represented by the (<span style="color: #a5a3a2;"><strong>grey</strong></span>) lines. By now, there is essentially no gap with the Normal distribution.</li>
+<li>N=4 through N=15 are represented by the (<span style="color: #a5a3a2;"><strong>grey</strong></span>) lines. By now, there is essentially no gap with the Normal distribution.</li>
 <li>By the time N=30, the line (in <span style="color: blue;"><strong>blue</strong></span>) is so close that you likely can&rsquo;t even distinguish it from the Normal distribution without zooming in.</li>
 </ul>
-<p>Let&rsquo;s see this approximation in action:</p>
-<h4 id="average-book-length-confidence-interval">Average Book Length (Confidence Interval)</h4>
-<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:right;"> N </th>
-   <th style="text-align:left;"> Low (t-dist) </th>
-   <th style="text-align:left;"> High (t-dist) </th>
-   <th style="text-align:left;"> Low (Normal) </th>
-   <th style="text-align:left;"> High (Normal) </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:left;"> 87 </td>
-   <td style="text-align:left;"> 717 </td>
-   <td style="text-align:left;"> 182 </td>
-   <td style="text-align:left;"> 622 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 10 </td>
-   <td style="text-align:left;"> 307 </td>
-   <td style="text-align:left;"> 443 </td>
-   <td style="text-align:left;"> 313 </td>
-   <td style="text-align:left;"> 437 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 15 </td>
-   <td style="text-align:left;"> 329 </td>
-   <td style="text-align:left;"> 416 </td>
-   <td style="text-align:left;"> 332 </td>
-   <td style="text-align:left;"> 413 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 20 </td>
-   <td style="text-align:left;"> 327 </td>
-   <td style="text-align:left;"> 389 </td>
-   <td style="text-align:left;"> 329 </td>
-   <td style="text-align:left;"> 388 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 30 </td>
-   <td style="text-align:left;"> 336 </td>
-   <td style="text-align:left;"> 376 </td>
-   <td style="text-align:left;"> 337 </td>
-   <td style="text-align:left;"> 376 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 50 </td>
-   <td style="text-align:left;"> 336 </td>
-   <td style="text-align:left;"> 360 </td>
-   <td style="text-align:left;"> 336 </td>
-   <td style="text-align:left;"> 359 </td>
-  </tr>
-</tbody>
-</table>
-<p>As we can see above, once we have &gt; 15 observations, the results we get won&rsquo;t be meaningfully different, so we save ourselves some effort by just using the Normal distribution to approximate it.</p>
+<h4 id="average-book-length">Average Book Length</h4>
+<p>Let&rsquo;s see how well this approximation works in action</p>
+<p>Here, we calculate a confidence interval for average book length (<strong>exact</strong> and <strong>approximated</strong>) - Note how similar the results are once we have &gt; 15 observations:</p>
+<p><img src="/2025/06/11/how-to-guess-3-approximation/index_files/figure-html/unnamed-chunk-4-1.png" width="960" style="display: block; margin: auto;" /><img src="/2025/06/11/how-to-guess-3-approximation/index_files/figure-html/unnamed-chunk-4-2.png" width="960" style="display: block; margin: auto;" /><img src="/2025/06/11/how-to-guess-3-approximation/index_files/figure-html/unnamed-chunk-4-3.png" width="960" style="display: block; margin: auto;" /><img src="/2025/06/11/how-to-guess-3-approximation/index_files/figure-html/unnamed-chunk-4-4.png" width="960" style="display: block; margin: auto;" /></p>
+<p>Since the results we get won&rsquo;t be meaningfully different as we see more data, we can often save ourselves some effort by just using the Normal distribution to approximate things.</p>
 <h3 id="approximate-everything">Approximate Everything?</h3>
 <p>The most famous approximation in all of statistics is the <a href="https://en.wikipedia.org/wiki/Central_limit_theorem">Central Limit Theorem</a>.</p>
 <p>This theorem is so famous because it shows that <strong>the Normal approximation holds for ALL distributions</strong> as sample size increases.</p>
@@ -168,7 +113,7 @@
 <p><strong>No, it isn&rsquo;t.</strong></p>
 <p>The example we saw was when data was drawn from a normal population. <strong>But not all populations are normal.</strong></p>
 <h3 id="getting-it-exponentially-wrong">Getting it Exponentially Wrong</h3>
-<p>If our data comes from a substantially skewed population, <strong>our data will not become normal at N = 30.</strong> Let&rsquo;s look at how the following distribution behaves:</p>
+<p>If our data comes from a substantially skewed population, <strong>our data will not become normal at N = 30.</strong> Consider how the following skewed distribution behaves:</p>
 <img src="/2025/06/11/how-to-guess-3-approximation/index_files/figure-html/unnamed-chunk-5-1.png" width="576" style="display: block; margin: auto;" />
 <p><em>(Note - this kind of distribution is</em> <strong>everywhere</strong>. <em>Examples: income, housing prices, wait times, etc..)</em></p>
 <h3 id="attempt-1---sample-data">Attempt #1 - Sample Data</h3>
@@ -176,11 +121,11 @@
 <img src="/2025/06/11/how-to-guess-3-approximation/index_files/figure-html/unnamed-chunk-6-1.png" width="100%" style="display: block; margin: auto;" />
 <p>Wait, that doesn&rsquo;t look &ldquo;normal&rdquo; at all&hellip;</p>
 <p>Here&rsquo;s why: Central Limit Theorem <strong>does not say</strong> our DATA will magically become normally distributed as our sample size increases. The <strong>data</strong> will always be right-skewed, no matter how many observation we draw.</p>
-<p>What should become normally distributed is the AVERAGE of the sample we draw, denoted by the red line.</p>
+<p>What should become normally distributed is the AVERAGE of the sample we collect, denoted by the red line.</p>
 <img src="/2025/06/11/how-to-guess-3-approximation/index_files/figure-html/unnamed-chunk-7-1.png" width="50%" style="display: block; margin: auto;" />
 <p>Let&rsquo;s try again and see if this holds true.</p>
 <h3 id="attempt-2---sample-mean">Attempt #2 - Sample Mean</h3>
-<p>Now, we will plot the <strong>averaged value</strong> (ie. mean) of each sample:</p>
+<p>Now, we will plot the <strong>average value</strong> (ie. mean) of each sample:</p>
 <img src="/2025/06/11/how-to-guess-3-approximation/index_files/figure-html/unnamed-chunk-8-1.png" width="100%" style="display: block; margin: auto;" />
 <p>We see that the sample mean eventually does reach normality. But, it clearly does not happen at &ldquo;N=30&rdquo;.</p>
 <p>Note that Central Limit Theorem does say our sample mean will eventually act &ldquo;normal&rdquo;. <strong>However, it doesn&rsquo;t say exactly when.</strong></p>
@@ -189,9 +134,9 @@
 <p>Approximations can make our lives much easier. But when used improperly, they can also lead to problems.</p>
 <p>While many common problems will tend towards normality as more data is observed, <strong>not all of them do</strong>. This is a common mistake that can lead to very interesting miscalculations.</p>
 <p>Use your approximations well. Otherwise, you may end up with a guess that is approximately WRONG.</p>
-<h4 id="up-next-sufficiency">Up Next: Sufficiency</h4>
-<p>Next week, we&rsquo;ll discuss how statistics can allow us to make accurate guesses using much less data.</p>
-<p>Learn how you can squeeze 10 billion rows of data down to the size of a single sticky note!</p>
+<h4 id="up-next-independence">Up Next: Independence</h4>
+<p>Next week, we&rsquo;ll discuss the importance of independence when using statistics.</p>
+<p>Learn how things can go very wrong when your events AREN&rsquo;T independent.</p>
 <p>===========================</p>
 <p>R code used to generate plots:</p>
 <ol>
@@ -224,10 +169,7 @@ ggplot(data.frame(x = c(-4, 4)), aes(x = x)) +
 <ol start="2">
 <li>Book Lengths</li>
 </ol>
-<pre><code class="language-r">library(knitr)
-library(kableExtra)
-
-### Create sample of book lengths (in pages)
+<pre><code class="language-r">### Create sample of book lengths (in pages)
 set.seed(061125) 
 page_length &lt;- rnorm(50,mean=350, sd=100) |&gt; round(0) |&gt; as.data.table()
 
@@ -254,9 +196,35 @@ conf_int_table &lt;- data.table(calculate_ci(3),
 conf_int_table[,rn:=c(3,10,15,20,30,50)]
 colnames(conf_int_table) &lt;- c(&quot;N&quot;, &quot;Low (t-dist)&quot;, &quot;High (t-dist)&quot;,&quot;Low (Normal)&quot;, &quot;High (Normal)&quot;)
 
-### Display data as a table
-options(kableExtra.html.bsTable = TRUE)
-conf_int_table |&gt; knitr::kable() |&gt;  kable_styling(bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;))
+plot_range &lt;- function(page_counts, low_t, high_t, low_norm, high_norm, labels=FALSE, N=3){
+  
+### Plot confidence interval
+page_range &lt;- ggplot(conf_int_table, aes(x=V2)) + 
+    geom_segment(data = conf_int_table, aes(x = low_t, xend = high_t, y = 1.35, yend = 1.35), lwd = 2) +
+    geom_point(data = conf_int_table, aes(x = low_t, y = 1.35), shape = &quot;|&quot;, size = 12) +
+    geom_point(data = conf_int_table, aes(x = high_t, y = 1.35), shape = &quot;|&quot;, size = 12) +
+      geom_text(data = conf_int_table, aes(x = low_t, y = 1.55), label = low_t,size = 8) +
+      geom_text(data = conf_int_table, aes(x = high_t, y = 1.55), label = high_t, size = 8) +
+  {if(labels)geom_text(data = conf_int_table, aes(x = (high_t+low_t)/2, y = 1.5), label = &quot;Actual&quot;, size = 8)}+
+
+    geom_segment(data = conf_int_table, aes(x = low_norm, xend = high_norm, y = 1, yend = 1), lwd = 2, col=&quot;grey60&quot;) +
+    geom_point(data = conf_int_table, aes(x = low_norm, y = 1), shape = &quot;|&quot;, size = 12, col=&quot;grey60&quot;) +
+    geom_point(data = conf_int_table, aes(x = high_norm, y = 1), shape = &quot;|&quot;, size = 12, col=&quot;grey60&quot;) +
+      geom_text(data = conf_int_table, aes(x = low_norm, y = 0.75), label = low_norm,size = 8, col=&quot;grey60&quot;) +
+      geom_text(data = conf_int_table, aes(x = high_norm, y = 0.75), label = high_norm, size = 8, col=&quot;grey60&quot;) +
+    {if(labels)geom_text(data = conf_int_table, aes(x = (high_norm+low_norm)/2, y = 0.85), label = &quot;Normal Approximation&quot;, size = 8, col=&quot;grey60&quot;)} +
+  
+    geom_text(data = conf_int_table, aes(x = (high_t+low_t)/2, y = 1.85), label = paste0(&quot;N=&quot;,N), size = 10) +
+    coord_cartesian(ylim = c(0,2), xlim = c(85, 720)) + 
+    theme_void()
+
+page_range
+}
+
+plot_range(conf_int_table, 87,717,182,622,labels=TRUE, N=&quot;3 Books&quot;)
+plot_range(conf_int_table, 307,443,313,437, N=10)
+plot_range(conf_int_table, 329,416,332,413, N=15)
+plot_range(conf_int_table, 336,376,337,376, N=30)
 </code></pre>
 <ol start="3">
 <li>Exponential Normality</li>
@@ -285,15 +253,16 @@ grid.arrange(make_plot(30), make_plot(100),
 make_plot(1000) + geom_vline(xintercept = 100, col=&quot;red&quot;, lwd = 3)
 
 ### Sample means
-make_plot &lt;- function(n_obs) {
+make_plot &lt;- function(n_obs, x_low, x_high) {
   plot_title &lt;- paste0(&quot;N=&quot;,n_obs)
 s_data &lt;- sapply(1:n_obs, function(X) {rexp(rate=0.01, n=n_obs) |&gt; sum()/n_obs}) |&gt; as.data.table()
   ggplot(s_data, aes(x=V1)) + geom_histogram(bins=15, fill=&quot;darkblue&quot;) + theme_minimal() + xlab(&quot;&quot;) + labs(title=plot_title) +
-    theme(plot.title = element_text(size=22)) + coord_cartesian(xlim = c(65,135))
+    theme(plot.title = element_text(size=22)) + coord_cartesian(xlim = c(x_low, x_high))
 }
 
-grid.arrange(make_plot(30), make_plot(100),
-             make_plot(1000), make_plot(3000), nrow=2, ncol=2)
+grid.arrange(make_plot(30, 65, 135), make_plot(100, 65, 135),
+             make_plot(1000, 80,120), make_plot(3000,90,110),
+             nrow=2, ncol=2)
 </code></pre>
 
     </div>

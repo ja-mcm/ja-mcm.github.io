@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4321&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Hugo 0.125.4">
@@ -10,7 +10,7 @@
 <meta property="og:title" content="How to Guess: 1 - Statistics - Summer of Stats">
 
 
-  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+  <link href='//localhost:4321/favicon.ico' rel='icon' type='image/x-icon'/>
 
 
 
@@ -137,24 +137,24 @@ Intuitively, you probably picked a value that is close to the <strong>average</s
 </blockquote>
 <p>So, if you&rsquo;re like me, you wait until the absolute last minute to leave for your trip. Because time is tight, you want to find fastest route to drive to the airport.</p>
 <p>Google gives you 2 choices:</p>
-<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+<table class="table table-striped table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
  <thead>
   <tr>
-   <th style="text-align:left;"> Route </th>
-   <th style="text-align:left;"> Travel Time </th>
-   <th style="text-align:left;"> Variation* </th>
+   <th style="text-align:center;"> Route </th>
+   <th style="text-align:center;"> Travel Time </th>
+   <th style="text-align:center;"> Variation* </th>
   </tr>
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> I-71 </td>
-   <td style="text-align:left;"> 20 minutes </td>
-   <td style="text-align:left;"> 10 minutes </td>
+   <td style="text-align:center;"> I-71 </td>
+   <td style="text-align:center;"> 20 minutes </td>
+   <td style="text-align:center;"> 10 minutes </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> I-471 </td>
-   <td style="text-align:left;"> 30 minutes </td>
-   <td style="text-align:left;"> 5 minutes </td>
+   <td style="text-align:center;"> I-471 </td>
+   <td style="text-align:center;"> 30 minutes </td>
+   <td style="text-align:center;"> 5 minutes </td>
   </tr>
 </tbody>
 </table>
@@ -173,21 +173,21 @@ Intuitively, you probably picked a value that is close to the <strong>average</s
 <img src="/2025/05/28/how-to-guess-1-statistics/index_files/figure-html/unnamed-chunk-7-1.png" width="95%" style="display: block; margin: auto;" />
 <p>So, you might arrive faster on I-71&hellip;but you also might not.</p>
 <p>In order to be 95% confident that you will arrive on time, here&rsquo;s when you&rsquo;d have to leave for each route:</p>
-<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+<table class="table table-striped table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
  <thead>
   <tr>
-   <th style="text-align:left;"> Route </th>
-   <th style="text-align:left;"> Budgeted Time </th>
+   <th style="text-align:center;"> Route </th>
+   <th style="text-align:center;"> Budgeted Time </th>
   </tr>
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> I-71 </td>
-   <td style="text-align:left;"> 60 minutes </td>
+   <td style="text-align:center;"> I-71 </td>
+   <td style="text-align:center;"> 60 minutes </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> I-471 </td>
-   <td style="text-align:left;"> 44 minutes </td>
+   <td style="text-align:center;"> I-471 </td>
+   <td style="text-align:center;"> 44 minutes </td>
   </tr>
 </tbody>
 </table>
@@ -310,8 +310,7 @@ colnames(route_options) &lt;- c(&quot;Route&quot;, &quot;Travel Time&quot;, &quo
 
 ### Display data as a table
 options(kableExtra.html.bsTable = TRUE)
-route_options |&gt; knitr::kable() |&gt;  kable_styling(bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;))
-
+kable(route_options, align = c(&quot;c&quot;,&quot;c&quot;)) |&gt; kableExtra::kable_styling(bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;), full_width = FALSE)
 
 # Model traffic for each route
 # (Traffic ONLY adds to travel time - sorry guys!)
@@ -357,7 +356,7 @@ colnames(travel_times) &lt;- c(&quot;Route&quot;, &quot;Budgeted Time&quot;)
 
 ### Display data as a table
 options(kableExtra.html.bsTable = TRUE)
-travel_times |&gt; knitr::kable() |&gt;  kable_styling(bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;))
+kable(travel_times, align = c(&quot;c&quot;,&quot;c&quot;)) |&gt; kableExtra::kable_styling(bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;), full_width = FALSE)
 </code></pre>
 
     </div>

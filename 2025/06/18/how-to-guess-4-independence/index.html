@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4321&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.125.4">
+
+
+<title>How to Guess: 4 - Independence - Summer of Stats</title>
+<meta property="og:title" content="How to Guess: 4 - Independence - Summer of Stats">
+
+
+  <link href='//localhost:4321/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/Rplot.png"
+         width="60"
+         height="60"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/">Summer of Stats</a></li>
+    
+    <li><a href="/2023/01/01/visual-gallery/">Visual Gallery</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">4 min read</span>
+    
+
+    <h1 class="article-title">How to Guess: 4 - Independence</h1>
+
+    
+    <span class="article-date">2025-06-18</span>
+    
+
+    <div class="article-content">
+      
+      <script src="/2025/06/18/how-to-guess-4-independence/index_files/kePrint/kePrint.js"></script>
+<link href="/2025/06/18/how-to-guess-4-independence/index_files/lightable/lightable.css" rel="stylesheet" />
+<link href="/2025/06/18/how-to-guess-4-independence/index_files/bsTable/bootstrapTable.min.css" rel="stylesheet" />
+<script src="/2025/06/18/how-to-guess-4-independence/index_files/bsTable/bootstrapTable.js"></script>
+<script src="/2025/06/18/how-to-guess-4-independence/index_files/kePrint/kePrint.js"></script>
+<link href="/2025/06/18/how-to-guess-4-independence/index_files/lightable/lightable.css" rel="stylesheet" />
+<link href="/2025/06/18/how-to-guess-4-independence/index_files/bsTable/bootstrapTable.min.css" rel="stylesheet" />
+<script src="/2025/06/18/how-to-guess-4-independence/index_files/bsTable/bootstrapTable.js"></script>
+<script src="/2025/06/18/how-to-guess-4-independence/index_files/kePrint/kePrint.js"></script>
+<link href="/2025/06/18/how-to-guess-4-independence/index_files/lightable/lightable.css" rel="stylesheet" />
+<link href="/2025/06/18/how-to-guess-4-independence/index_files/bsTable/bootstrapTable.min.css" rel="stylesheet" />
+<script src="/2025/06/18/how-to-guess-4-independence/index_files/bsTable/bootstrapTable.js"></script>
+<h2 id="or-why-trouble-comes-in-threes">(or &ldquo;Why Trouble Comes in Threes&rdquo;)</h2>
+<p>Predicting what will happen next is often a tricky business.</p>
+<img src="images/crystal_ball.jpg" width="40%" style="display: block; margin: auto;" />
+<blockquote>
+<p><em>Unless you have one of these</em></p>
+</blockquote>
+<p>But, with the right assumptions, we can often use statistics to make a reasonable guess.</p>
+<p>To do this, we often make use the concept of independence.</p>
+<h3 id="what-is-statistical-independence">What is Statistical Independence?</h3>
+<p>One of the most important assumptions when we use statistics is that are events are &ldquo;independent&rdquo;.</p>
+<p>What this means is that <strong>the probability of the previous event happening does not affect the current</strong> situation.</p>
+<h3 id="heads-or-tails">Heads or Tails?</h3>
+<p>Coin tosses are a great example of independent events - each result has <strong>no impact</strong> on the next coin flip.</p>
+<table class="table table-striped table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:center;"> Consecutive Heads </th>
+   <th style="text-align:center;"> Next = Head </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;"> 0 </td>
+   <td style="text-align:center;"> 50% </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 1 </td>
+   <td style="text-align:center;"> 50% </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 2 </td>
+   <td style="text-align:center;"> 50% </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 3 </td>
+   <td style="text-align:center;"> 50% </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 4 </td>
+   <td style="text-align:center;"> 50% </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 5 </td>
+   <td style="text-align:center;"> 50% </td>
+  </tr>
+</tbody>
+</table>
+<p>So, (assuming a fair coin) you could see 5 heads in a row and still confidently say that the next flip will be 50/50.</p>
+<p>In this case, the independence of these events makes it easy to assess the likelihood of what will happen next.</p>
+<p>However, in many cases, things often aren&rsquo;t quite so simple.</p>
+<hr>
+<h2 id="independence-in-daily-life">Independence in Daily Life</h2>
+<p>One practical lesson that you can take away is:</p>
+<blockquote>
+<p><strong>Be extra vigilant after failures happen</strong></p>
+</blockquote>
+<p>Statistics is great for guessing the likelihood of events <strong>when they are independent from each other</strong>.</p>
+<p>But when that is not true (which is often), using a statistical estimate can be badly wrong, as we&rsquo;ll see below.</p>
+<h3 id="getting-a-flat">Getting a Flat</h3>
+<p>Nothing ruins a nice bike ride quite like getting a flat tire.</p>
+<p>Luckily, flats don&rsquo;t happen all that often.</p>
+<img src="images/potholes.jpg" width="60%" style="display: block; margin: auto;" />
+<blockquote>
+<p><em>Unless you live here&hellip;</em></p>
+</blockquote>
+<p>Let&rsquo;s assume there&rsquo;s a 1% chance of getting a flat per hour of riding. We can actually model the <strong>number of flats we expect to get</strong> on a ride using a Poisson distribution:</p>
+<table class="table table-striped table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:center;"> # of Flats </th>
+   <th style="text-align:center;"> Probability </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;"> 0 </td>
+   <td style="text-align:center;"> 99.03% </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 1 </td>
+   <td style="text-align:center;"> 0.96% </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 2 </td>
+   <td style="text-align:center;"> 0.01% </td>
+  </tr>
+</tbody>
+</table>
+<p>Which confirms our experience that a flat tire isn&rsquo;t likely to be in our future.</p>
+<h3 id="uh-oh">Uh-Oh&hellip;</h3>
+<p>Eventually, you will get a flat. No worries - you quickly replace your tube and set back off again.</p>
+<p>Remember, our model shows <strong>there&rsquo;s almost NO chance</strong> you&rsquo;re going to have a SECOND flat. So, you should be safe, right?</p>
+<p>But, 5 minutes later&hellip;. <strong>&laquo;Another flat&raquo;</strong></p>
+<p>Now you&rsquo;re a bit suspicious - it sure seems like our estimated probability for the 2nd flat tire was wrong. <strong>And this is indeed the case.</strong></p>
+<h3 id="when-things-arent-independent">When Things Aren&rsquo;t Independent</h3>
+<p>The issue is that these two events were not unrelated.</p>
+<p>After the 1st flat, we quickly replaced our tube and moved on. What we didn&rsquo;t see was <strong>the piece of glass that caused the flat, still embedded in our tire</strong>.</p>
+<p>Since the underlying issue was not addressed, further flats are <strong>much</strong> more likely to occur:</p>
+<h4 id="probability-of-flat-glass-in-tire">Probability of Flat (Glass in Tire)</h4>
+<table class="table table-striped table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:center;"> # of Flats </th>
+   <th style="text-align:center;"> Probability </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;"> 0 </td>
+   <td style="text-align:center;"> 36.59% </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 1 </td>
+   <td style="text-align:center;"> 36.79% </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 2 </td>
+   <td style="text-align:center;"> 18.68% </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 3 </td>
+   <td style="text-align:center;"> 6.10% </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 4 </td>
+   <td style="text-align:center;"> 1.49% </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 5 </td>
+   <td style="text-align:center;"> 0.30% </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 6 </td>
+   <td style="text-align:center;"> 0.05% </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 7 </td>
+   <td style="text-align:center;"> 0.01% </td>
+  </tr>
+</tbody>
+</table>
+<p>In short, our 1st and 2nd flats <strong>were not independent</strong>.</p>
+<p>If we had removed the glass, our original statistical guess would likely have been correct. But, since we didn&rsquo;t, we&rsquo;re now stuck on the side of the road fixing ANOTHER flat tire.</p>
+<h2 id="summing-up">Summing Up</h2>
+<p>Independence of events is crucially important to making good guesses.</p>
+<p>When events are independent, we can use statistical modeling to make reasonable estimates. But when the likelihood of one event affects another, <strong>statistics can give answers that are badly wrong.</strong></p>
+<p>These situations pop up frequently in real life. From flat tires to stock returns, <strong>many phenomena exhibit some level of dependence</strong>. So, any time you make an estimate, it is wise to assess whether your events are truly independent.</p>
+<p>If you don&rsquo;t, you may end up stranded.</p>
+<h4 id="up-next-bias">Up Next: Bias</h4>
+<p>Next week, we&rsquo;ll wrap up our discussion on the art of guessing by exploring bias.</p>
+<p>Stay tuned to see why bias isn&rsquo;t always a bad thing.</p>
+<p>===========================</p>
+<p>R code used to generate plots:</p>
+<ol>
+<li>Getting a Flat</li>
+</ol>
+<pre><code class="language-r">library(data.table)
+library(knitr)
+library(kableExtra)
+library(formattable)
+
+### Chance of a flat - 1% per hour
+set.seed(061825)
+s_data &lt;- rpois(lambda=0.01, n=100000) |&gt; as.data.table()
+
+result_table &lt;- s_data[,percent(.N/100000),by=V1]
+colnames(result_table) &lt;- c(&quot;# of Flats&quot;, &quot;Probability&quot;)
+
+### Display data as a table
+options(kableExtra.html.bsTable = TRUE)
+kable(result_table, align = c(&quot;c&quot;,&quot;c&quot;)) |&gt; kableExtra::kable_styling(bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;), full_width = FALSE)
+
+### Chance of a flat - 1 per hour
+set.seed(061825)
+r_data &lt;- rpois(lambda=1, n=100000) |&gt; as.data.table()
+
+result_table_2 &lt;- r_data[,percent(.N/100000),by=V1][order(V1)]
+colnames(result_table_2) &lt;- c(&quot;# of Flats&quot;, &quot;Probability&quot;)
+
+### Display data as a table
+options(kableExtra.html.bsTable = TRUE)
+kable(result_table_2, align = c(&quot;c&quot;,&quot;c&quot;)) |&gt; kableExtra::kable_styling(bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;), full_width = FALSE)
+</code></pre>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  
+
+
+  </body>
+</html>
+

@@ -6,8 +6,15 @@
     <description>Recent content on Summer of Stats</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 04 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 11 Jun 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Guess: 3 - Approximation</title>
+      <link>/2025/06/11/how-to-guess-3-approximation/</link>
+      <pubDate>Wed, 11 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>/2025/06/11/how-to-guess-3-approximation/</guid>
+      <description>(or &amp;ldquo;Why Infinity is Your Friend&amp;rdquo;) Let&amp;rsquo;s start today&amp;rsquo;s post with a simple question:&#xA;Pretty simple, right?&#xA;However, it really depends on who you ask&amp;hellip;&#xA;One thing I love about statisticians is their willingness to approximate.&#xA;But as with everything else with statistics, statisticians are very careful about doing things properly.&#xA;In statistics, each approximation we use has a mathematical justification, and a set of assumptions. As long as we satisfy the assumptions, our approximate answer should be very close to the real one.</description>
+    </item>
     <item>
       <title>How to Guess: 2 - Assumptions</title>
       <link>/2025/06/04/how-to-guess-2-assumptions/</link>

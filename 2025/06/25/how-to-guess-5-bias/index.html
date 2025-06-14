@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4321&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.125.4">
+
+
+<title>How to Guess: 5 - Bias - Summer of Stats</title>
+<meta property="og:title" content="How to Guess: 5 - Bias - Summer of Stats">
+
+
+  <link href='//localhost:4321/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/Rplot.png"
+         width="60"
+         height="60"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/">Summer of Stats</a></li>
+    
+    <li><a href="/2023/01/01/visual-gallery/">Visual Gallery</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">5 min read</span>
+    
+
+    <h1 class="article-title">How to Guess: 5 - Bias</h1>
+
+    
+    <span class="article-date">2025-06-25</span>
+    
+
+    <div class="article-content">
+      
+      <h2 id="or-why-consistency-counts">(or &ldquo;Why Consistency Counts&rdquo;)</h2>
+<p>Nobody likes to admit it, but we are all biased.</p>
+<p>For example, I <strong>hate</strong> musicals. So, you COULD say I am extremely biased against them.</p>
+<img src="images/evil.jpg" width="45%" style="display: block; margin: auto;" />
+<blockquote>
+<p><em>With good reason&hellip;</em></p>
+</blockquote>
+<p>But what does that have to do with guessing? Let&rsquo;s discuss!</p>
+<h3 id="what-is-bias">What is Bias?</h3>
+<p>Bias has many meanings. It can mean &ldquo;a preference&rdquo;, &ldquo;an inclination&rdquo;, or even full-blown prejudice.</p>
+<p>For statisticians, however, bias has a very specific (mathematical) meaning.</p>
+<blockquote>
+<p><code>\(Bias(\hat{Y}) =\)</code> Expected Value - Actual Value</p>
+</blockquote>
+<p>In essence, <strong>bias is a long-term tendency to over/under-estimate.</strong></p>
+<h3 id="a-biased-picture">A Biased Picture</h3>
+<p>The best way to illustrate this concept is with a bullseye:
+<img src="/2025/06/25/how-to-guess-5-bias/index_files/figure-html/unnamed-chunk-2-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p>Imagine an archer fires 10 arrows at this target. A shooter who is biased will consistently err in a given direction:</p>
+<img src="/2025/06/25/how-to-guess-5-bias/index_files/figure-html/unnamed-chunk-3-1.png" width="1152" style="display: block; margin: auto;" />
+Whereas, the shooter who has no bias remains centered on the bullseye:
+<p>.</p>
+<img src="/2025/06/25/how-to-guess-5-bias/index_files/figure-html/unnamed-chunk-4-1.png" width="1152" style="display: block; margin: auto;" />
+<p>This does not mean that the unbiased shooter will hit the bullseye every time (or ever), but <strong>on average their shots will center around the bullseye.</strong></p>
+<h3 id="the-impact-of-bias">The Impact of Bias</h3>
+<p><strong>A BIASED guess isn&rsquo;t necesarily a BAD guess</strong></p>
+<hr>
+<h2 id="bias-in-daily-life">Bias in Daily Life</h2>
+<p>One practical lesson that you can take away is:</p>
+<blockquote>
+<p><strong>A BIASED guess isn&rsquo;t necesarily a BAD guess</strong></p>
+</blockquote>
+<p>Based on what you&rsquo;ve seen so far, it makes sense to think that an unbiased estimate is always going to beat a biased one.</p>
+<p>But, as we&rsquo;ll see, that isn&rsquo;t necessarily true&hellip;</p>
+<h3 id="a-statistical-shoot-off">A Statistical Shoot-Off</h3>
+<p>To illustrate this point, let&rsquo;s pit 2 archers against one another.</p>
+<ul>
+<li><strong>Archer 1:</strong> Unbiased, but inconsistent</li>
+<li><strong>Archer 2:</strong> Slightly biased, but VERY consistent</li>
+</ul>
+<p>Here, our first contestant is dialed in dead-center for every shot, so we&rsquo;d expect them to win handily, right?</p>
+<p>Let&rsquo;s see how their scores compare after taking 10 shots:</p>
+<img src="/2025/06/25/how-to-guess-5-bias/index_files/figure-html/unnamed-chunk-5-1.png" width="1152" style="display: block; margin: auto;" />
+<p>Comparing their results, it&rsquo;s clear to see that <strong>our biased shooter actually scores much higher</strong>.</p>
+<p>Note that Archer 2 is noticeably biased off-center, but <strong>still manages to win handily</strong> because they are so much more consistent.</p>
+<h2 id="summing-up">Summing Up</h2>
+<p>Most people avoid bias like the plague. That&rsquo;s understandable - few people want to be seen as unfair!</p>
+<p>However, <strong>bias is <a href="https://en.wikipedia.org/wiki/Bias%E2%80%93variance_tradeoff">always a tradeoff</a></strong> - if you slightly over/underestimate, but do so in a very precise manner, you may well come out ahead.</p>
+<p>Machine learning provides a great example - by using tons of data to <strong>find extremely precise yet potentially biased estimates</strong>, machine learning models can achieve truly shocking levels of accuracy.</p>
+<p>As long as you&rsquo;re aware of it, bias isn&rsquo;t always a bad thing.</p>
+<h4 id="up-next-bad-statistics">Up Next: Bad Statistics</h4>
+<p>Next week, we switch our theme as we explore the Dark Side of statistics: lying.</p>
+<p>Learn the sneaky statistical tricks people use to mislead and deceive, and what you can do to fight back.</p>
+<p>===========================</p>
+<p>R code used to generate plots:</p>
+<ol>
+<li>Target Practice</li>
+</ol>
+<pre><code class="language-r">library(data.table)
+library(ggplot2)
+library(ggforce)
+library(gridExtra)
+
+set.seed(1234567)
+
+circles &lt;- data.table(&quot;Y&quot; = 0)
+
+# Plot an archery target
+ggplot(circles) +
+    geom_circle(aes(x0 = 0, y0 = 0, r = 0.4, fill = &quot;black&quot;)) +
+    geom_circle(aes(x0 = 0, y0 = 0, r = 0.3, fill = &quot;blue&quot;)) +
+    geom_circle(aes(x0 = 0, y0 = 0, r = 0.2, fill = &quot;red&quot;)) +
+    geom_circle(aes(x0 = 0, y0 = 0, r = 0.1, fill = &quot;yellow&quot;)) +
+    
+    # Remove background and axis
+    theme_void() +
+    theme(aspect.ratio = 1,
+          legend.position = &quot;none&quot;) +
+    scale_fill_identity() +
+    coord_cartesian(x=c(-.5,.5),y=c(-.5,.5)) +
+      annotate(&quot;text&quot;, x = .37, y = -.4, label = &quot;Summer of Stats&quot;, col=&quot;grey80&quot;, size = 4.5) 
+
+### Biased target practice
+arrows &lt;- data.table(&quot;X&quot;= rnorm(10,.2,.15),
+                     &quot;Y&quot;= rnorm(10,-.05,.15))
+
+# Plot an archery target (muted color scheme)
+target &lt;- ggplot(circles) +
+    geom_circle(aes(x0 = 0, y0 = 0, r = 0.4, fill = &quot;#AAAAAA&quot;)) +
+    #geom_circle(aes(x0 = 0, y0 = 0, r = 0.35)) +
+    geom_circle(aes(x0 = 0, y0 = 0, r = 0.3, fill = &quot;#9999CC&quot;)) +
+    #geom_circle(aes(x0 = 0, y0 = 0, r = 0.25)) +
+    geom_circle(aes(x0 = 0, y0 = 0, r = 0.2, fill = &quot;#D64747&quot;), alpha=.4) +
+    #geom_circle(aes(x0 = 0, y0 = 0, r = 0.15)) +
+    geom_circle(aes(x0 = 0, y0 = 0, r = 0.1, fill = &quot;#CCCC00&quot;)) +
+    #geom_circle(aes(x0 = 0, y0 = 0, r = 0.05)) +
+
+    # Remove background and axis
+    theme_void() +
+    theme(aspect.ratio = 1,
+          legend.position = &quot;none&quot;) +
+    scale_fill_identity() +
+    coord_cartesian(x=c(-.5,.5),y=c(-.5,.5)) 
+
+target +
+  geom_point(data = arrows, aes(x=X, y=Y),shape=&quot;x&quot;, col=&quot;grey90&quot;, colour=&quot;black&quot;, size=16) +
+  geom_point(data = arrows, aes(x=.2, y=-0.05), shape=&quot;+&quot;, col=&quot;black&quot;, size=28) +
+  annotate(&quot;text&quot;, x = 0, y = .5, label = &quot;(Biased Right)&quot;, col=&quot;darkred&quot;, size = 10, fontface =&quot;bold.italic&quot;) +
+  annotate(&quot;text&quot;, x = .37, y = -.4, label = &quot;Summer of Stats&quot;, col=&quot;grey80&quot;, size = 4.5) 
+
+### Unbiased
+# shoot at random
+arrows_1 &lt;- data.table(&quot;X&quot;= rnorm(10,0,.1),
+                     &quot;Y&quot;= rnorm(10,0,.15))
+
+random &lt;- target +
+  geom_point(data = arrows_1, aes(x=X, y=Y),shape=&quot;x&quot;, col=&quot;grey90&quot;, size=16) +
+  geom_point(data = arrows_1, aes(x=0, y=0), shape=&quot;+&quot;, col=&quot;black&quot;, size=28) +
+  annotate(&quot;text&quot;, x = 0, y = .5, label = &quot;(Unbiased)&quot;, col=&quot;darkred&quot;, size = 10, fontface =&quot;bold.italic&quot;) 
+
+### Shoot NOT at random, but keep E(X) = 0
+arrows_2 &lt;- data.table(&quot;X&quot;= c(rep(seq(from=-0.2, to = 0.2, by=.1),9, each = 9)),
+                     &quot;Y&quot;= c(rep(seq(from=-0.2, to = 0.2, by=.1),9)))
+arrows_2 &lt;- arrows_2[X==min(X) | X==max(X) | Y==min(Y) | Y==max(Y)]
+
+square &lt;- target +
+  geom_point(data = arrows_2, aes(x=X, y=Y),shape=&quot;x&quot;, col=&quot;grey90&quot;, size=16) +
+  geom_point(data = arrows_2, aes(x=0, y=0), shape=&quot;+&quot;, col=&quot;black&quot;, size=28) +
+  annotate(&quot;text&quot;, x = 0, y = .5, label = &quot;(Also Unbiased)&quot;, col=&quot;darkred&quot;, size = 10, fontface =&quot;bold.italic&quot;) +
+  annotate(&quot;text&quot;, x = .37, y = -.4, label = &quot;Summer of Stats&quot;, col=&quot;grey80&quot;, size = 4.5) 
+
+grid.arrange(random, square, ncol=2)
+
+### Archery contest
+# Unbiased but inconsistent
+arrows_u &lt;- data.table(&quot;X&quot;= rnorm(10,0,.15),
+                        &quot;Y&quot;= rnorm(10,0,.3))
+
+archer_1 &lt;- target +
+  geom_point(data = arrows_u, aes(x=X, y=Y),shape=&quot;x&quot;, col=&quot;grey90&quot;, size=16) +
+  geom_point(data = arrows_u, aes(x=0, y=0), shape=&quot;+&quot;, col=&quot;black&quot;, size=28) +
+  annotate(&quot;text&quot;, x = 0, y = .5, label = &quot;Archer 1&quot;, col=&quot;darkred&quot;, size = 10, fontface =&quot;bold.italic&quot;) +
+  annotate(&quot;text&quot;, x = 0, y = -.5, label = &quot;Final Score: 54&quot;, col=&quot;black&quot;, size = 10, fontface =&quot;bold.italic&quot;)
+
+# Slight bias but much lower variance
+arrows_b &lt;- data.table(&quot;X&quot;= rnorm(10,0.1,.05),
+                        &quot;Y&quot;= rnorm(10,0.06,.05))
+
+archer_2 &lt;- target +
+  geom_point(data = arrows_b, aes(x=X, y=Y),shape=&quot;x&quot;, col=&quot;grey90&quot;, size=16) +
+  geom_point(data = arrows_b, aes(x=0.1, y=0.06), shape=&quot;+&quot;, col=&quot;black&quot;, size=28) +
+  annotate(&quot;text&quot;, x = 0, y = .5, label = &quot;Archer 2&quot;, col=&quot;darkred&quot;, size = 10, fontface =&quot;bold.italic&quot;) +
+  annotate(&quot;text&quot;, x = 0, y = -.5, label = &quot;Final Score: 88&quot;, col=&quot;black&quot;, size = 10, fontface =&quot;bold.italic&quot;) +
+  annotate(&quot;text&quot;, x = .37, y = -.4, label = &quot;Summer of Stats&quot;, col=&quot;grey80&quot;, size = 4.5) 
+
+grid.arrange(archer_1, archer_2, ncol=2)
+</code></pre>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  
+
+
+  </body>
+</html>
+

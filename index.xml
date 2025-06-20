@@ -6,8 +6,15 @@
     <description>Recent content on Summer of Stats</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 11 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 18 Jun 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Guess: 4 - Independence</title>
+      <link>/2025/06/18/how-to-guess-4-independence/</link>
+      <pubDate>Wed, 18 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>/2025/06/18/how-to-guess-4-independence/</guid>
+      <description>(or &amp;ldquo;Why Trouble Comes in Threes&amp;rdquo;) Predicting what will happen next is often a tricky business.&#xA;Unless you have one of these - available at Walmart!&#xA;But, with the right assumptions, we can often use statistics to make a reasonable guess.&#xA;To do this, we almost always make use the concept of independence.&#xA;What is Statistical Independence? One of the most important assumptions when we use statistics is that are events are &amp;ldquo;independent&amp;rdquo;.</description>
+    </item>
     <item>
       <title>How to Guess: 3 - Approximation</title>
       <link>/2025/06/11/how-to-guess-3-approximation/</link>

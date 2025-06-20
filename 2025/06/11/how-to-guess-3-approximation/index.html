@@ -73,12 +73,13 @@
 
     <div class="article-content">
       
-      <h2 id="or-why-infinity-is-your-friend">(or &ldquo;Why Infinity is Your Friend&rdquo;)</h2>
+      <img src="images/Rplot.png" width="1%" style="display: block; margin: auto;" />
+<h2 id="or-why-infinity-is-your-friend">(or &ldquo;Why Infinity is Your Friend&rdquo;)</h2>
 <p>Let&rsquo;s start today&rsquo;s post with a simple question:</p>
-<img src="/2025/06/11/how-to-guess-3-approximation/index_files/figure-html/unnamed-chunk-1-1.png" width="1152" style="display: block; margin: auto;" />
+<img src="/2025/06/11/how-to-guess-3-approximation/index_files/figure-html/unnamed-chunk-2-1.png" width="1152" style="display: block; margin: auto;" />
 <p>Pretty simple, right?</p>
 <p>However, it really depends on who you ask&hellip;</p>
-<img src="/2025/06/11/how-to-guess-3-approximation/index_files/figure-html/unnamed-chunk-2-1.png" width="960" style="display: block; margin: auto;" />
+<img src="/2025/06/11/how-to-guess-3-approximation/index_files/figure-html/unnamed-chunk-3-1.png" width="960" style="display: block; margin: auto;" />
 <p>One thing I love about statisticians is their willingness to approximate.</p>
 <p>But as with everything else with statistics, statisticians are very careful about doing things properly.</p>
 <p>In statistics, each approximation we use has a mathematical justification, and a set of assumptions. As long as we satisfy the assumptions, <strong>our approximate answer should be very close to the real one</strong>.</p>
@@ -87,7 +88,7 @@
 <p>You collect data, and assume it is from a normal population. Since you don&rsquo;t know <code>\(\sigma\)</code> (ie. variance), your sample average will follow a t-distribution.</p>
 <p>Unfortunately, the t-distribution can be a <a href="https://en.wikipedia.org/wiki/Student%27s_t-distribution">little tricky to work with</a>. But, luckily for us, the t-distribution <strong>very quickly</strong> tends towards the Normal distribution, which we can calculate more easily.</p>
 <p>We can actually illustrate this trend graphically:</p>
-<img src="/2025/06/11/how-to-guess-3-approximation/index_files/figure-html/unnamed-chunk-3-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="/2025/06/11/how-to-guess-3-approximation/index_files/figure-html/unnamed-chunk-4-1.png" width="70%" style="display: block; margin: auto;" />
 <ul>
 <li>With only 2 observations, the sampling distribution (in <span style="color: red;"><strong>red</strong></span>) is already somewhat &ldquo;Normal&rdquo;-looking.</li>
 <li>At N=3 observations, (in <span style="color: #f3beba;"><strong>light red</strong></span>) it jumps noticeably closer.</li>
@@ -97,8 +98,8 @@
 <h4 id="average-book-length">Average Book Length</h4>
 <p>Let&rsquo;s see how well this approximation works in action</p>
 <p>Here, we calculate a confidence interval for average book length (<strong>exact</strong> and <strong>approximated</strong>) - Note how similar the results are once we have &gt; 15 observations:</p>
-<p><img src="/2025/06/11/how-to-guess-3-approximation/index_files/figure-html/unnamed-chunk-4-1.png" width="960" style="display: block; margin: auto;" /><img src="/2025/06/11/how-to-guess-3-approximation/index_files/figure-html/unnamed-chunk-4-2.png" width="960" style="display: block; margin: auto;" /><img src="/2025/06/11/how-to-guess-3-approximation/index_files/figure-html/unnamed-chunk-4-3.png" width="960" style="display: block; margin: auto;" /><img src="/2025/06/11/how-to-guess-3-approximation/index_files/figure-html/unnamed-chunk-4-4.png" width="960" style="display: block; margin: auto;" /></p>
-<p>Since the results we get won&rsquo;t be meaningfully different as we see more data, we can often save ourselves some effort by just using the Normal distribution to approximate things.</p>
+<p><img src="/2025/06/11/how-to-guess-3-approximation/index_files/figure-html/unnamed-chunk-5-1.png" width="960" style="display: block; margin: auto;" /><img src="/2025/06/11/how-to-guess-3-approximation/index_files/figure-html/unnamed-chunk-5-2.png" width="960" style="display: block; margin: auto;" /><img src="/2025/06/11/how-to-guess-3-approximation/index_files/figure-html/unnamed-chunk-5-3.png" width="960" style="display: block; margin: auto;" /><img src="/2025/06/11/how-to-guess-3-approximation/index_files/figure-html/unnamed-chunk-5-4.png" width="960" style="display: block; margin: auto;" /></p>
+<p>Given enough data, the results we get won&rsquo;t be meaningfully different. Therefore, we can often save ourselves some effort by just using the Normal distribution to approximate things.</p>
 <h3 id="approximate-everything">Approximate Everything?</h3>
 <p>The most famous approximation in all of statistics is the <a href="https://en.wikipedia.org/wiki/Central_limit_theorem">Central Limit Theorem</a>.</p>
 <p>This theorem is so famous because it shows that <strong>the Normal approximation holds for ALL distributions</strong> as sample size increases.</p>
@@ -114,19 +115,19 @@
 <p>The example we saw was when data was drawn from a normal population. <strong>But not all populations are normal.</strong></p>
 <h3 id="getting-it-exponentially-wrong">Getting it Exponentially Wrong</h3>
 <p>If our data comes from a substantially skewed population, <strong>our data will not become normal at N = 30.</strong> Consider how the following skewed distribution behaves:</p>
-<img src="/2025/06/11/how-to-guess-3-approximation/index_files/figure-html/unnamed-chunk-5-1.png" width="576" style="display: block; margin: auto;" />
+<img src="/2025/06/11/how-to-guess-3-approximation/index_files/figure-html/unnamed-chunk-6-1.png" width="576" style="display: block; margin: auto;" />
 <p><em>(Note - this kind of distribution is</em> <strong>everywhere</strong>. <em>Examples: income, housing prices, wait times, etc..)</em></p>
 <h3 id="attempt-1---sample-data">Attempt #1 - Sample Data</h3>
 <p>Let&rsquo;s see how &ldquo;normal&rdquo; our data gets as we gather more observations:</p>
-<img src="/2025/06/11/how-to-guess-3-approximation/index_files/figure-html/unnamed-chunk-6-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="/2025/06/11/how-to-guess-3-approximation/index_files/figure-html/unnamed-chunk-7-1.png" width="100%" style="display: block; margin: auto;" />
 <p>Wait, that doesn&rsquo;t look &ldquo;normal&rdquo; at all&hellip;</p>
 <p>Here&rsquo;s why: Central Limit Theorem <strong>does not say</strong> our DATA will magically become normally distributed as our sample size increases. The <strong>data</strong> will always be right-skewed, no matter how many observation we draw.</p>
 <p>What should become normally distributed is the AVERAGE of the sample we collect, denoted by the red line.</p>
-<img src="/2025/06/11/how-to-guess-3-approximation/index_files/figure-html/unnamed-chunk-7-1.png" width="50%" style="display: block; margin: auto;" />
+<img src="/2025/06/11/how-to-guess-3-approximation/index_files/figure-html/unnamed-chunk-8-1.png" width="50%" style="display: block; margin: auto;" />
 <p>Let&rsquo;s try again and see if this holds true.</p>
 <h3 id="attempt-2---sample-mean">Attempt #2 - Sample Mean</h3>
 <p>Now, we will plot the <strong>average value</strong> (ie. mean) of each sample:</p>
-<img src="/2025/06/11/how-to-guess-3-approximation/index_files/figure-html/unnamed-chunk-8-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="/2025/06/11/how-to-guess-3-approximation/index_files/figure-html/unnamed-chunk-9-1.png" width="100%" style="display: block; margin: auto;" />
 <p>We see that the sample mean eventually does reach normality. But, it clearly does not happen at &ldquo;N=30&rdquo;.</p>
 <p>Note that Central Limit Theorem does say our sample mean will eventually act &ldquo;normal&rdquo;. <strong>However, it doesn&rsquo;t say exactly when.</strong></p>
 <p><em>(More precisely, it happens only as sample size approaches infinity.)</em></p>

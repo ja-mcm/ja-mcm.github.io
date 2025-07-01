@@ -6,8 +6,15 @@
     <description>Recent content on Summer of Stats</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 18 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 25 Jun 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Guess: 5 - Bias</title>
+      <link>/2025/06/25/how-to-guess-5-bias/</link>
+      <pubDate>Wed, 25 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>/2025/06/25/how-to-guess-5-bias/</guid>
+      <description>(or &amp;ldquo;Why Consistency Counts&amp;rdquo;) Nobody likes to admit it, but we are all biased.&#xA;For example, I hate musicals. So, you COULD say I am extremely biased against them.&#xA;With good reason&amp;hellip;&#xA;But what does that have to do with guessing? Let&amp;rsquo;s discuss!&#xA;What is Bias? Bias has many meanings. It can mean &amp;ldquo;a preference&amp;rdquo;, &amp;ldquo;an inclination&amp;rdquo;, or even full-blown prejudice.&#xA;For statisticians, however, bias has a very specific (mathematical) meaning.</description>
+    </item>
     <item>
       <title>How to Guess: 4 - Independence</title>
       <link>/2025/06/18/how-to-guess-4-independence/</link>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4321&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.125.4">
+
+
+<title>How to Lie: 1 - Variability - Summer of Stats</title>
+<meta property="og:title" content="How to Lie: 1 - Variability - Summer of Stats">
+
+
+  <link href='//localhost:4321/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/Rplot.png"
+         width="60"
+         height="60"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/">Summer of Stats</a></li>
+    
+    <li><a href="/2023/01/01/visual-gallery/">Visual Gallery</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">5 min read</span>
+    
+
+    <h1 class="article-title">How to Lie: 1 - Variability</h1>
+
+    
+    <span class="article-date">2025-07-02</span>
+    
+
+    <div class="article-content">
+      
+      <script src="/2025/07/02/how-to-lie-1-variability/index_files/kePrint/kePrint.js"></script>
+<link href="/2025/07/02/how-to-lie-1-variability/index_files/lightable/lightable.css" rel="stylesheet" />
+<link href="/2025/07/02/how-to-lie-1-variability/index_files/bsTable/bootstrapTable.min.css" rel="stylesheet" />
+<script src="/2025/07/02/how-to-lie-1-variability/index_files/bsTable/bootstrapTable.js"></script>
+<img src="images/Rplot.png" width="1%" style="display: block; margin: auto;" />
+<h2 id="or-why-trends-can-lie">(or &ldquo;Why Trends Can Lie&rdquo;)</h2>
+<h4 id="_programming-note-why-discuss-lying_"><em>Programming Note: Why Discuss Lying?</em></h4>
+<p><em>Since I plan to spend a few weeks discussing how statistics get misused, let&rsquo;s clear up a few things first:</em></p>
+<ul>
+<li><em>I am not a good liar, nor do I condone it.</em></li>
+<li><em>These posts are not intended as &ldquo;how to&rdquo; guide for lying. Do not use them in this manner, or I will be angry.</em></li>
+</ul>
+<p><em>Instead, I want to highlight the sneaky statistical tricks people use to mislead others,</em> <strong>so that you can spot them in real-life.</strong></p>
+<p><em>So, let&rsquo;s get started!</em></p>
+<h3 id="how-to-lie-with-statistics">How to Lie with Statistics</h3>
+<p>When it comes to telling the truth, statistics tends to get a bad rap.</p>
+<p>Just ask Mark Twain:</p>
+<img src="images/Mark_Twain.jpg" width="45%" style="display: block; margin: auto;" />
+<blockquote>
+<p><em>&ldquo;There are 3 kinds of lies: Lies, Damned Lies, and Statistics&rdquo;</em></p>
+</blockquote>
+<p>But, despite what Mark Twain may say, <strong>there actually aren’t that many ways to lie with statistics.</strong></p>
+<p>So let&rsquo;s fix his quote:</p>
+<hr>
+<p><span style="font-size: 26px"> <em>&quot;</em> <em>There are 3 kinds of lies:</em> <span></p>
+<ul>
+<li><span style="color: grey;"> <del>Lies</del> <span> <span style="color: red;"> <em>Ignoring <strong>variability</strong></em>, <span></li>
+<li><span style="color: grey;"> <del>Damned Lies</del> <span> <span style="color: red;"> <em>Using a <strong>non-representative sample</strong></em>, <span></li>
+<li>and <span style="color: grey;"> <del>Statistics</del> <span> <span style="color: red;"> <em>Choosing a <strong>bad estimator</strong></em>.<span></li>
+</ul>
+<p><span style="font-size: 26px"> <em>&quot;</em> <span></p>
+<hr>
+<p>Study this list carefully - you&rsquo;ll see these 3 statistical issues pop up nearly <strong>everywhere</strong>.</p>
+<p>Over the next 3 weeks, I will cover each of these issues. By exploring the ways data can mislead, you can develop a sense of what to look out for when presented with data.</p>
+<p>This week, we&rsquo;ll focus on #1 - <strong>ignoring variability</strong>.</p>
+<h3 id="ignorance-of-variation-is-bliss">Ignorance (of Variation) is Bliss</h3>
+<p>Most things in life are constantly changing. Some of them in big ways, some of them only little-by-little.</p>
+<p>Take for example, the Ohio River.</p>
+<p>If you took the time to measure it every day, you would see its height constantly fluctuating:</p>
+<img src="/2025/07/02/how-to-lie-1-variability/index_files/figure-html/unnamed-chunk-3-1.gif" style="display: block; margin: auto;" />
+<p><em>(Data source: <a href="https://waterdata.usgs.gov/monitoring-location/03255000/">USGS</a>)</em></p>
+<p>Keeping tabs on these ups-and-downs is undoubtedly useful - it ensures that we aren&rsquo;t caught unprepared when flooding hits.</p>
+<p>But, not all increases are meaningful.</p>
+<p>Here, we generally don&rsquo;t care about a 5ft increase in water levels - they happen all the time. But, if we are near flood stage, <strong>that 5ft increase suddenly becomes very meaningful.</strong></p>
+<p>In essence, just because there is an increase or decrease happening doesn&rsquo;t mean there&rsquo;s a problem. <strong>It all depends on how unusual that change is.</strong></p>
+<hr>
+<h2 id="variability-in-daily-life">Variability in Daily Life</h2>
+<p>One practical lesson that you can take away is:</p>
+<blockquote>
+<p><strong>Always check the variability ( <code>\(\sigma^2\)</code> ) of your data.</strong></p>
+</blockquote>
+<p>Things change constantly. However, when we start to watch this up &amp; down change too carefully, we can find trends that aren&rsquo;t actually meaningful.</p>
+<p>If you don&rsquo;t believe me, just open up the news.</p>
+<h3 id="making-mountains-out-of-molehills">Making Mountains Out of Molehills</h3>
+<p>Unfortunately, the news cycle <strong>loves</strong> picking up on small trends and turning them into a story.</p>
+<p>The problem is that a headline rarely conveys the reality beneath the story. In many cases, <strong>a trend can be easily explainable by normal variation</strong>. Take a common sports headline:</p>
+<ul>
+<li><a href="https://apnews.com/article/giants-diamondbacks-score-0bbd10eefe39ea85322c750091d64e9b">Diamondbacks snap a 4-game losing streak with a 4-2 victory over the Giants</a></li>
+</ul>
+<p>The problem is that streaks are extremely common in baseball - here are all the OTHER streaks the Diamondbacks <strong>have already had so far this season</strong>:</p>
+<table class="table table-striped table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:center;"> Month </th>
+   <th style="text-align:center;"> Streak </th>
+   <th style="text-align:center;"> Type </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;"> April </td>
+   <td style="text-align:center;"> 5 </td>
+   <td style="text-align:center;"> Win </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> April </td>
+   <td style="text-align:center;"> 4 </td>
+   <td style="text-align:center;"> Loss </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> May </td>
+   <td style="text-align:center;"> 5 </td>
+   <td style="text-align:center;"> Loss </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> May </td>
+   <td style="text-align:center;"> 4 </td>
+   <td style="text-align:center;"> Loss </td>
+  </tr>
+</tbody>
+</table>
+<p>Once you see how common these hot &amp; cold stretches are, it doesn&rsquo;t seem quite so newsworthy.</p>
+<h3 id="just-trust-us-on-this">&ldquo;Just Trust Us On This&hellip;&rdquo;</h3>
+<p>Some examples are even more blatant - the following article reports on a trend <strong>they don&rsquo;t even bother to quantify</strong>:</p>
+<ul>
+<li><a href="https://www.gq.com/story/why-is-everyone-getting-their-tattoos-removed">&ldquo;Why is Everyone Getting Their Tattoos Removed?&rdquo;</a></li>
+</ul>
+<p>Here, the story revolves on the recent surge in tattoo removals. Strangely, they provide no data supporting this trend, not even from a single tattoo parlor.</p>
+<p>What we&rsquo;re left with is a collection of quotes from people conjecturing about why tattoo removal is so &ldquo;in&rdquo; right now.</p>
+<p>To me, this represents bad journalism, and is a good example why you should always read beyond the headlines.</p>
+<h2 id="summing-up">Summing Up</h2>
+<p>Most things in life are constantly changing. Some of them in big ways, some of them only little-by-little.</p>
+<p>But, <strong>not every change is meaningful</strong>.</p>
+<p>News outlets aggressively compete to be the first to find emerging trends, but they often don&rsquo;t test their findings statistically. Which results in lots of compelling-sounding stories <strong>that may or may not be true.</strong></p>
+<p>So, whenever you are presented with a trend, always be sure to ask: &ldquo;What is <code>\(\sigma^2\)</code>?&rdquo;</p>
+<h4 id="up-next-more-lying">Up Next: More Lying</h4>
+<p>Next week, we&rsquo;ll continue discussing how people lie with statistics.</p>
+<p>Stay tuned to see how people can engineer their sample of data to get the answer that they want.</p>
+<p>===========================</p>
+<p>R code used to generate plots:</p>
+<ol>
+<li>Ohio River Level</li>
+</ol>
+<pre><code class="language-r">library(data.table)
+library(ggplot2)
+library(gganimate)
+
+e_data &lt;- data.table(1)
+OH_river &lt;- fread(&quot;USGS_Data.txt&quot;)
+colnames(OH_river) &lt;- c(&quot;Agency&quot;, &quot;Site&quot;, &quot;Date&quot;, &quot;TZ&quot;, &quot;Height_ft&quot;, &quot;Other&quot;)
+
+OH_river &lt;- OH_river[-1,-c(1,2,4)]
+OH_river[,Indx:=.I]
+OH_river[,Height_ft:=as.numeric(Height_ft)]
+
+up_down &lt;- ggplot(OH_river, aes(x=10, y=Height_ft)) +
+    theme_void() + 
+    coord_cartesian(xlim=c(0,20), ylim=c(10,60)) +
+    ggtitle(&quot;Height of Ohio River&quot;) + 
+    theme(plot.title = element_text(size = 30, face = &quot;bold&quot;)) +
+    geom_bar(stat=&quot;identity&quot;, fill=&quot;blue&quot;, alpha=0.2, width=12) +
+    geom_text(data = e_data, aes(x = 18, y = 11, label = &quot;Summer of Stats&quot;), col=&quot;grey80&quot;, size = 5) +
+    geom_text(data = data.frame(y = seq(20, 60, by = 10), x = -Inf),
+            aes(label = paste0(seq(20, 60, by = 10), &quot; ft -&quot;), y = seq(20, 60, by = 10)),
+            check_overlap = TRUE,
+            vjust = 1, size = 10, col=&quot;grey70&quot;) +
+  transition_time(Indx) 
+
+animate(up_down, duration = 10)
+</code></pre>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  
+
+
+  </body>
+</html>
+

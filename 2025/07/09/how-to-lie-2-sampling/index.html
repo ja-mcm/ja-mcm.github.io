@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4321&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.125.4">
+
+
+<title>How to Lie: 2 - Sampling - Summer of Stats</title>
+<meta property="og:title" content="How to Lie: 2 - Sampling - Summer of Stats">
+
+
+  <link href='//localhost:4321/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/Rplot.png"
+         width="60"
+         height="60"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/">Summer of Stats</a></li>
+    
+    <li><a href="/2023/01/01/visual-gallery/">Visual Gallery</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">7 min read</span>
+    
+
+    <h1 class="article-title">How to Lie: 2 - Sampling</h1>
+
+    
+    <span class="article-date">2025-07-09</span>
+    
+
+    <div class="article-content">
+      
+      <img src="images/Rplot.png" width="1%" style="display: block; margin: auto;" />
+<h2 id="or-why-surveys-lie">(or &ldquo;Why Surveys Lie&rdquo;)</h2>
+<p>When posed with a tough question, sampling is one of our greatest super-powers.</p>
+<img src="images/superpowers.jpg" width="45%" style="display: block; margin: auto;" />
+<blockquote>
+<p><em>The &ldquo;S&rdquo; is actually for &ldquo;Sampling&rdquo;&hellip;</em></p>
+</blockquote>
+<p>We&rsquo;ve <a href="https://www.summerofstats.com/2024/06/19/sampling/">talked at length about why</a> - the random sample forms the basis of nearly all statistics. <strong>But what happens when our sample ISN&rsquo;T random?</strong></p>
+<p>Things become much more tricky, and we encounter another popular method for misleading people.</p>
+<h3 id="how-to-lie-recap">How to Lie (Recap)</h3>
+<p>As a reminder, there are 3 common ways to lie with statistics:</p>
+<ol>
+<li>Ignoring <strong>variability</strong></li>
+<li><span style="color: red;">Using a <strong>non-representative sample</strong></span>     ← YOU ARE HERE</li>
+<li>Choosing a <strong>bad estimator</strong></li>
+</ol>
+<p>Let&rsquo;s talk today about what happens when people abuse the assumption of random sampling.</p>
+<h3 id="sampling-in-a-perfect-world">Sampling in a Perfect World</h3>
+<p>Last summer, I <a href="https://www.summerofstats.com/2024/06/19/sampling/">detailed an example</a> about estimating the height of a population using a random sample of 100 people.</p>
+<p>This sample returned an estimate that quickly converged with the actual population mean:</p>
+<img src="images/convergence.gif" width="70%" style="display: block; margin: auto;" />
+<p>The beauty of a random sample is clear - as we see more data, our estimate about that population tends to become better and better.</p>
+<h3 id="sampling-in-an-imperfect-world">Sampling in an Imperfect World</h3>
+<p>As a contrast, when we do a poor job of sampling, there is no guarantee that our answer will be any good.</p>
+<p>Let&rsquo;s see what happens when we collect height data from a <strong>non-representative sample</strong> - here, we sampled ONLY basketball players (who tend to be much taller than a normal person):</p>
+<img src="images/nonconvergence.gif" width="70%" style="display: block; margin: auto;" />
+<p>Our sample doesn&rsquo;t represent the population particularly well, and so our statistic <strong>never arrives at the true answer</strong>, no matter how much data we collect.</p>
+<h3 id="sampling-in-the-real-world">Sampling in the Real World</h3>
+<p>Now for the bad news: in the real world, <strong>getting a truly random sample is generally difficult or impossible.</strong></p>
+<p>It might be as simple as collecting your data at the <strong>wrong place</strong> (a basketball tournament), or at the <strong>wrong time</strong> (during the day, when many adults are working), or using the <strong>wrong technology</strong> (surveying only cell-phone users, which may miss older people).</p>
+<p>These decisions seem incredibly minor at first glance, but could be enough to invalidate our assumption of random sampling.</p>
+<p>So, it pays to be very careful any time you rely on a sample of data.</p>
+<hr>
+<h2 id="bad-samples-in-daily-life">Bad Samples in Daily Life</h2>
+<p>One practical lesson that you can take away is:</p>
+<blockquote>
+<p><strong>Always ask how the data was collected</strong></p>
+</blockquote>
+<p>Many times, we are forced to work with a &ldquo;pretty random&rdquo; sample, with some imperfections.</p>
+<p>But, as we&rsquo;ll see, people can take advantage of this wiggle room to impose their preferred answer on the data.</p>
+<h3 id="an-obvious-example">An Obvious Example</h3>
+<p>Let&rsquo;s start with an obvious example of how an imperfect sample can affect our result.</p>
+<p>Any time you search for a product on Amazon, the website provides user reviews on each product they offer, to let you know how satisfied previous buyers were.</p>
+<img src="images/iPhone_charger.png" width="95%" style="display: block; margin: auto;" />
+<blockquote>
+<p><em>An example from <a href="https://www.amazon.com/s?k=iphone+charger">Amazon</a></em></p>
+</blockquote>
+<p>However, <strong>this sample of reviews is not representative</strong> - Amazon has <a href="https://www.pcmag.com/news/database-reveals-over-200k-people-involved-in-posting-fake-reviews-on-amazon">significant issues</a> with fake reviews where sellers induce users to leave a glowing review for a given product.</p>
+<p>By manipulating who provides a review, sellers are able to artificially enhance (ie. lie about) their product’s customer ratings. Buyer beware!</p>
+<h3 id="a-not-so-obvious-example">A Not-So-Obvious Example</h3>
+<p>In real life, the effect of non-random sampling can be much more difficult to see.</p>
+<p>Take the following poll that was recently in the news:</p>
+<img src="images/Musk_Poll.png" width="65%" style="display: block; margin: auto;" />
+<blockquote>
+<p><em>Source: <a href="https://x.com/elonmusk/status/1930685402631053403">X</a></em></p>
+</blockquote>
+<p>This result shows a clear desire for creating 3rd party in the US. After all, it had over 5 million respondents, right?</p>
+<p>But, looking closer, we realize that <strong>this survey is not a random sample</strong> - it only includes people who are:</p>
+<ol>
+<li>active users of X and</li>
+<li>followers of Elon Musk</li>
+</ol>
+<p>Given these limitations, we can hardly call this a representative sample of the US population. There is no way to conclusively say this represents the opinion of the average American.</p>
+<h3 id="an-obvious-solution">An Obvious Solution</h3>
+<p>As a rule of thumb - it is wise to take <a href="https://www.britannica.com/topic/public-opinion/Nonscientific-polling">non-scientific survey results</a> like these with a healthy dose of skepticism.</p>
+<p>Whether it be Reddit, Fox News, or even Reader&rsquo;s Digest, <strong>any survey restricted to a specific audience will be biased</strong>, often making it impossible to tell if the results have any basis in reality.</p>
+<p>A simple (if boring) solution to this problem is to steer clear of these low-quality surveys. Instead, look to well-established pollsters who are much less likely to have a poor-quality sample.</p>
+<h2 id="summing-up">Summing Up</h2>
+<p>Samples are incredibly powerful tools for many problems. They are also vulnerable to manipulation.</p>
+<p>Think about it - our data is what gives us our statistical result. So, <strong>if someone can control which data are captured, they can also control the result</strong>.</p>
+<p>Bad samples come in all shapes and sizes. Even if your dataset is HUGE, that is no guarantee of accuracy. As we saw in our example <strong>when our sample isn&rsquo;t representative, there&rsquo;s no guarantee our answer is correct</strong>, no matter how much data we collect.</p>
+<p>As the saying goes: &ldquo;Garbage in, Garbage out&rdquo;.</p>
+<h4 id="up-next-bad-statistics">Up Next: Bad Statistics</h4>
+<p>Next week, we&rsquo;ll wrap up the series on lying by exploring how people can bend the truth by using the wrong estimator.</p>
+<p>See how changing your statistic can completely change the story your data tells.</p>
+<p>===========================</p>
+<p>R code used to generate plots:</p>
+<ol>
+<li>Animated Plots</li>
+</ol>
+<pre><code class="language-r">library(data.table)
+library(ggplot2)
+library(gganimate)
+set.seed(060124)
+
+### Generate 10000 sample height records, using mean = 178.4, std = 7.59
+simulated_pop &lt;- cbind(1:10000, rnorm(10000, 178.4, 7.59)) |&gt; as.data.table()
+simulated_mean &lt;- simulated_pop[,mean(V2)] |&gt; as.data.table()
+
+### Pull a random sample
+good_sample &lt;- simulated_pop[sample(.N,100)]
+
+# Add calculations for cumulative mean
+good_sample &lt;- good_sample[,cum_V2 := cumsum(V2)]
+good_sample &lt;- good_sample[,Row_Index := .I]
+good_sample &lt;- good_sample[,cum_avg_V2 := cum_V2/Row_Index]
+
+
+### Pull a non-random sample from a basketball league 
+# (assume these people all are in top 10% for height...)
+bad_sample &lt;- simulated_pop[V2 &gt; quantile(simulated_pop$V2, probs = .90)][sample(.N,100)]
+
+# Add calculations for cumulative mean
+bad_sample &lt;- bad_sample[,cum_V2 := cumsum(V2)]
+bad_sample &lt;- bad_sample[,Row_Index := .I]
+bad_sample &lt;- bad_sample[,cum_avg_V2 := cum_V2/Row_Index]
+
+
+### Plot good sample
+good_sample_convergence &lt;- ggplot(good_sample, aes(x=V2)) + 
+  geom_histogram(data = simulated_pop, aes(x=V2), fill=&quot;grey&quot;, position = &quot;identity&quot;) + 
+    theme_minimal() + 
+      theme(axis.title.y=element_blank(),
+            axis.title.x=element_blank(),
+            axis.ticks.x=element_blank(),
+            plot.title = element_text(size = 20, face = &quot;bold&quot;)) +
+    ggtitle(&quot;Estimate of Average Height (Random Sample)&quot;) +     
+  geom_vline( xintercept = simulated_pop[,mean(V2)], lwd = 1, col = &quot;darkred&quot;)  +
+  geom_label(data = simulated_mean, aes(x = V1, y = 1000, label = paste0(round(V1, digits = 2), &quot; cm&quot;) ), size = 5, fill = &quot;lightyellow&quot;) +
+    geom_point(data = good_sample, mapping = aes(y = 810, x = cum_avg_V2), 
+               size = 20, color = 'red', shape = '|', alpha = .4) +
+  geom_label(data = good_sample, aes(x = cum_avg_V2, y = 800, label = round(cum_avg_V2, digits = 1)), size = 5, fill = &quot;lightyellow&quot;) +
+      geom_label(data = good_sample, aes(x = 160, y = 800, label = paste(&quot;Sample Size: &quot;, Row_Index)), size = 8, fill = &quot;white&quot;) +
+      geom_text(data = simulated_mean, aes(x = 200, y = -25, label = &quot;Summer of Stats&quot;), col=&quot;grey80&quot;, size = 4) +
+ transition_reveal(Row_Index, keep_last = FALSE) 
+
+animate(good_sample_convergence, duration = 8,end_pause = 30)
+
+
+### Plot bad sample
+bad_sample_convergence &lt;- ggplot(bad_sample, aes(x=V2)) + 
+  geom_histogram(data = simulated_pop, aes(x=V2), fill=&quot;grey&quot;, position = &quot;identity&quot;) + 
+    theme_minimal() + 
+      theme(axis.title.y=element_blank(),
+            axis.title.x=element_blank(),
+            axis.ticks.x=element_blank(),
+            plot.title = element_text(size = 20, face = &quot;bold&quot;)) +
+    ggtitle(&quot;Estimate of Average Height (Basketball Sample)&quot;) + 
+    geom_vline( xintercept = simulated_pop[,mean(V2)], lwd = 1, col = &quot;darkred&quot;)  +
+  geom_label(data = simulated_mean, aes(x = V1, y = 1000, label = paste0(round(V1, digits = 2), &quot; cm&quot;) ), size = 5, fill = &quot;lightyellow&quot;) +
+    geom_point(data = bad_sample, mapping = aes(y = 810, x = cum_avg_V2), 
+               size = 20, color = 'red', shape = '|', alpha = .4) +
+  geom_label(data = bad_sample, aes(x = cum_avg_V2, y = 800, label = round(cum_avg_V2, digits = 1)), size = 5, fill = &quot;lightyellow&quot;) +
+      geom_label(data = bad_sample, aes(x = 160, y = 800, label = paste(&quot;Sample Size: &quot;, Row_Index)), size = 8, fill = &quot;white&quot;) +
+      geom_text(data = simulated_mean, aes(x = 200, y = -25, label = &quot;Summer of Stats&quot;), col=&quot;grey80&quot;, size = 4) +
+ transition_reveal(Row_Index, keep_last = FALSE) 
+
+animate(bad_sample_convergence, duration = 8,end_pause = 30)
+</code></pre>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  
+
+
+  </body>
+</html>
+

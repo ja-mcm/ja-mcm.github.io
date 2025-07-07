@@ -6,8 +6,15 @@
     <description>Recent content on Summer of Stats</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 25 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 02 Jul 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Lie: 1 - Variability</title>
+      <link>/2025/07/02/how-to-lie-1-variability/</link>
+      <pubDate>Wed, 02 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>/2025/07/02/how-to-lie-1-variability/</guid>
+      <description>(or &amp;ldquo;Why Trends Lie&amp;rdquo;) Programming Note: Why Discuss Lying? Since I plan to spend a few weeks discussing how statistics get misused, let&amp;rsquo;s clear up a few things first:&#xA;I am not a good liar, nor do I condone it. These posts are not intended as &amp;ldquo;how to&amp;rdquo; guide for lying. Do not use them in this manner, or I will be angry. Instead, I want to highlight the sneaky statistical tricks people use to mislead others, so that you can spot them in real-life.</description>
+    </item>
     <item>
       <title>How to Guess: 5 - Bias</title>
       <link>/2025/06/25/how-to-guess-5-bias/</link>

@@ -73,7 +73,11 @@
 
     <div class="article-content">
       
-      <img src="images/Rplot.png" width="1%" style="display: block; margin: auto;" />
+      <script src="/2025/07/09/how-to-lie-2-sampling/index_files/kePrint/kePrint.js"></script>
+<link href="/2025/07/09/how-to-lie-2-sampling/index_files/lightable/lightable.css" rel="stylesheet" />
+<link href="/2025/07/09/how-to-lie-2-sampling/index_files/bsTable/bootstrapTable.min.css" rel="stylesheet" />
+<script src="/2025/07/09/how-to-lie-2-sampling/index_files/bsTable/bootstrapTable.js"></script>
+<img src="images/Rplot.png" width="1%" style="display: block; margin: auto;" />
 <h2 id="or-why-surveys-lie">(or &ldquo;Why Surveys Lie&rdquo;)</h2>
 <p>When posed with a tough question, sampling is one of our greatest super-powers.</p>
 <img src="images/superpowers.jpg" width="45%" style="display: block; margin: auto;" />
@@ -102,9 +106,8 @@
 <p>Our sample doesn&rsquo;t represent the population particularly well, and so our statistic <strong>never arrives at the true answer</strong>, no matter how much data we collect.</p>
 <h3 id="sampling-in-the-real-world">Sampling in the Real World</h3>
 <p>Now for the bad news: in the real world, <strong>getting a truly random sample is generally difficult or impossible.</strong></p>
-<p>It might be as simple as collecting your data at the <strong>wrong place</strong> (a basketball tournament), or at the <strong>wrong time</strong> (during the day, when many adults are working), or using the <strong>wrong technology</strong> (surveying only cell-phone users, which may miss older people).</p>
+<p>It might be as simple as collecting your data at the <strong>wrong place</strong> (a basketball tournament), or at the <strong>wrong time</strong> (during the day, when many adults are working), or using the <strong>wrong approach</strong> (using an internet poll, which may miss older people).</p>
 <p>These decisions seem incredibly minor at first glance, but could be enough to invalidate our assumption of random sampling.</p>
-<p>So, it pays to be very careful any time you rely on a sample of data.</p>
 <hr>
 <h2 id="bad-samples-in-daily-life">Bad Samples in Daily Life</h2>
 <p>One practical lesson that you can take away is:</p>
@@ -113,36 +116,49 @@
 </blockquote>
 <p>Many times, we are forced to work with a &ldquo;pretty random&rdquo; sample, with some imperfections.</p>
 <p>But, as we&rsquo;ll see, people can take advantage of this wiggle room to impose their preferred answer on the data.</p>
-<h3 id="an-obvious-example">An Obvious Example</h3>
-<p>Let&rsquo;s start with an obvious example of how an imperfect sample can affect our result.</p>
-<p>Any time you search for a product on Amazon, the website provides user reviews on each product they offer, to let you know how satisfied previous buyers were.</p>
-<img src="images/iPhone_charger.png" width="95%" style="display: block; margin: auto;" />
+<h3 id="some-really-great-rocks">Some Really Great Rocks</h3>
+<p>Many people base their purchase decisions off user reviews for products (I certainly do). The catch is that <strong>online reviews are not always a representative sample</strong>.</p>
+<p>For example, Amazon has <a href="https://www.pcmag.com/news/database-reveals-over-200k-people-involved-in-posting-fake-reviews-on-amazon">significant issues</a> with fake reviews where sellers induce users to leave a glowing review for a given product. By stuffing the data with tons of bogus 5-star reviews, sellers are able to artificially enhance (ie. lie about) their product’s ratings.</p>
+<p>Since our review scores no longer come from a random sample, <strong>there is no guarantee the average review score represents what customers really think.</strong></p>
+<p>What we end up with is an endless sea of products with 4.5 stars - many of which may or may not be any good.</p>
+<img src="images/rocks.png" width="40%" style="display: block; margin: auto;" />
 <blockquote>
-<p><em>An example from <a href="https://www.amazon.com/s?k=iphone+charger">Amazon</a></em></p>
+<p><em>One of my hobbies: reviewing rocks on <a href="https://www.amazon.com/">Amazon</a>!</em></p>
 </blockquote>
-<p>However, <strong>this sample of reviews is not representative</strong> - Amazon has <a href="https://www.pcmag.com/news/database-reveals-over-200k-people-involved-in-posting-fake-reviews-on-amazon">significant issues</a> with fake reviews where sellers induce users to leave a glowing review for a given product.</p>
-<p>By manipulating who provides a review, sellers are able to artificially enhance (ie. lie about) their product’s customer ratings. Buyer beware!</p>
-<h3 id="a-not-so-obvious-example">A Not-So-Obvious Example</h3>
-<p>In real life, the effect of non-random sampling can be much more difficult to see.</p>
-<p>Take the following poll that was recently in the news:</p>
-<img src="images/Musk_Poll.png" width="65%" style="display: block; margin: auto;" />
+<h3 id="why-is-everyone-getting-smarter">Why is Everyone Getting Smarter?</h3>
+<p>A more interesting example of the impact of a bad sample popped up in a recent conversation with a family member.</p>
+<p>The talk revolved around college admissions, and I was shocked to hear how high the average SAT score had become at our local state college (OSU). I did some digging, and confirmed the surprising trend:</p>
+<table class="table table-striped table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:center;"> Year </th>
+   <th style="text-align:center;"> Avg SAT Score </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;"> 2015 </td>
+   <td style="text-align:center;"> 1280 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 2024 </td>
+   <td style="text-align:center;"> 1400 </td>
+  </tr>
+</tbody>
+</table>
 <blockquote>
-<p><em>Source: <a href="https://x.com/elonmusk/status/1930685402631053403">X</a></em></p>
+<p><em><a href="https://www.collegetuitioncompare.com/trends/ohio-state-university-main-campus/sat-act-scores/">Source</a></em></p>
 </blockquote>
-<p>This result shows a clear desire for creating 3rd party in the US. After all, it had over 5 million respondents, right?</p>
-<p>But, looking closer, we realize that <strong>this survey is not a random sample</strong> - it only includes people who are:</p>
-<ol>
-<li>active users of X and</li>
-<li>followers of Elon Musk</li>
-</ol>
-<p>Given these limitations, we can hardly call this a representative sample of the US population. There is no way to conclusively say this represents the opinion of the average American.</p>
-<h3 id="an-obvious-solution">An Obvious Solution</h3>
-<p>As a rule of thumb - it is wise to take <a href="https://www.britannica.com/topic/public-opinion/Nonscientific-polling">non-scientific survey results</a> like these with a healthy dose of skepticism.</p>
-<p>Whether it be Reddit, Fox News, or even Reader&rsquo;s Digest, <strong>any survey restricted to a specific audience will be biased</strong>, often making it impossible to tell if the results have any basis in reality.</p>
-<p>A simple (if boring) solution to this problem is to steer clear of these low-quality surveys. Instead, look to well-established pollsters who are much less likely to have a poor-quality sample.</p>
+<p>However, <strong>things aren&rsquo;t always as they seem.</strong></p>
+<p>Something else that happened during this time - in 2020, OSU dropped the requirement to submit a standardized test score. What that means practically is that our <strong>SAT score averages no longer represent ALL incoming students.</strong></p>
+<p>Think about it; if your score was BELOW average, would you choose to submit a test score?</p>
+<p>This creates a dynamic where lower-scoring students opt to not include their score (as it may hurt their case for admission). As a result, the lower scores magically disappear from the distribution, and we see the average score drift upwards.</p>
+<p>So, someone could plausibly say: <em>&ldquo;Dropping test score requirements actually improved the quality of students!&rdquo;</em>, and have data to back it up (because average SAT scores rose).</p>
+<p><strong>However, all of it would be complete bunk</strong> - that statistic is based on a non-random sample containing clear bias. (<em>Post-script: <a href="https://news.osu.edu/ohio-state-shares-decision-on-test-requirements/">all of this will change in 2026</a></em>)</p>
 <h2 id="summing-up">Summing Up</h2>
 <p>Samples are incredibly powerful tools for many problems. They are also vulnerable to manipulation.</p>
 <p>Think about it - our data is what gives us our statistical result. So, <strong>if someone can control which data are captured, they can also control the result</strong>.</p>
+<p>It pays to be very careful any time you rely on a sample of data.</p>
 <p>Bad samples come in all shapes and sizes. Even if your dataset is HUGE, that is no guarantee of accuracy. As we saw in our example <strong>when our sample isn&rsquo;t representative, there&rsquo;s no guarantee our answer is correct</strong>, no matter how much data we collect.</p>
 <p>As the saying goes: &ldquo;Garbage in, Garbage out&rdquo;.</p>
 <h4 id="up-next-bad-statistics">Up Next: Bad Statistics</h4>

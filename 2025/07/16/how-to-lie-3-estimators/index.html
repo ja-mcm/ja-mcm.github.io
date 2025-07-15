@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4321&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.125.4">
+
+
+<title>How to Lie: 3 - Estimators - Summer of Stats</title>
+<meta property="og:title" content="How to Lie: 3 - Estimators - Summer of Stats">
+
+
+  <link href='//localhost:4321/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/Rplot.png"
+         width="60"
+         height="60"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/">Summer of Stats</a></li>
+    
+    <li><a href="/2023/01/01/visual-gallery/">Visual Gallery</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">7 min read</span>
+    
+
+    <h1 class="article-title">How to Lie: 3 - Estimators</h1>
+
+    
+    <span class="article-date">2025-07-16</span>
+    
+
+    <div class="article-content">
+      
+      <img src="images/Rplot.png" width="1%" style="display: block; margin: auto;" />
+<h2 id="or-why-averages-lie">(or &ldquo;Why Averages Lie&rdquo;)</h2>
+<p>To wrap up our series on lying with statistics, I wanted to talk about choices.</p>
+<p>Specifically, how to choose the right statistic.</p>
+<p>Because it is such a common source of statistical shenanigans (either intentionally or unintentionally), it is worth discussing the art of picking the correct estimator.</p>
+<h3 id="how-to-lie-recap">How to Lie (Recap)</h3>
+<p>At risk of being repetitive, here are the 3 common ways to lie with statistics that we&rsquo;ve been discussing:</p>
+<ol>
+<li>Ignoring <strong>variability</strong></li>
+<li>Using a <strong>non-representative sample</strong></li>
+<li><span style="color: red;">Choosing a <strong>bad estimator</strong></span>  ← YOU ARE HERE</li>
+</ol>
+<p>Today, we&rsquo;ll cover what separates a good estimator from a bad one.</p>
+<h3 id="what-is-an-estimator">What is an Estimator?</h3>
+<p>An estimator simply a statistic whose purpose is to <strong>estimate</strong> something about the larger whole.</p>
+<p>While there are many possible estimators, the most common ones should sound familiar to you already:</p>
+<ul>
+<li>The <strong>mean</strong> (average) is an estimator</li>
+<li>The <strong>median</strong> is an estimator</li>
+<li>The <strong>maximum</strong> is an estimator</li>
+</ul>
+<p>Why so many different statistical estimators? Because <strong>each of these quantities estimates a different thing</strong>:</p>
+<img src="/2025/07/16/how-to-lie-3-estimators/index_files/figure-html/unnamed-chunk-2-1.png" width="576" style="display: block; margin: auto;" />
+<p>These subtle distinctions between each estimator will have important ramifications when deciding which one to use.</p>
+<h3 id="what-is-a-bad-estimator">What is a Bad Estimator?</h3>
+<p>A bad estimator is <strong>any estimator that fails to adequately represent the thing we want to know</strong>.</p>
+<p>For example, if we want to estimate the earnings of a &ldquo;normal&rdquo; resident in Town A, we shouldn&rsquo;t choose the <strong>maximum</strong> of our sample as our estimator:</p>
+<img src="/2025/07/16/how-to-lie-3-estimators/index_files/figure-html/unnamed-chunk-3-1.png" width="576" style="display: block; margin: auto;" />
+<p>While this IS a &ldquo;valid&rdquo; statistic, it is also a terrible estimator for the question at hand. As anyone can see, our estimate is nowhere near what most people reported earning our sample.</p>
+<p>Not many people would be fooled by this bad statistic. However, in other cases, it may be a little trickier to spot a bad estimator, as we&rsquo;ll see below.</p>
+<hr>
+<h2 id="statistics-in-daily-life">Statistics in Daily Life</h2>
+<p>One practical lesson that you can take away is:</p>
+<blockquote>
+<p><strong>When using averages, be wary of outliers</strong></p>
+</blockquote>
+<p>In the above example, it was easy to see that the MAX is a bad estimator for what is &ldquo;normal&rdquo;.</p>
+<p>However, depending on how our data looks, the average may not be a good option either&hellip;</p>
+<h3 id="salary-levels-revisited">Salary Levels, Revisited</h3>
+<p>Let&rsquo;s revisit our hypothetical Town A. But, now our town is home to a famous celebrity.</p>
+<p>In our initial example, we saw that the mean earnings of residents was reasonably close to the median. In this case, both estimators give us a decent fix on where population earnings are for Town A.</p>
+<p>However, adding just 1 extreme outlier has very clearly shifted the average of our sample. Now our estimator (the average) doesn&rsquo;t represent our population particularly well anymore:</p>
+<p><img src="/2025/07/16/how-to-lie-3-estimators/index_files/figure-html/unnamed-chunk-4-1.png" width="576" style="display: block; margin: auto;" /><img src="/2025/07/16/how-to-lie-3-estimators/index_files/figure-html/unnamed-chunk-4-2.png" width="576" style="display: block; margin: auto;" /></p>
+<p>Now, the median is clearly a much better estimator of what people typically make in Town A.</p>
+<h3 id="selecting-the-right-estimator">Selecting the Right Estimator</h3>
+<p>It&rsquo;s important to note that <strong>the &ldquo;best&rdquo; estimator is always context-dependent.</strong> It all depends on the question you are trying to answer, and in some cases, the data we are working with.</p>
+<p>The average <strong>may</strong> be your best estimator. In fact, it often is (for example, &ldquo;how much does the average consumer spend?&rdquo;).</p>
+<p>But, when you have skewed data or extreme outliers, the average may not be a good estimator any more.</p>
+<h2 id="summing-up">Summing Up</h2>
+<p>Statistics are very useful tools for understanding the world. <strong>But, just because someone picks a statistic doesn&rsquo;t mean it&rsquo;s the best one to use.</strong></p>
+<p>The estimator you use should always match the question you are trying to answer. As we saw, when you choose the wrong statistic, you may end up completely misunderstanding what your data is telling you.</p>
+<h3 id="bonus-telling-a-story-with-statistics">BONUS: Telling a Story (with Statistics)</h3>
+<p>Because it fits so well into today&rsquo;s post, I wanted wrap up with a fun dialogue from one of my favorite books growing up: The Phantom Tollbooth.</p>
+<p>It manages to twist statistics in the most delightful ways. I hope you enjoy!</p>
+<blockquote>
+<p><em>&ldquo;But averages aren&rsquo;t real,&rdquo; objected Milo; &ldquo;they&rsquo;re
+just imaginary.&rdquo;</em></p>
+</blockquote>
+<blockquote>
+<p><em>&ldquo;That may be so,&rdquo; the boy agreed, &ldquo;but they&rsquo;re also very
+useful at times. For instance, if you didn&rsquo;t have any
+money at all, but you happened to be with four other
+people who had ten dollars apiece, then you&rsquo;d each
+have an average of eight dollars. Isn&rsquo;t that right?&rdquo;</em></p>
+</blockquote>
+<blockquote>
+<p><em>&ldquo;I guess so,&rdquo; said Milo weakly.</em></p>
+</blockquote>
+<blockquote>
+<p><em>&ldquo;Well, think how much better off you&rsquo;d be, just because of averages,&rdquo; he explained convincingly. &ldquo;And
+think of the poor farmer when it doesn&rsquo;t rain all year:
+if there wasn&rsquo;t an average yearly rainfall of 37 inches in
+this part of the country, all his crops would wither and
+die.&rdquo;</em></p>
+</blockquote>
+<blockquote>
+<p><em>It all sounded terribly confusing to Milo, for he had
+always had trouble in school with just this subject.</em></p>
+</blockquote>
+<blockquote>
+<p>&ndash; The Phantom Tollbooth</p>
+</blockquote>
+<h4 id="up-next-making-decisions">Up Next: Making Decisions</h4>
+<p>Next week, we&rsquo;ll shift to a new topic: how to make decisions with data.</p>
+<p>To start, we&rsquo;ll be discussing an often misinterpreted concept; statistical significance. See you then.</p>
+<p>===========================</p>
+<p>R code used to generate plots:</p>
+<ol>
+<li>Comparing Estimators</li>
+</ol>
+<pre><code class="language-r">library(ggplot2)
+library(data.table)
+
+set.seed(071625)
+
+### Model a right-skewed salary distribution
+normal_sal &lt;- rnorm(100,50,20)
+big_sal &lt;- rnorm(40,100,60)
+all_sal &lt;- append(normal_sal, big_sal)
+
+# Our Estimators
+sal_med &lt;- median(all_sal)
+sal_mean &lt;- mean(all_sal)
+sal_max &lt;- 200 # manually override, since geom_density overshoots the real max
+
+ggplot(as.data.table(all_sal), aes(x=all_sal)) + 
+    geom_density(fill=&quot;blue&quot;, alpha=.2) +
+    coord_cartesian(xlim=c(10,200)) + 
+    theme_minimal() + xlab(&quot;Salary (in $1000's)&quot;) + ylab(&quot;&quot;) + theme(axis.text.y=element_blank()) +
+    theme(axis.text.x = element_text(face=&quot;bold&quot;, color=&quot;darkred&quot;, size=15)) +
+    geom_segment(aes(x=sal_med, xend=sal_med, y=.02, yend=0), color='darkred', lwd=1) +
+    annotate(&quot;text&quot;, x = 15, y = .0185, label = &quot;MEDIAN:&quot;, col=&quot;darkred&quot;, size = 4, fontface =2) +
+    annotate(&quot;text&quot;, x = 2, y = .014, label = &quot;What most\npeople \nexperience&quot;, col=&quot;darkred&quot;, size = 4, hjust = 0) +
+    geom_segment(aes(x=sal_mean, xend=sal_mean, y=.02, yend=0), color='darkorange', lwd=1) +
+    annotate(&quot;text&quot;, x = 80, y = .0185, label = &quot;MEAN:&quot;, col=&quot;darkorange&quot;, size = 4, fontface =2) +
+    annotate(&quot;text&quot;, x = 70, y = .015, label = &quot;What to expect,\non average&quot;, col=&quot;darkorange&quot;, size = 4, hjust = 0) +
+    geom_segment(aes(x=sal_max, xend=sal_max, y=.02, yend=0), color='blue', lwd=1) +
+    annotate(&quot;text&quot;, x = 160, y = .0185, label = &quot;MAX:&quot;, col=&quot;blue&quot;, size = 4, fontface =2) +
+    annotate(&quot;text&quot;, x = 152, y = .015, label = &quot;The best/worst\noutcome&quot;, col=&quot;blue&quot;, size = 4, hjust = 0) +
+    annotate(&quot;text&quot;, x = 168, y = .003, label = &quot;Summer of Stats&quot;, col=&quot;grey80&quot;, size = 3)
+
+# Maximum estimator
+ggplot(as.data.table(all_sal), aes(x=all_sal)) + 
+    geom_density(fill=&quot;blue&quot;, alpha=.2) +
+    coord_cartesian(xlim=c(10,200)) + 
+    theme_minimal() + xlab(&quot;Salary (in $1000's)&quot;) + ylab(&quot;&quot;) + theme(axis.text.y=element_blank()) +
+    theme(axis.text.x = element_text(face=&quot;bold&quot;, color=&quot;darkred&quot;, size=15)) +
+    geom_segment(aes(x=sal_max, xend=sal_max, y=.02, yend=0), color='blue', lwd=1) +
+    annotate(&quot;text&quot;, x = 170, y = .0185, label = &quot;MAX:&quot;, col=&quot;blue&quot;, size = 4, fontface =2) +
+    annotate(&quot;text&quot;, x = 162, y = .0145, label = &quot;Everyone\nis making\n$200k+!&quot;, col=&quot;blue&quot;, size = 4, hjust = 0) +
+    annotate(&quot;text&quot;, x = 168, y = .003, label = &quot;Summer of Stats&quot;, col=&quot;grey80&quot;, size = 3)
+</code></pre>
+<ol start="2">
+<li>Celebrity Sighting</li>
+</ol>
+<pre><code class="language-r"># Add obnoxiously high salary
+new_sal &lt;- append(all_sal, 8000)
+
+# Our new Estimators
+new_sal_med &lt;- median(new_sal)
+new_sal_mean &lt;- mean(new_sal)
+new_sal_max &lt;- 8000 # manually override, since geom_density overshoots the real max
+
+# Without Celeb
+ggplot(as.data.table(all_sal), aes(x=all_sal)) + 
+    geom_density(fill=&quot;blue&quot;, alpha=.2) +
+    coord_cartesian(xlim=c(10,200)) + 
+    theme_minimal() + xlab(&quot;Salary (in $1000's)&quot;) + ylab(&quot;&quot;) + theme(axis.text.y=element_blank()) +
+    theme(axis.text.x = element_text(face=&quot;bold&quot;, color=&quot;darkred&quot;, size=15)) +
+    geom_segment(aes(x=sal_med, xend=sal_med, y=.02, yend=0), color='darkred', lwd=1) +
+    annotate(&quot;text&quot;, x = 35, y = .0185, label = &quot;MEDIAN&quot;, col=&quot;darkred&quot;, size = 4, fontface =2) +
+    annotate(&quot;text&quot;, x = 30, y = .016, label = &quot;($50k)&quot;, col=&quot;darkred&quot;, size = 4, hjust = 0) +
+    geom_segment(aes(x=sal_mean, xend=sal_mean, y=.02, yend=0), color='darkorange', lwd=1) +
+    annotate(&quot;text&quot;, x = 70, y = .0185, label = &quot;MEAN&quot;, col=&quot;darkorange&quot;, size = 4, fontface =2) +
+    annotate(&quot;text&quot;, x = 62, y = .016, label = &quot;($57k)&quot;, col=&quot;darkorange&quot;, size = 4, hjust = 0) +
+    annotate(&quot;text&quot;, x = 150, y = .0185, label = &quot;Without Outlier&quot;, col=&quot;grey20&quot;, size = 8, fontface =2) +
+    annotate(&quot;text&quot;, x = 172, y = .002, label = &quot;Summer of Stats&quot;, col=&quot;grey80&quot;, size = 3)
+
+# With Celeb
+ggplot(as.data.table(new_sal), aes(x=new_sal)) + 
+    geom_density(fill=&quot;blue&quot;, alpha=.2) +
+    coord_cartesian(xlim=c(10,200)) + 
+    theme_minimal() + xlab(&quot;Salary (in $10k)&quot;) + ylab(&quot;&quot;) + theme(axis.text.y=element_blank()) +
+    theme(axis.text.x = element_text(face=&quot;bold&quot;, color=&quot;darkred&quot;, size=15)) +
+    geom_segment(aes(x=new_sal_med, xend=new_sal_med, y=.02, yend=0), color='darkred', lwd=1) +
+    annotate(&quot;text&quot;, x = 35, y = .0185, label = &quot;MEDIAN&quot;, col=&quot;darkred&quot;, size = 4, fontface =2) +
+    annotate(&quot;text&quot;, x = 30, y = .016, label = &quot;($50k)&quot;, col=&quot;darkred&quot;, size = 4, hjust = 0) +
+    geom_segment(aes(x=new_sal_mean, xend=new_sal_mean, y=.02, yend=0), color='darkorange', lwd=1) +
+    annotate(&quot;text&quot;, x = 100, y = .0185, label = &quot;MEAN&quot;, col=&quot;darkorange&quot;, size = 4, fontface =2) +
+    annotate(&quot;text&quot;, x = 92, y = .016, label = &quot;($114k)&quot;, col=&quot;darkorange&quot;, size = 4, hjust = 0) +
+    annotate(&quot;text&quot;, x = 160, y = .0185, label = &quot;With Outlier&quot;, col=&quot;grey20&quot;, size = 8, fontface =2) +
+    annotate(&quot;text&quot;, x = 172, y = .002, label = &quot;Summer of Stats&quot;, col=&quot;grey80&quot;, size = 3)
+</code></pre>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  
+
+
+  </body>
+</html>
+

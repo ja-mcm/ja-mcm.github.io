@@ -6,8 +6,15 @@
     <description>Recent content on Summer of Stats</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 02 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 09 Jul 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Lie: 2 - Sampling</title>
+      <link>/2025/07/09/how-to-lie-2-sampling/</link>
+      <pubDate>Wed, 09 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>/2025/07/09/how-to-lie-2-sampling/</guid>
+      <description>(or &amp;ldquo;Why Surveys Lie&amp;rdquo;) When posed with a tough question, sampling is one of our greatest super-powers.&#xA;The &amp;ldquo;S&amp;rdquo; is actually for &amp;ldquo;Sampling&amp;rdquo;&amp;hellip;&#xA;We&amp;rsquo;ve talked at length about why - the random sample forms the basis of nearly all statistics. But what happens when our sample ISN&amp;rsquo;T random?&#xA;Things become much more tricky, and we encounter another popular method for misleading people.&#xA;How to Lie (Recap) As a reminder, there are 3 common ways to lie with statistics:</description>
+    </item>
     <item>
       <title>How to Lie: 1 - Variability</title>
       <link>/2025/07/02/how-to-lie-1-variability/</link>

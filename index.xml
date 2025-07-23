@@ -6,8 +6,22 @@
     <description>Recent content on Summer of Stats</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 09 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 23 Jul 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Decide: 1 - Significance</title>
+      <link>/2025/07/23/how-to-decide-1-significance/</link>
+      <pubDate>Wed, 23 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>/2025/07/23/how-to-decide-1-significance/</guid>
+      <description>(or &amp;ldquo;Why Being Data-Driven Isn&amp;rsquo;t Enough&amp;rdquo;) Making decisions with data is not always easy. However, we now live in an age where data is everywhere.&#xA;So how DO we make decisions with the data we have?&#xA;We put our decisions to the test, using the concept of statistical significance.&#xA;What is &amp;ldquo;Significant&amp;rdquo;, Anyways? Very broadly, statistical significance is a gauge of how much evidence we have for our world-view.</description>
+    </item>
+    <item>
+      <title>How to Lie: 3 - Estimators</title>
+      <link>/2025/07/16/how-to-lie-3-estimators/</link>
+      <pubDate>Wed, 16 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>/2025/07/16/how-to-lie-3-estimators/</guid>
+      <description>(or &amp;ldquo;Why Averages Lie&amp;rdquo;) To wrap up our series on lying with statistics, I wanted to talk about choices.&#xA;Specifically, how to choose the right statistic.&#xA;Because it is such a common source of statistical shenanigans (either intentionally or unintentionally), it is worth discussing the art of picking the correct estimator.&#xA;How to Lie (Recap) At risk of being repetitive, here are the 3 common ways to lie with statistics that we&amp;rsquo;ve been discussing:</description>
+    </item>
     <item>
       <title>How to Lie: 2 - Sampling</title>
       <link>/2025/07/09/how-to-lie-2-sampling/</link>

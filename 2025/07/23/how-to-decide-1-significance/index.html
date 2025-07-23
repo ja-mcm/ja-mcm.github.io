@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.125.4">
+
+
+<title>How to Decide: 1 - Significance - Summer of Stats</title>
+<meta property="og:title" content="How to Decide: 1 - Significance - Summer of Stats">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/Rplot.png"
+         width="60"
+         height="60"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/">Summer of Stats</a></li>
+    
+    <li><a href="/2023/01/01/visual-gallery/">Visual Gallery</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">5 min read</span>
+    
+
+    <h1 class="article-title">How to Decide: 1 - Significance</h1>
+
+    
+    <span class="article-date">2025-07-23</span>
+    
+
+    <div class="article-content">
+      
+      <script src="/2025/07/23/how-to-decide-1-significance/index_files/kePrint/kePrint.js"></script>
+<link href="/2025/07/23/how-to-decide-1-significance/index_files/lightable/lightable.css" rel="stylesheet" />
+<link href="/2025/07/23/how-to-decide-1-significance/index_files/bsTable/bootstrapTable.min.css" rel="stylesheet" />
+<script src="/2025/07/23/how-to-decide-1-significance/index_files/bsTable/bootstrapTable.js"></script>
+<img src="images/Rplot.png" width="1%" style="display: block; margin: auto;" />
+<h2 id="or-why-being-data-driven-isnt-enough">(or &ldquo;Why Being Data-Driven Isn&rsquo;t Enough&rdquo;)</h2>
+<p>Making decisions with data is not always easy. However, we now live in an age where data is everywhere.</p>
+<p>So how DO we make decisions with the data we have?</p>
+<p>We put our decisions to the test, using the concept of statistical significance.</p>
+<h3 id="what-is-significant-anyways">What is &ldquo;Significant&rdquo;, Anyways?</h3>
+<p>Very broadly, statistical significance is a gauge of <strong>how much evidence we have for our world-view.</strong></p>
+<p>Essentially, we state how we <strong>think</strong> the world works (also called a hypothesis), and compare against data from the real world.</p>
+<p>To get an idea of how this works, let&rsquo;s formulate a hypothesis we can test with data:</p>
+<blockquote>
+<h4 id="hypothesis-i-believe-that-my-normal-5k-running-pace-is-700mile">HYPOTHESIS: &ldquo;I believe that my normal 5k running pace is 7:00/mile&rdquo;</h4>
+</blockquote>
+<h3 id="step-1-create-a-model">Step 1: Create a Model</h3>
+<p>To test our hypothesis, we first need to model our current understanding of the world. We do this with a mathematical model we call a &ldquo;null distribution&rdquo;.</p>
+<img src="/2025/07/23/how-to-decide-1-significance/index_files/figure-html/unnamed-chunk-2-1.png" width="768" style="display: block; margin: auto;" />
+<p>This distribution represents the average pace we might obtain over a sample of runs (here, 5 runs). <strong>The model assumes our true pace actually is 7:00/mi</strong>, but allows our pace for each run to vary a bit based on how we feel that day.</p>
+<p>Let&rsquo;s collect some data, to see how well it lines up with our hypothesis!</p>
+<h3 id="step-2-collect-data">Step 2: Collect Data</h3>
+<p>After completing a series of 5 runs, we find that some runs were below 7:00 pace but others were above. So, what does this tell us?</p>
+<table class="table table-striped table-hover" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:center;"> RUN </th>
+   <th style="text-align:center;"> PACE </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;"> 1 </td>
+   <td style="text-align:center;"> 07:19 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 2 </td>
+   <td style="text-align:center;"> 07:04 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 3 </td>
+   <td style="text-align:center;"> 06:57 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 4 </td>
+   <td style="text-align:center;"> 06:59 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 5 </td>
+   <td style="text-align:center;"> 07:00 </td>
+  </tr>
+</tbody>
+</table>
+<blockquote>
+<h4 id="average-pace-707">Average Pace: 7:07</h4>
+</blockquote>
+<p>Since our null distribution represents probabilities of each outcome, we can actually use it assess how likely or unlikely our observed result actually was:</p>
+<img src="/2025/07/23/how-to-decide-1-significance/index_files/figure-html/unnamed-chunk-4-1.png" width="768" style="display: block; margin: auto;" />
+<p>If our model diverges significantly from reality, <strong>it makes sense that our initial model probably isn&rsquo;t right.</strong></p>
+<p>Here, the probability of our 5 results actually occurring given a normal pace of 7:00 flat is so vanishingly small that we have <strong>significant</strong> evidence that our hypothesis is most likely wrong, and needs to be changed.</p>
+<p>Based on what we&rsquo;ve seen so far, <strong>our 5k pace is probably worse than the 7:00/mile</strong> we were initially thinking.</p>
+<p>This means that we&rsquo;ve learned something new!</p>
+<hr>
+<h2 id="statistical-significance-in-daily-life">Statistical Significance in Daily Life</h2>
+<p>One practical lesson that you can take away is:</p>
+<blockquote>
+<p><strong>&ldquo;Statistically significant&rdquo; <code>\(\neq\)</code> &ldquo;Meaningful&rdquo;</strong></p>
+</blockquote>
+<p>Statistics provides a very powerful approach to measuring our uncertainty. However, we have to be careful to separate the <strong>significance</strong> of a finding from how <strong>important</strong> it is.</p>
+<h3 id="trivia-vs-facts">Trivia vs. Facts</h3>
+<p>To keep our information straight, it’s helpful to categorize what we know into buckets, based on signficance and importance:</p>
+<ul>
+<li>Trivia - Sigificant but not Important</li>
+<li>Facts - Significant AND Important</li>
+</ul>
+<p>Think about it another way - it is very easy to pick up random information from the Internet. Simply check out <a href="https://en.wikipedia.org/wiki/Main_Page">Wikipedia&rsquo;s</a> front page:</p>
+<img src="images/Did_You_Know.png" width="90%" style="display: block; margin: auto;" />
+<blockquote>
+<p><em>(As displayed on 7/22/2025)</em></p>
+</blockquote>
+<p>However, none of this information is actually <strong>meaningful</strong>.</p>
+<p>Why not? Because these data points will never impact a real-life decision. They are simply Trivia.</p>
+<h3 id="the-importance-of-facts">The Importance of Facts</h3>
+<p>As a contrast, we may find other information that is critically important to our decisions. These are Facts.</p>
+<p>For instance, knowing that the brakes on my car are 97% worn definitely informs my decision of what maintenance my car needs. Facts are both significant AND meaningful to decisions.</p>
+<p>This is the primary challenge for data-driven decision-making - separating the <strong>Facts (significant and meaningful information)</strong> from all the <strong>Trivia (significant, but not meaningful)</strong>.</p>
+<p>Unfortunately, statistical significance alone cannot answer that question - it is up to you as the fact-finder!</p>
+<h2 id="summing-up">Summing Up</h2>
+<p>Statistical significance pops up a lot in discussions about data, and for good reason - it gives us a precise, repeatable way to decide between two alternatives. Now decisions truly can be driven by data.</p>
+<p>But <strong>statistical significance isn&rsquo;t everything</strong>.</p>
+<p>Critically, significance does NOT guarantee our decisions are correct - it simply helps us to pick the option with the strongest evidence. <strong>Every decision is still ultimately a leap of faith.</strong></p>
+<p>And, as we&rsquo;ll see next week, this problem only get bigger as your analysis unfolds.</p>
+<h4 id="up-next-multiple-testing">Up Next: Multiple Testing</h4>
+<p>We continue our conversation on decision-making, as we discuss the pitfalls of testing too many things.</p>
+<p>Learn why it is extremely unwise to simply let &ldquo;the data&rdquo; tell the story.</p>
+<p>===========================</p>
+<p>R code used to generate plots:</p>
+<ol>
+<li>Running a 5k</li>
+</ol>
+<pre><code class="language-r">library(ggplot2)
+library(data.table)
+library(knitr)
+library(kableExtra)
+library(formattable)
+library(lubridate)
+
+set.seed(072325)
+
+### Null distribution, assuming 7 minute pace, plus or minus 15 seconds
+# Note that SD is divided by 10, since we have 10 observations
+pace &lt;- rnorm(10000,7,.25/5) |&gt; as.data.table()
+
+base_plot &lt;- ggplot(pace, aes(x=V1)) + 
+    geom_density(fill=&quot;orange&quot;, alpha=0.3) +
+    theme_minimal() + xlab(&quot;Pace (Minutes per mile)&quot;) + ylab(&quot;&quot;) + theme(axis.text.y=element_blank()) +
+    theme(axis.text.x = element_text(face=&quot;bold&quot;, color=&quot;darkred&quot;, size=15)) +
+    coord_cartesian(xlim=c(6,8)) +
+    annotate(&quot;text&quot;, x = 7.75, y = .6, label = &quot;Summer of Stats&quot;, col=&quot;grey80&quot;, size = 4)
+
+base_plot + 
+      annotate(&quot;text&quot;, x = 6.5, y = 8.5, label = &quot;Null Distribution&quot;, col=&quot;grey20&quot;, size = 8, fontface =2) +
+      annotate(&quot;text&quot;, x = 6.5, y = 7.5, label = &quot;(Sample of 5 runs)&quot;, col=&quot;grey80&quot;, size = 6)
+
+
+### Actual observations aren't quite as fast...
+actual_pace &lt;- rnorm(5,7.15,.25) |&gt; as.data.table()
+actual_pace[,RUN:=.I]
+actual_pace[,PACE:=as_datetime(V1*60) |&gt; format(&quot;%M:%S&quot;) ]
+
+sample_avg &lt;- mean(actual_pace$V1)
+
+actual_pace[,V1:=NULL]
+#as_datetime(sample_avg*60) |&gt; format(&quot;%M:%S&quot;)
+
+### Display data as a table
+options(kableExtra.html.bsTable = TRUE)
+kable(actual_pace, align = c(&quot;c&quot;,&quot;c&quot;)) |&gt; kableExtra::kable_styling(bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;), full_width = FALSE)
+
+#1 - pnorm(7.128,7,.25/5)
+
+base_plot +
+    geom_segment(aes(x=7.12, y=8, xend=7.12, yend=0), color='darkred', lwd=1.5) +
+    annotate(&quot;text&quot;, x = 6.5, y = 8.5, label = &quot;Null Distribution&quot;, col=&quot;grey20&quot;, size = 8, fontface =2) +
+    annotate(&quot;text&quot;, x = 6.5, y = 7.5, label = &quot;(Sample of 5 runs)&quot;, col=&quot;grey80&quot;, size = 6) +
+    annotate(&quot;text&quot;, x = 7.6, y = 5, label = &quot;There is a 0.5%\nof observing this\nresult by random chance&quot;, size = 6) +
+    annotate(&quot;text&quot;, x = 7.2, y = 8.5, label = &quot;7:07&quot;, col=&quot;darkred&quot;, size = 8, fontface =2)
+</code></pre>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  
+
+
+  </body>
+</html>
+

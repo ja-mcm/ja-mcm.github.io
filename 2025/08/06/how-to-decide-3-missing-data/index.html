@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=4321&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.125.4">
+
+
+<title>How to Decide: 3 - Missing Data - Summer of Stats</title>
+<meta property="og:title" content="How to Decide: 3 - Missing Data - Summer of Stats">
+
+
+  <link href='//localhost:4321/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/Rplot.png"
+         width="60"
+         height="60"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/">Summer of Stats</a></li>
+    
+    <li><a href="/2023/01/01/visual-gallery/">Visual Gallery</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">5 min read</span>
+    
+
+    <h1 class="article-title">How to Decide: 3 - Missing Data</h1>
+
+    
+    <span class="article-date">2025-08-06</span>
+    
+
+    <div class="article-content">
+      
+      <script src="/2025/08/06/how-to-decide-3-missing-data/index_files/kePrint/kePrint.js"></script>
+<link href="/2025/08/06/how-to-decide-3-missing-data/index_files/lightable/lightable.css" rel="stylesheet" />
+<link href="/2025/08/06/how-to-decide-3-missing-data/index_files/bsTable/bootstrapTable.min.css" rel="stylesheet" />
+<script src="/2025/08/06/how-to-decide-3-missing-data/index_files/bsTable/bootstrapTable.js"></script>
+<img src="images/Rplot.png" width="1%" style="display: block; margin: auto;" />
+<h2 id="or-why-nulls-matter">(or &ldquo;Why NULLs Matter&rdquo;)</h2>
+<p>Some of the most difficult decisions are the ones where our picture has missing pieces.</p>
+<img src="images/puzzle.jpg" width="50%" style="display: block; margin: auto;" />
+<p>Because missing data can have an outsized effect on our results, it is critical to know what to do when you see holes in your data. Otherwise, we risk making bad decisions.</p>
+<h3 id="when-data-goes-missing">When Data Goes Missing</h3>
+<p>Data can be missing for a many reasons.</p>
+<p>It might&rsquo;ve been an issue where the <strong>data got corrupted</strong>, or the respondent <strong>refused to answer</strong>. Maybe the response was deemed <strong>invalid</strong>, and was dropped as &ldquo;bad&rdquo; data. It could even be that someone spilled coffee on that page of notes, rendering them unreadable.</p>
+<p>Often, it&rsquo;s useful to simply boil all of these options down to 2 very basic flavors:</p>
+<ol>
+<li>Missing randomly</li>
+<li>Missing systematically</li>
+</ol>
+<p>This distinction is important because it tells you how to deal with your missing data.</p>
+<h3 id="missing-randomly">Missing Randomly</h3>
+<p>The example of coffee falling on our data and splotching the results would likely be an example of &ldquo;missing randomly&rdquo;.</p>
+<p>Here, a random set of observations gets removed (wherever the coffee fell) - there is nothing driving the loss of these observations other than pure random chance.</p>
+<p>This is easy to deal with -  because there is no underlying pattern in our missing data, it acts much like a random sample. That means our estimates should still reach the true answer, eventually. Therefore, <strong>missing data poses no issues, other than giving us a smaller sample size</strong>.</p>
+<p>Unfortunately, most of the time, data IS missing for a reason.</p>
+<h3 id="missing-systematically">Missing Systematically</h3>
+<p>If instead, our missing data tends to have something in common, it would be <strong>systematically missing</strong>. An example of this would be someone refusing to answer a survey about their income because they don&rsquo;t want to divulge how rich they are.</p>
+<p>In this case, it is obvious that loss of data is limited to only certain situations, and that it will bias what observations remain in our dataset.</p>
+<p>As you might guess, making inferences on this type of data can quickly become problematic.</p>
+<hr>
+<h2 id="missing-data-in-daily-life">Missing Data in Daily Life</h2>
+<p>One practical lesson that you can take away is:</p>
+<blockquote>
+<p><strong>Always correct missing data FIRST</strong></p>
+</blockquote>
+<p>People often see NULL values in their data and just keep going. Why spend a bunch of time worrying about a small number of missing observations?</p>
+<p>Unfortunately, these missing values can make a big difference in your outcome.</p>
+<h3 id="how-many-customers-do-you-see">How Many Customers Do You See?</h3>
+<p>Let&rsquo;s say you want to get the average revenue of a set of customers:</p>
+<table class="table table-striped table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:center;"> CUSTOMER </th>
+   <th style="text-align:center;"> DATE </th>
+   <th style="text-align:center;"> DOLLAR_AMOUNT </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;"> 1 </td>
+   <td style="text-align:center;"> 2025-07-31 </td>
+   <td style="text-align:center;"> 48.65 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 2 </td>
+   <td style="text-align:center;"> 2025-08-02 </td>
+   <td style="text-align:center;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 3 </td>
+   <td style="text-align:center;"> 2025-08-01 </td>
+   <td style="text-align:center;"> 97.98 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 4 </td>
+   <td style="text-align:center;"> 2025-08-03 </td>
+   <td style="text-align:center;"> 300.35 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 5 </td>
+   <td style="text-align:center;"> 2025-07-31 </td>
+   <td style="text-align:center;"> 384.46 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 6 </td>
+   <td style="text-align:center;"> 2025-08-02 </td>
+   <td style="text-align:center;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 7 </td>
+   <td style="text-align:center;"> 2025-07-31 </td>
+   <td style="text-align:center;"> NA </td>
+  </tr>
+</tbody>
+</table>
+<p>Here, we see that only 4 out of the 7 customers have transactions.</p>
+<p>SO, should you divide by 4, or by 7? Choose wisely - your decision will have a big effect our final result.</p>
+<blockquote>
+<h4 id="average-revenuecustomer-4-customers--20786">Average revenue/customer (4 customers) = $207.86</h4>
+<h4 id="average-revenuecustomer-7-customers--11878">Average revenue/customer (7 customers) = $118.78</h4>
+</blockquote>
+<p>If you&rsquo;re struggling to decide which is right, you&rsquo;re not alone. <strong>Statistics has no magical tool to tell us which is correct</strong>, it all comes down to the individual problem.</p>
+<p>Our observations could be missing because the customer didn&rsquo;t purchase anything. OR, maybe a database issue caused all transaction amounts under under $20 to be blanked out. <strong>Until we know the cause of the missing data, we can&rsquo;t know how to calculate our result</strong>.</p>
+<h3 id="the-truth-about-working-with-data">The Truth about Working with Data</h3>
+<p>It may sound surprising, but USING data is often quite simple. Generally, our results just boil down to simple math. (Everyone reading this post will know how to calculate an average, for instance).</p>
+<p>What often gets complicated <strong>is correctly setting up the math problem</strong>.</p>
+<p>In the example above, calculating the average is easy, once we know which rows to include. But answering THAT question isn&rsquo;t so simple - you have to know how your data is generated, and what missing data indicates.</p>
+<p>This type of problem is often why data scientists <a href="https://www.researchgate.net/figure/What-data-scientists-spend-the-most-time-doing-7_fig2_335577003">spend most of their time cleaning data</a> before they can actually use it, and why missing data should be one of the first things you look at when doing an analysis.</p>
+<h2 id="summing-up">Summing Up</h2>
+<p>There is a very clear bias in most data analyses - we focus on the things we have data for. But what about the things we didn&rsquo;t measure?</p>
+<p>Always consider what data you DON&rsquo;T have. <strong>An incomplete dataset is often just a form of non-representative sample</strong> - and since bad samples are <a href="https://ja-mcm.github.io/2025/07/09/how-to-lie-2-sampling/">a great way to get bogus results</a>, we should always be extremely careful when drawing conclusions from them.</p>
+<p>The issue is particularly vexing because it hides in plain sight. You have to go seek out what is missing, maybe based on nothing more than a hunch. But <strong>if you fail to account for what&rsquo;s missing, you may come to a decision that is badly wrong.</strong></p>
+<p>Often it&rsquo;s what you DON&rsquo;T have that matters.</p>
+<h4 id="up-next-making-the-right-choice">Up Next: Making the Right Choice</h4>
+<p>Next week, we&rsquo;ll wrap up Summer of Stats 2.0 covering why ethics is baked into every data project. Read on to learn how to be a Force for Good!</p>
+<p>===========================</p>
+<p>R code used to generate plots:</p>
+<ol>
+<li>A Simple Average</li>
+</ol>
+<pre><code class="language-r">library(knitr)
+library(kableExtra)
+library(formattable)
+library(lubridate)
+library(data.table)
+
+set.seed(080625)
+today_date &lt;- Sys.Date()
+
+### Create synthetic MAR data
+avg_rev &lt;- data.table(&quot;CUSTOMER&quot; = seq(1,7),
+                      &quot;DATE&quot; = today_date-runif(7,0,5),
+                      &quot;DOLLAR_AMOUNT&quot; = runif(7,0,550) |&gt; round(2))
+
+avg_rev[,DOLLAR_AMOUNT:=ifelse(DOLLAR_AMOUNT %like% '2', NA,DOLLAR_AMOUNT)]
+
+### Display data as a table
+options(kableExtra.html.bsTable = TRUE)
+kable(avg_rev, align = c(&quot;c&quot;,&quot;c&quot;)) |&gt; kableExtra::kable_styling(bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;), full_width = FALSE)
+</code></pre>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  
+
+
+  </body>
+</html>
+

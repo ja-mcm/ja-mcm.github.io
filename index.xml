@@ -6,8 +6,15 @@
     <description>Recent content on Summer of Stats</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 23 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 30 Jul 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Decide: 2 - Multiple Testing</title>
+      <link>/2025/07/30/how-to-decide-2-multiple-testing/</link>
+      <pubDate>Wed, 30 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>/2025/07/30/how-to-decide-2-multiple-testing/</guid>
+      <description>(or &amp;ldquo;Why Decisions are Like Lava Pits&amp;rdquo;) In daily life, we are seldom given &amp;ldquo;either-or&amp;rdquo; choices.&#xA;Okay, it still happens sometimes&amp;hellip;&#xA;Often, when we make decisions, we have a multitude of choices to contend with. Sifting through these possibilities can be tricky, since we only have a limited set of observations.&#xA;In statistics, we call this challenge &amp;ldquo;Multiple Testing&amp;rdquo;, and it can quickly lead to faulty decision-making.&#xA;Why Multiple Testing is Dangerous When we test a hypothesis, we are making a yes-no decision as to whether our data indicates a finding.</description>
+    </item>
     <item>
       <title>How to Decide: 1 - Significance</title>
       <link>/2025/07/23/how-to-decide-1-significance/</link>

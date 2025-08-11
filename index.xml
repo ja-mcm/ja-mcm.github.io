@@ -2,185 +2,199 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Summer of Stats</title>
-    <link>/</link>
+    <link>//localhost:4321/</link>
     <description>Recent content on Summer of Stats</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 30 Jul 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 13 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:4321/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Decide: 4 - Ethics</title>
+      <link>//localhost:4321/2025/08/13/how-to-decide-4-ethics/</link>
+      <pubDate>Wed, 13 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/2025/08/13/how-to-decide-4-ethics/</guid>
+      <description>(or &amp;ldquo;Why Our Decisions Matter&amp;rdquo;) Programming Note… Next week marks the start of the final semester of my MS Stats program, so this is my final post for the summer.&#xA;It&amp;rsquo;s been such an interesting challenge trying to sum up the mountains of information I&amp;rsquo;ve taken in so far. I think discussing the &amp;ldquo;WHY&amp;rdquo; in what we do is a nice way to wrap this series up. Enjoy!&#xA;Wrapping up Summer of Stats 2.</description>
+    </item>
+    <item>
+      <title>How to Decide: 3 - Missing Data</title>
+      <link>//localhost:4321/2025/08/06/how-to-decide-3-missing-data/</link>
+      <pubDate>Wed, 06 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:4321/2025/08/06/how-to-decide-3-missing-data/</guid>
+      <description>(or &amp;ldquo;Why NULLs Matter&amp;rdquo;) Some of the most difficult decisions are the ones where our picture has missing pieces.&#xA;Because missing data can have an outsized effect on our results, it is critical to know what to do when you see holes in your data. Otherwise, we risk making bad decisions.&#xA;When Data Goes Missing Data can be missing for a many reasons.&#xA;It might&amp;rsquo;ve been an issue where the data got corrupted, or the respondent refused to answer.</description>
+    </item>
     <item>
       <title>How to Decide: 2 - Multiple Testing</title>
-      <link>/2025/07/30/how-to-decide-2-multiple-testing/</link>
+      <link>//localhost:4321/2025/07/30/how-to-decide-2-multiple-testing/</link>
       <pubDate>Wed, 30 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>/2025/07/30/how-to-decide-2-multiple-testing/</guid>
+      <guid>//localhost:4321/2025/07/30/how-to-decide-2-multiple-testing/</guid>
       <description>(or &amp;ldquo;Why Decisions are Like Lava Pits&amp;rdquo;) In daily life, we are seldom given &amp;ldquo;either-or&amp;rdquo; choices.&#xA;Okay, it still happens sometimes&amp;hellip;&#xA;Often, when we make decisions, we have a multitude of choices to contend with. Sifting through these possibilities can be tricky, since we only have a limited set of observations.&#xA;In statistics, we call this challenge &amp;ldquo;Multiple Testing&amp;rdquo;, and it can quickly lead to faulty decision-making.&#xA;Why Multiple Testing is Dangerous When we test a hypothesis, we are making a yes-no decision as to whether our data indicates a finding.</description>
     </item>
     <item>
       <title>How to Decide: 1 - Significance</title>
-      <link>/2025/07/23/how-to-decide-1-significance/</link>
+      <link>//localhost:4321/2025/07/23/how-to-decide-1-significance/</link>
       <pubDate>Wed, 23 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>/2025/07/23/how-to-decide-1-significance/</guid>
+      <guid>//localhost:4321/2025/07/23/how-to-decide-1-significance/</guid>
       <description>(or &amp;ldquo;Why Being Data-Driven Isn&amp;rsquo;t Enough&amp;rdquo;) Making decisions with data is not always easy. However, we now live in an age where data is everywhere.&#xA;So how DO we make decisions with the data we have?&#xA;We put our decisions to the test, using the concept of statistical significance.&#xA;What is &amp;ldquo;Significant&amp;rdquo;, Anyways? Very broadly, statistical significance is a gauge of how much evidence we have for our world-view.</description>
     </item>
     <item>
       <title>How to Lie: 3 - Estimators</title>
-      <link>/2025/07/16/how-to-lie-3-estimators/</link>
+      <link>//localhost:4321/2025/07/16/how-to-lie-3-estimators/</link>
       <pubDate>Wed, 16 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>/2025/07/16/how-to-lie-3-estimators/</guid>
+      <guid>//localhost:4321/2025/07/16/how-to-lie-3-estimators/</guid>
       <description>(or &amp;ldquo;Why Averages Lie&amp;rdquo;) To wrap up our series on lying with statistics, I wanted to talk about choices.&#xA;Specifically, how to choose the right statistic.&#xA;Because it is such a common source of statistical shenanigans (either intentionally or unintentionally), it is worth discussing the art of picking the correct estimator.&#xA;How to Lie (Recap) At risk of being repetitive, here are the 3 common ways to lie with statistics that we&amp;rsquo;ve been discussing:</description>
     </item>
     <item>
       <title>How to Lie: 2 - Sampling</title>
-      <link>/2025/07/09/how-to-lie-2-sampling/</link>
+      <link>//localhost:4321/2025/07/09/how-to-lie-2-sampling/</link>
       <pubDate>Wed, 09 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>/2025/07/09/how-to-lie-2-sampling/</guid>
+      <guid>//localhost:4321/2025/07/09/how-to-lie-2-sampling/</guid>
       <description>(or &amp;ldquo;Why Surveys Lie&amp;rdquo;) When posed with a tough question, sampling is one of our greatest super-powers.&#xA;The &amp;ldquo;S&amp;rdquo; is actually for &amp;ldquo;Sampling&amp;rdquo;&amp;hellip;&#xA;We&amp;rsquo;ve talked at length about why - the random sample forms the basis of nearly all statistics. But what happens when our sample ISN&amp;rsquo;T random?&#xA;Things become much more tricky, and we encounter another popular method for misleading people.&#xA;How to Lie (Recap) As a reminder, there are 3 common ways to lie with statistics:</description>
     </item>
     <item>
       <title>How to Lie: 1 - Variability</title>
-      <link>/2025/07/02/how-to-lie-1-variability/</link>
+      <link>//localhost:4321/2025/07/02/how-to-lie-1-variability/</link>
       <pubDate>Wed, 02 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>/2025/07/02/how-to-lie-1-variability/</guid>
+      <guid>//localhost:4321/2025/07/02/how-to-lie-1-variability/</guid>
       <description>(or &amp;ldquo;Why Trends Lie&amp;rdquo;) Programming Note: Why Discuss Lying? Since I plan to spend a few weeks discussing how statistics get misused, let&amp;rsquo;s clear up a few things first:&#xA;I am not a good liar, nor do I condone it. These posts are not intended as &amp;ldquo;how to&amp;rdquo; guide for lying. Do not use them in this manner, or I will be angry. Instead, I want to highlight the sneaky statistical tricks people use to mislead others, so that you can spot them in real-life.</description>
     </item>
     <item>
       <title>How to Guess: 5 - Bias</title>
-      <link>/2025/06/25/how-to-guess-5-bias/</link>
+      <link>//localhost:4321/2025/06/25/how-to-guess-5-bias/</link>
       <pubDate>Wed, 25 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>/2025/06/25/how-to-guess-5-bias/</guid>
+      <guid>//localhost:4321/2025/06/25/how-to-guess-5-bias/</guid>
       <description>(or &amp;ldquo;Why Consistency Counts&amp;rdquo;) Nobody likes to admit it, but we are all biased.&#xA;For example, I hate musicals. So, you COULD say I am extremely biased against them.&#xA;With good reason&amp;hellip;&#xA;But what does that have to do with guessing? Let&amp;rsquo;s discuss!&#xA;What is Bias? Bias has many meanings. It can mean &amp;ldquo;a preference&amp;rdquo;, &amp;ldquo;an inclination&amp;rdquo;, or even full-blown prejudice.&#xA;For statisticians, however, bias has a very specific (mathematical) meaning.</description>
     </item>
     <item>
       <title>How to Guess: 4 - Independence</title>
-      <link>/2025/06/18/how-to-guess-4-independence/</link>
+      <link>//localhost:4321/2025/06/18/how-to-guess-4-independence/</link>
       <pubDate>Wed, 18 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>/2025/06/18/how-to-guess-4-independence/</guid>
+      <guid>//localhost:4321/2025/06/18/how-to-guess-4-independence/</guid>
       <description>(or &amp;ldquo;Why Trouble Comes in Threes&amp;rdquo;) Predicting what will happen next is often a tricky business.&#xA;Unless you have one of these - available at Walmart!&#xA;But, with the right assumptions, we can often use statistics to make a reasonable guess.&#xA;To do this, we almost always make use the concept of independence.&#xA;What is Statistical Independence? One of the most important assumptions when we use statistics is that are events are &amp;ldquo;independent&amp;rdquo;.</description>
     </item>
     <item>
       <title>How to Guess: 3 - Approximation</title>
-      <link>/2025/06/11/how-to-guess-3-approximation/</link>
+      <link>//localhost:4321/2025/06/11/how-to-guess-3-approximation/</link>
       <pubDate>Wed, 11 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>/2025/06/11/how-to-guess-3-approximation/</guid>
+      <guid>//localhost:4321/2025/06/11/how-to-guess-3-approximation/</guid>
       <description>(or &amp;ldquo;Why Infinity is Your Friend&amp;rdquo;) Let&amp;rsquo;s start today&amp;rsquo;s post with a simple question:&#xA;Pretty simple, right?&#xA;However, it really depends on who you ask&amp;hellip;&#xA;One thing I love about statisticians is their willingness to approximate.&#xA;But as with everything else with statistics, statisticians are very careful about doing things properly.&#xA;In statistics, each approximation we use has a mathematical justification, and a set of assumptions. As long as we satisfy the assumptions, our approximate answer should be very close to the real one.</description>
     </item>
     <item>
       <title>How to Guess: 2 - Assumptions</title>
-      <link>/2025/06/04/how-to-guess-2-assumptions/</link>
+      <link>//localhost:4321/2025/06/04/how-to-guess-2-assumptions/</link>
       <pubDate>Wed, 04 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>/2025/06/04/how-to-guess-2-assumptions/</guid>
+      <guid>//localhost:4321/2025/06/04/how-to-guess-2-assumptions/</guid>
       <description>(or &amp;ldquo;Why Being Normal is Overrated&amp;rdquo;) We all know what happens when you assume.&#xA;However, assumptions are not necessarily a bad thing.&#xA;For example: when I see a traffic light that is green, I assume that nobody will come barreling through the intersection. This assumption allows me to drive predictably and safely.&#xA;The same is true with guessing - many common questions would simply be impossible to answer without assumptions.</description>
     </item>
     <item>
       <title>How to Guess: 1 - Statistics</title>
-      <link>/2025/05/28/how-to-guess-1-statistics/</link>
+      <link>//localhost:4321/2025/05/28/how-to-guess-1-statistics/</link>
       <pubDate>Wed, 28 May 2025 00:00:00 +0000</pubDate>
-      <guid>/2025/05/28/how-to-guess-1-statistics/</guid>
+      <guid>//localhost:4321/2025/05/28/how-to-guess-1-statistics/</guid>
       <description>(or &amp;ldquo;Why Faster Isn&amp;rsquo;t Always Better&amp;rdquo;) Programming Note… One year in, and I am still going! My Master&amp;rsquo;s program has covered an insane amount of content, and I&amp;rsquo;ve gained an appreciation of how much there is to still learn.&#xA;With so many new ideas bouncing around in my head from this past year, I&amp;rsquo;ve decided to resurrect Summer of Stats for another summer!&#xA;I&amp;rsquo;m mixing up the format - rather than cover a specific topic, these posts will focus on real-life problems and how statistical thinking can help.</description>
     </item>
     <item>
       <title>Design of Experiments</title>
-      <link>/2024/08/21/design-of-experiments/</link>
+      <link>//localhost:4321/2024/08/21/design-of-experiments/</link>
       <pubDate>Wed, 21 Aug 2024 00:00:00 +0000</pubDate>
-      <guid>/2024/08/21/design-of-experiments/</guid>
+      <guid>//localhost:4321/2024/08/21/design-of-experiments/</guid>
       <description>(or &amp;ldquo;How to Bake the Perfect Cake&amp;rdquo;) Programming Note&amp;hellip; School starts next week, so this will be my final post planned for Summer of Stats.&#xA;I&amp;rsquo;ve been looking forward to covering this topic (Design of Experiments) ever since I started this project, and it is one of the things I most look forward to studying. I hope you enjoy.&#xA;And Now Back to Our Topic! Actions lead to consequences - most people appreciate this fact.</description>
     </item>
     <item>
       <title>Bayesian Statistics</title>
-      <link>/2024/08/14/bayesian-statistics/</link>
+      <link>//localhost:4321/2024/08/14/bayesian-statistics/</link>
       <pubDate>Wed, 14 Aug 2024 00:00:00 +0000</pubDate>
-      <guid>/2024/08/14/bayesian-statistics/</guid>
+      <guid>//localhost:4321/2024/08/14/bayesian-statistics/</guid>
       <description>(or &amp;ldquo;Why Plaid Will Never Go Out of Style&amp;rdquo;) Knowing when to change your mind about something is one of the toughest things we have to do.&#xA;&amp;ldquo;Maaaaybe it&amp;rsquo;s time to update my wardrobe&amp;hellip;&amp;rdquo;&#xA;Over time, we may see evidence pop up that contradicts our opinion. But, how do we know when there&amp;rsquo;s enough evidence for us to change our minds?&#xA;One way we can approach this problem analytically is with Bayesian statistics.</description>
     </item>
     <item>
       <title>Nonparametric Statistics</title>
-      <link>/2024/08/07/nonparametric-statistics/</link>
+      <link>//localhost:4321/2024/08/07/nonparametric-statistics/</link>
       <pubDate>Wed, 07 Aug 2024 00:00:00 +0000</pubDate>
-      <guid>/2024/08/07/nonparametric-statistics/</guid>
+      <guid>//localhost:4321/2024/08/07/nonparametric-statistics/</guid>
       <description>(or &amp;ldquo;Why It Pays to be a Communications Major&amp;rdquo;) Nearly every topic we&amp;rsquo;ve covered so far has relied on a BIG assumption: that our data looks somewhat like this:&#xA;But what if your data doesn&amp;rsquo;t fit a distribution nicely? What if your data is very skewed, irregular, or has big outliers?&#xA;Time to bring in nonparametric statistics!&#xA;What is a Nonparametric Statistic? In short, a nonparametric statistic is a more robust option for analyzing data.</description>
     </item>
     <item>
       <title>Time Series</title>
-      <link>/2024/07/31/time-series/</link>
+      <link>//localhost:4321/2024/07/31/time-series/</link>
       <pubDate>Wed, 31 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>/2024/07/31/time-series/</guid>
+      <guid>//localhost:4321/2024/07/31/time-series/</guid>
       <description>(or &amp;ldquo;Why 90% of Sports Statistics are Nonsense&amp;rdquo;) Linear regression is a great tool for teasing out relationships between variables.&#xA;But what about things that change over time?&#xA;&amp;ldquo;Well, my car WAS here just a minute ago&amp;hellip;&amp;rdquo;&#xA;This is where using a time series can help us better understand our data.&#xA;What is a Time Series? A time series is a dataset that tracks a measure over time. In general, the purpose of analyzing a time series is two-fold:</description>
     </item>
     <item>
       <title>Multiple Regression</title>
-      <link>/2024/07/24/multiple-regression/</link>
+      <link>//localhost:4321/2024/07/24/multiple-regression/</link>
       <pubDate>Wed, 24 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>/2024/07/24/multiple-regression/</guid>
+      <guid>//localhost:4321/2024/07/24/multiple-regression/</guid>
       <description>(or &amp;ldquo;Why Knowing the Business Beats Knowing Regression&amp;rdquo;) Last week, we used a linear regression model to accurately convert temperatures from Celsius to Fahrenheit.&#xA;But what happens when you have to estimate something a bit more complex?&#xA;&amp;ldquo;This house is 2338 sq. ft&amp;hellip;so, how much should it cost?&amp;rdquo;&#xA;Obviously, we&amp;rsquo;ll need to account for more than 1 factor to model this. Luckily, we can do just this, using Multiple Regression!</description>
     </item>
     <item>
       <title>Regression</title>
-      <link>/2024/07/17/regression/</link>
+      <link>//localhost:4321/2024/07/17/regression/</link>
       <pubDate>Wed, 17 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>/2024/07/17/regression/</guid>
+      <guid>//localhost:4321/2024/07/17/regression/</guid>
       <description>(or &amp;ldquo;How Should I Dress Today?&amp;rdquo;) Last week, we saw how to determine whether 2 things appear to be related or not, using correlation.&#xA;But, just being aware that variables are correlated isn&amp;rsquo;t always that useful on its own.&#xA;&amp;ldquo;THIS JUST IN - CLOUDS ARE CORRELATED TO RAIN.&amp;rdquo;&#xA;In many cases, it would be very nice to know HOW MUCH one factor affects the other. Using a technique called regression, we can do just this.</description>
     </item>
     <item>
       <title>Correlation</title>
-      <link>/2024/07/10/correlation/</link>
+      <link>//localhost:4321/2024/07/10/correlation/</link>
       <pubDate>Wed, 10 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>/2024/07/10/correlation/</guid>
+      <guid>//localhost:4321/2024/07/10/correlation/</guid>
       <description>(or &amp;ldquo;Why Margarine Causes Divorce&amp;rdquo;) Knowing how things are related can be incredibly useful.&#xA;For example: &amp;ldquo;Where there&amp;rsquo;s smoke, there&amp;rsquo;s fire&amp;rdquo;&amp;hellip;.&#xA;It might be difficult to spot a small orange flame (especially on a bright day), but it is very easy to find the associated smoke.&#xA;Clearly, it would be nice to have a way to identify when things are related. Thankfully, statistics provides us a tool for doing this!</description>
     </item>
     <item>
       <title>Hypothesis Testing</title>
-      <link>/2024/07/03/hypothesis-testing/</link>
+      <link>//localhost:4321/2024/07/03/hypothesis-testing/</link>
       <pubDate>Wed, 03 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>/2024/07/03/hypothesis-testing/</guid>
+      <guid>//localhost:4321/2024/07/03/hypothesis-testing/</guid>
       <description>(or &amp;ldquo;Are These Eggs Still Good?&amp;rdquo;) When we collect data, we are usually doing it to help make a decision.&#xA;For example: Is our machine filling each milk bottle consistently?&#xA;As we saw last week, the more data we collect, the more confident we generally feel about what we observe. But, how do we KNOW when we have enough evidence to draw a solid conclusion?&#xA;To tackle this problem, we use a technique called hypothesis testing.</description>
     </item>
     <item>
       <title>Confidence Intervals</title>
-      <link>/2024/06/26/confidence-intervals/</link>
+      <link>//localhost:4321/2024/06/26/confidence-intervals/</link>
       <pubDate>Wed, 26 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>/2024/06/26/confidence-intervals/</guid>
+      <guid>//localhost:4321/2024/06/26/confidence-intervals/</guid>
       <description>(or &amp;ldquo;Why You Should Always Prepare Extra Food&amp;rdquo;) After seeing last week how quickly a small sample of data can arrive at the &amp;ldquo;correct&amp;rdquo; answer, we&amp;rsquo;re probably feeling pretty good!&#xA;But, our sample estimate is just that, an estimate. And, it&amp;rsquo;s not perfect.&#xA;In many cases, it&amp;rsquo;s important to know HOW certain we are of that estimate. To do this, we use a confidence interval.&#xA;What is a Confidence Interval? A confidence interval is the range of estimates that could be plausible, given your sample.</description>
     </item>
     <item>
       <title>Sampling</title>
-      <link>/2024/06/19/sampling/</link>
+      <link>//localhost:4321/2024/06/19/sampling/</link>
       <pubDate>Wed, 19 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>/2024/06/19/sampling/</guid>
+      <guid>//localhost:4321/2024/06/19/sampling/</guid>
       <description>(or &amp;ldquo;Why It Pays to Have a Clipboard&amp;rdquo;) Oftentimes, we want to know something about a very large group.&#xA;For example, someone might want to know how tall the average male is in the United States. How would we answer a question like this?&#xA;&amp;ldquo;We&amp;rsquo;re gonna need some more measuring tape&amp;hellip;&amp;rdquo;&#xA;Fortunately for us, there is an approach that will allow us to answer this seemingly impossible question: sampling.&#xA;What is Sampling?</description>
     </item>
     <item>
       <title>Distributions</title>
-      <link>/2024/06/12/distributions/</link>
+      <link>//localhost:4321/2024/06/12/distributions/</link>
       <pubDate>Wed, 12 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>/2024/06/12/distributions/</guid>
+      <guid>//localhost:4321/2024/06/12/distributions/</guid>
       <description>(or &amp;ldquo;Stop and Measure the Flowers&amp;rdquo;) Whenever someone thinks about statistics, the first image that comes to mind probably looks something like this:&#xA;Ah, the normal curve!&#xA;This is the probability distribution we have all seen or at least heard of. But what does it tell us, exactly?&#xA;What is a Probability Distribution? We have previously discussed what probability is (the likelihood of an outcome occurring). A probability distribution describes how likely ALL outcomes are.</description>
     </item>
     <item>
       <title>Conditional Probability</title>
-      <link>/2024/06/05/conditional-probability/</link>
+      <link>//localhost:4321/2024/06/05/conditional-probability/</link>
       <pubDate>Wed, 05 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>/2024/06/05/conditional-probability/</guid>
+      <guid>//localhost:4321/2024/06/05/conditional-probability/</guid>
       <description>(or &amp;ldquo;Why Do My Pipes Keep Bursting?&amp;rdquo;) Last week, we covered how we can use probability to determine what is likely to happen.&#xA;However, things become much more interesting once you start adding details to help improve your estimate. This is what we are doing when we assess a conditional probability.&#xA;What is Conditional Probability? The core idea behind conditional probability is that certain conditions can make an outcome more (or less) probable.</description>
     </item>
     <item>
       <title>Summer of Stats</title>
-      <link>/about/</link>
+      <link>//localhost:4321/about/</link>
       <pubDate>Sat, 01 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>/about/</guid>
+      <guid>//localhost:4321/about/</guid>
       <description>My name is Jack McMahon, and I have been working with Data for my entire career.&#xA;Having held both Data Analyst and Data Engineering roles, I have seen the many, varied, and (sometimes) unusual ways people gain insights from data.&#xA;This Fall, I will take a big step forward by starting a Masters in Statistics at UC. I am incredibly excited!&#xA;Over the course of the summer, I plan to revisit past statistical coursework to ensure I&amp;rsquo;m prepared.</description>
     </item>
     <item>
       <title>Probability</title>
-      <link>/2024/05/29/probability/</link>
+      <link>//localhost:4321/2024/05/29/probability/</link>
       <pubDate>Wed, 29 May 2024 00:00:00 +0000</pubDate>
-      <guid>/2024/05/29/probability/</guid>
+      <guid>//localhost:4321/2024/05/29/probability/</guid>
       <description>(or &amp;ldquo;Will It Rain on My Parade?&amp;rdquo;) It is very exciting to break open a textbook on statistics again.&#xA;I doubt many people have ever said that, but in my case, it rings true!&#xA;To prepare for Master&amp;rsquo;s-level coursework this Fall, I am revisiting statistical concepts and coursework. I will be writing a small entry about something I learned each week.&#xA;This will not be a math-heavy, rigorous write-up, but will instead focus on finding an idea that ANYONE can walk away with and make use of.</description>
     </item>
     <item>
       <title>Visual Gallery</title>
-      <link>/2023/01/01/visual-gallery/</link>
+      <link>//localhost:4321/2023/01/01/visual-gallery/</link>
       <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
-      <guid>/2023/01/01/visual-gallery/</guid>
+      <guid>//localhost:4321/2023/01/01/visual-gallery/</guid>
       <description>Telling compelling stories with data is what I love to do.&#xA;Below, I had some fun creating visuals using publicly available data from the City of Cincinnati Open Data Portal. I hope you enjoy!&#xA;City Vehicles Using vehicle GPS data from city-owned vehicles (SOURCE DATA), this map tracks these assets as they move around downtown Cincinnati, using R and gganimate.&#xA;Single Vehicle Multiple Vehicles Adding a trace line for each vehicle reveals some very interesting patterns - we can clearly see police patrols criss-cross different sections of downtown.</description>
     </item>
   </channel>
